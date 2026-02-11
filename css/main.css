@@ -1,0 +1,764 @@
+/* Customize Slider */
+.slider-navigation-next {
+    margin-top: -32px !important;
+    color: white !important;
+    background: #3B5249 !important;
+}
+
+.slider-navigation-previous {
+    margin-top: -32px !important;
+    color: white !important;
+    background: #3B5249 !important;
+}
+
+.slider-page {
+    color: white !important;
+    background: #3B5249 !important;
+}
+
+* {
+    font-family: 'Avenir', 'Avenir Next Cyr', 'Inter', 'Config', 'Microsoft YaHei', sans-serif;
+}
+
+a {
+    color: #3B5249;
+    text-decoration: none;
+}
+  
+a.link:focus, a.link:hover {
+    color: #4A7C59;
+    text-decoration: none;
+}
+
+body {
+    position: relative;
+    margin: 0px;
+    padding: 0px;
+    background: #FAFCFA;
+}
+
+p {
+    position: relative;
+    margin: 16px;
+    color: #2C3E50;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: justify;
+    line-height: 1.6;
+}
+
+p span {
+    font-weight: 600;
+}
+
+video {
+    width: 100%;
+    height: auto;
+}
+
+/* Pipeline image: match page background */
+.pipeline-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    background: #FAFCFA;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+}
+
+.x-row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+
+.x-column {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    flex-direction: column;
+}
+
+.x-center-text {
+    margin: 16px 32px;
+    text-align: center;
+}
+
+.x-left-align {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    flex-wrap: nowrap;
+}
+
+.x-right-align {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    flex-wrap: nowrap;
+}
+
+.x-flex-spacer {
+    flex: 1;
+}
+
+.x-labels {
+    position: absolute;
+    top: 8px;
+    right: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    flex-direction: row-reverse;
+}
+
+.x-label {
+    height: 20px;
+    padding: 0px 6px;
+    margin: 0px 2px;
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    background: #475569;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.x-button {
+    height: 40px;
+    padding: 0px 14px;
+    background: #3B5249;
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px rgba(59, 82, 73, 0.2);
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.x-button.small {
+    height: 32px;
+    padding: 0px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.x-button:hover {
+    background: #4A7C59;
+    transform: translateY(-2px);
+    box-shadow: 0px 4px 12px rgba(74, 124, 89, 0.3);
+}
+
+.x-gradient-font {
+    background: linear-gradient(120deg, #2D3E36 0%, #3B5249 30%, #4A7C59 60%, #6B9E7A 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.x-gradient-block {
+    color: #2C3E50;
+    background: linear-gradient(120deg, #F1F5F9 0%, #F8FAFC 50%, #F1F5F9 100%);
+    border-radius: 12px;
+    border: 1px solid rgba(59, 82, 73, 0.06);
+}
+
+.x-gradient-border {
+    position: relative;
+    padding: 1px;
+    margin: 3px;
+    border: 3px;
+    background: white;
+    background-clip: padding-box;
+    border: solid border transparent;
+    border-radius: 16px;
+}
+
+.x-gradient-border::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    z-index: -1;
+    margin: -3px;
+    border-radius: 16px;
+    background: linear-gradient(120deg, #2D3E36 0%, #3B5249 30%, #4A7C59 60%, #6B9E7A 100%);
+}
+
+.x-section-title {
+    margin: 64px 0px 16px 0px;
+    padding-left: 16px;
+    color: #2C3E50;
+    font-size: 32px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    border-left: 4px solid #4A7C59;
+}
+
+.x-section-title.small {
+    margin: 8px 0px 4px 0px;
+    padding-left: 4px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.x-note {
+    color: #6B7280;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.x-card {
+    position: relative;
+    margin: 8px;
+    padding: 16px;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0px 2px 8px rgba(59, 82, 73, 0.08);
+    border: 1px solid rgba(59, 82, 73, 0.05);
+    transition: all 0.2s ease;
+}
+
+.x-card.clickable {
+    cursor: pointer;
+}
+
+.x-card.clickable:hover {
+    box-shadow: 0px 4px 16px rgba(59, 82, 73, 0.14);
+    transform: translateY(-2px);
+    border-color: rgba(74, 124, 89, 0.2);
+}
+
+.x-card .caption {
+    margin: 8px 0px;
+    height: 80px;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+}
+
+/* ==================== Layout ==================== */
+
+#main {
+    max-width: 1000px;
+    margin: 0px auto;
+    padding-top: 100px;
+    padding-bottom: 200px;
+}
+
+#title {
+    margin-bottom: 32px;
+    color: #2C3E50;
+    font-size: 54px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.2;
+}
+
+#authors {
+    width: 80%;
+    margin: 8px auto;
+    color: #4A5568;
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#authors div {
+    margin: 0px 16px;
+}
+
+#institution {
+    margin: 8px 32px;
+    color: #6B7280;
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#institution div {
+    margin: 0px 16px;
+}
+
+#conference {
+    margin: 16px 32px;
+    color: gray;
+    font-size: 24px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+#abstract {
+    position: relative;
+    margin: 32px;
+    padding: 16px 24px;
+    color: #2C3E50;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: justify;
+    line-height: 1.7;
+    border-radius: 12px;
+    background: white;
+    border-left: 4px solid #4A7C59;
+    box-shadow: 0px 2px 8px rgba(59, 82, 73, 0.06);
+}
+
+#abstract::before {
+    content: "Abstract:";
+    font-weight: 700;
+    margin-right: 8px;
+    color: #4A7C59;
+}
+
+#links {
+    margin: 16px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#links div {
+    margin: 4px 8px;
+    width: 140px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#links a {
+    width: 100px;
+    height: 20px;
+    padding: 8px 16px;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    background: linear-gradient(120deg, #3B5249 0%, #4A7C59 50%, #6B9E7A 100%);
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px rgba(59, 82, 73, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+#links a:hover {
+    width: 105px;
+    height: 21px;
+    font-size: 17px;
+    background: linear-gradient(120deg, #4A7C59 0%, #6B9E7A 50%, #8BBF9A 100%);
+    box-shadow: 0px 4px 12px rgba(74, 124, 89, 0.3);
+    transform: translateY(-2px);
+}
+
+#links a.disabled {
+    background-color: rgb(192, 192, 192);
+}
+
+#links a.disabled:hover {
+    background-color: rgb(192, 192, 192);
+}
+
+#links a::before {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin-right: 8px;
+}
+
+#links #paper::before {
+    content: "\e000";
+    font-size: 18px;
+}
+
+#links #code::before {
+    content: "\e002";
+    font-size: 20px;
+}
+
+#links #arxiv::before {
+    content: "\e001";
+    font-size: 20px;
+}
+
+#links #poster::before {
+    content: "\e004";
+    font-size: 20px;
+}
+
+#links #video::before {
+    content: "\e003";
+    font-size: 20px;
+}
+
+#links #demo::before {
+    content: "\e005";
+    font-size: 20px;
+}
+
+#teaser {
+    margin-top: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#teaser div {
+    height: 100%;
+}
+
+/* ==================== BiTeX ==================== */
+
+.bibtex {
+    margin: 32px 32px;
+    padding: 0px 24px;
+    font-family: consolas, monospace;
+    white-space: pre;
+    word-wrap: normal;
+    overflow-wrap: normal;
+    font-size: 14px;
+    font-weight: 600;
+    display: block;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
+}
+
+/* ==================== Bottom Bar ==================== */
+
+#bottombar {
+    position: absolute;
+    bottom: 0px;
+    height: 60px;
+    width: 100%;
+    background: linear-gradient(120deg, #2D3E36 0%, #3B5249 50%, #4A7C59 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    user-select: none;
+}
+
+#bottombar .row {
+    width: 80%;
+    padding: 0px 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+}
+
+#bottombar div {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 12px;
+    font-weight: 500;
+}
+
+#bottombar div a {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 12px;
+    font-weight: 500;
+}
+
+#bottombar div a:hover {
+    color: rgba(255, 255, 255, 1);
+    font-size: 12px;
+}
+
+#bottombar div span {
+    font-weight: 700;
+}
+
+/* ==================== Benchmark Charts ==================== */
+
+.benchmark-btn {
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 8px 16px;
+    border: 1.5px solid rgba(59, 82, 73, 0.2);
+    border-radius: 8px;
+    background: #EFF5F1;
+    color: #3B5249;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
+}
+
+.benchmark-btn.green {
+    background: #E8F5E9;
+    color: #43A047;
+    border-color: rgba(67, 160, 71, 0.3);
+}
+
+.benchmark-btn.orange {
+    background: #FFF3E0;
+    color: #F57C00;
+    border-color: rgba(245, 124, 0, 0.3);
+}
+
+.benchmark-btn.purple {
+    background: #EDE7F6;
+    color: #7E57C2;
+    border-color: rgba(126, 87, 194, 0.3);
+}
+
+.benchmark-btn:hover {
+    border-color: #3B5249;
+    color: #3B5249;
+}
+
+.benchmark-btn.green:hover {
+    border-color: #4CAF50;
+    color: #4CAF50;
+}
+
+.benchmark-btn.is-active {
+    background: linear-gradient(120deg, #3B5249 0%, #4A7C59 50%, #6B9E7A 100%);
+    color: #fff;
+    border-color: #3B5249;
+    font-weight: 600;
+}
+
+.benchmark-btn.green.is-active {
+    background: linear-gradient(120deg, #43A047 0%, #66BB6A 50%, #81C784 100%);
+    color: #fff;
+    border-color: #43A047;
+    font-weight: 600;
+}
+
+.benchmark-btn.orange:hover {
+    border-color: #F57C00;
+    color: #F57C00;
+}
+
+.benchmark-btn.orange.is-active {
+    background: linear-gradient(120deg, #F57C00 0%, #FB8C00 50%, #FFA726 100%);
+    color: #fff;
+    border-color: #F57C00;
+    font-weight: 600;
+}
+
+.benchmark-btn.purple:hover {
+    border-color: #7E57C2;
+    color: #7E57C2;
+}
+
+.benchmark-btn.purple.is-active {
+    background: linear-gradient(120deg, #7E57C2 0%, #9575CD 50%, #B39DDB 100%);
+    color: #fff;
+    border-color: #7E57C2;
+    font-weight: 600;
+}
+
+/* ==================== Mobile Responsive ==================== */
+
+@media screen and (max-width: 768px) {
+    #main {
+        padding-top: 40px;
+        padding-bottom: 120px;
+    }
+
+    #title {
+        font-size: 32px;
+        margin-bottom: 16px;
+    }
+
+    #title span:first-child {
+        font-size: 40px !important;
+    }
+
+    #title span:last-child {
+        font-size: 24px !important;
+    }
+
+    #authors {
+        width: 95%;
+        font-size: 14px;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    #authors div {
+        margin: 2px 8px;
+    }
+
+    #institution {
+        font-size: 14px;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    #institution div {
+        margin: 2px 8px;
+    }
+
+    .x-center-text {
+        font-size: 16px !important;
+        margin: 12px 16px;
+    }
+
+    #links {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    #links div {
+        width: 200px;
+        margin: 4px;
+    }
+
+    #links a {
+        width: 160px;
+    }
+
+    #abstract {
+        margin: 16px;
+        padding: 12px 16px;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    p {
+        margin: 12px 16px;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .x-section-title {
+        font-size: 24px !important;
+        margin: 32px 0px 12px 0px;
+        padding-left: 12px;
+    }
+
+    .x-section-title.small {
+        font-size: 18px !important;
+        margin: 8px 0px 4px 0px;
+    }
+
+    .x-card {
+        margin: 4px;
+        padding: 12px;
+    }
+
+    .x-card .caption {
+        height: 60px;
+        margin: 6px 0px;
+    }
+
+    .bibtex {
+        margin: 16px 8px;
+        padding: 8px 12px;
+        font-size: 9px;
+        white-space: pre;
+        word-break: normal;
+        overflow-x: scroll;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    ul {
+        margin: 12px 16px !important;
+        font-size: 14px !important;
+        padding-left: 20px;
+    }
+
+    #bottombar {
+        height: auto;
+        padding: 12px 0;
+    }
+
+    #bottombar .row {
+        width: 90%;
+        padding: 0px 5%;
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+
+    #bottombar div {
+        font-size: 10px;
+    }
+
+    #bottombar div a {
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #main {
+        padding-top: 30px;
+    }
+
+    #title span:first-child {
+        font-size: 32px !important;
+    }
+
+    #title img {
+        height: 32px !important;
+        margin-right: 0px !important;
+    }
+
+    #title span:last-child {
+        font-size: 20px !important;
+    }
+
+    #authors {
+        font-size: 12px;
+    }
+
+    #institution {
+        font-size: 12px;
+    }
+
+    .x-center-text {
+        font-size: 14px !important;
+    }
+
+    #abstract {
+        font-size: 12px;
+    }
+
+    p {
+        font-size: 12px;
+    }
+
+    .x-section-title {
+        font-size: 20px !important;
+    }
+
+    #links div {
+        width: 160px;
+    }
+
+    #links a {
+        width: 120px;
+        font-size: 14px;
+    }
+}

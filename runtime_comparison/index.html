@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CoPE-VideoLM - Runtime Showcase</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="logo-section">
+      <div class="logo">
+        <img src="assets/cope_logo_transparent.png" alt="CoPE Logo" />
+      </div>
+      <div>
+        <h1 class="main-title">CoPE-VideoLM</h1>
+        <p class="subtitle">Interactive Runtime Comparison</p>
+      </div>
+    </div>
+    
+    <!-- Control Panel - inline in header -->
+    <div class="control-panel" id="controlPanel">
+      <button class="control-btn nav" id="prevBtn">← Prev</button>
+      <button class="control-btn start" id="startBtn">▶ Start</button>
+      <button class="control-btn pause" id="pauseBtn" disabled>⏸ Pause</button>
+      <button class="control-btn reset" id="resetBtn">↻ Reset</button>
+      <button class="control-btn nav" id="nextBtn">Next →</button>
+    </div>
+  </header>
+
+  <main class="content">
+    <!-- LEFT PANE -->
+    <section class="left-pane">
+      <div class="hero-video-wrapper">
+        <video class="hero-video" id="heroVideo" autoplay muted loop playsinline>
+          <source src="assets/video_example1.mp4" type="video/mp4" id="videoSource" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="video-caption" id="videoCaption">Input Video 1</div>
+      
+      <!-- Carousel Navigation -->
+      <div class="carousel-nav">
+        <div class="carousel-dots" id="carouselDots"></div>
+        <span class="carousel-indicator" id="carouselIndicator">1 / 1</span>
+      </div>
+
+      <!-- Note - inline below video -->
+      <div class="note">
+        <strong>Note:</strong> "Thought for" represents Time-to-First-Token (TTFT). The displayed values correspond to row 1 and 4 of Table 4 (main paper) for CoPE-VideoLM and LLaVA-Video respectively.
+      </div>
+    </section>
+
+    <!-- RIGHT PANE: PHONES -->
+    <section class="right-pane">
+      <div class="phones">
+        <!-- PHONE 1 -->
+        <div class="phone">
+          <div class="phone-shell" id="phone-1">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <div class="status-row">
+                <div class="status-left">
+                  <span class="status-dot"></span>
+                  <span>Chat</span>
+                </div>
+                <div class="status-right">
+                  <span>9:41</span>
+                  <span class="status-bar-icon"></span>
+                </div>
+              </div>
+
+              <div class="chat-header">
+                <div class="chat-profile-pic">
+                  <img src="assets/llava_logo.png" alt="LLaVA-Video" />
+                </div>
+                <div class="chat-contact-name">LLaVA-Video</div>
+              </div>
+
+              <div class="chat-window" data-role="chat-window"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PHONE 2 -->
+        <div class="phone">
+          <div class="phone-shell" id="phone-2">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <div class="status-row">
+                <div class="status-left">
+                  <span class="status-dot"></span>
+                  <span>Chat</span>
+                </div>
+                <div class="status-right">
+                  <span>9:41</span>
+                  <span class="status-bar-icon"></span>
+                </div>
+              </div>
+
+              <div class="chat-header">
+                <div class="chat-profile-pic">
+                  <img src="assets/cope_logo.png" alt="CoPE-VideoLM" />
+                </div>
+                <div class="chat-contact-name">CoPE-VideoLM</div>
+              </div>
+
+              <div class="chat-window" data-role="chat-window"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat Progress Bars -->
+      <div class="progress-panel" id="progressPanel">
+        <div class="progress-header">Chat Completion Progress</div>
+        <div class="progress-track-wrapper">
+          <!-- LLaVA-Video bar -->
+          <div class="progress-row" id="progressRow1">
+            <span class="progress-label llava">LLaVA-Video</span>
+            <div class="progress-track">
+              <div class="progress-fill llava" id="progressFill1"></div>
+            </div>
+            <span class="progress-time" id="progressTime1">0.00s</span>
+            <span class="progress-badge" id="progressBadge1"></span>
+          </div>
+          <!-- CoPE-VideoLM bar -->
+          <div class="progress-row" id="progressRow2">
+            <span class="progress-label cope">CoPE-VideoLM</span>
+            <div class="progress-track">
+              <div class="progress-fill cope" id="progressFill2"></div>
+            </div>
+            <span class="progress-time" id="progressTime2">0.00s</span>
+            <span class="progress-badge" id="progressBadge2"></span>
+          </div>
+        </div>
+        <div class="progress-speedup" id="progressSpeedup"></div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
