@@ -16,9 +16,9 @@
           --rc-border: #d1d5db;
           --rc-text: #1f2937;
           --rc-muted: #6b7280;
-          --rc-accent-green: #22c55e;
-          --rc-accent-orange: #fb923c;
-          --rc-bubble-right: #22c55e;
+          --rc-accent-green: #6567C9;
+          --rc-accent-orange: #ff9349;
+          --rc-bubble-right: #6567C9;
           --rc-bubble-left: #111827;
           --rc-radius-xl: 1.75rem;
           --rc-shadow-soft: 0 18px 45px rgba(0,0,0,0.12);
@@ -131,7 +131,7 @@
         }
         .rc-status-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.65rem; color: #9ca3af; flex-shrink: 0; }
         .rc-status-left { display: flex; align-items: center; gap: 5px; }
-        .rc-status-dot { width: 5px; height: 5px; border-radius: 999px; background: var(--rc-accent-green); box-shadow: 0 0 10px rgba(34,197,94,0.6); }
+        .rc-status-dot { width: 5px; height: 5px; border-radius: 999px; background: var(--rc-accent-green); box-shadow: 0 0 10px rgba(101,103,201,0.6); }
         .rc-status-right { display: flex; align-items: center; gap: 4px; opacity: 0.8; }
         .rc-status-bar-icon { width: 9px; height: 5px; border-radius: 999px; border: 1px solid #9ca3af; }
         .rc-chat-header { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 6px 0; border-bottom: 1px solid rgba(209,213,219,0.6); margin-bottom: 4px; flex-shrink: 0; }
@@ -159,14 +159,14 @@
         }
         #runtime-comparison .rc-bubble.visible { opacity: 1; transform: translateY(0); }
         #runtime-comparison .rc-bubble.rc-question {
-          background: var(--rc-bubble-right); color: #022c22;
+          background: var(--rc-bubble-right); color: #fff;
           border-bottom-right-radius: 4px; font-weight: 500;
-          box-shadow: 0 6px 14px rgba(34,197,94,0.24);
+          box-shadow: 0 6px 14px rgba(101,103,201,0.24);
           position: relative; padding-bottom: 16px;
         }
         #runtime-comparison .rc-read-indicator {
           position: absolute; bottom: 3px; right: 6px; font-size: 0.58rem;
-          color: #065f46; font-weight: 600; opacity: 0;
+          color: #fff; font-weight: 600; opacity: 0;
           transition: opacity 0.3s ease-out; visibility: hidden;
         }
         #runtime-comparison .rc-read-indicator.visible { opacity: 1; visibility: visible; }
@@ -175,7 +175,7 @@
           border-bottom-left-radius: 4px; border: 1px solid rgba(209,213,219,0.9);
         }
         #rc-phone-1 .rc-bubble.rc-answer { background: #C00000; border: 1px solid #A00000; color: #fff; }
-        #rc-phone-2 .rc-bubble.rc-answer { background: #4E95D9; border: 1px solid #3A7BC8; color: #fff; }
+        #rc-phone-2 .rc-bubble.rc-answer { background: #6567C9; border: 1px solid #5254B3; color: #fff; }
         #runtime-comparison .rc-bubble.rc-meta {
           background: #f1f5f9; color: #6b7280;
           border-bottom-left-radius: 4px; border: 1px solid rgba(209,213,219,0.9);
@@ -227,8 +227,8 @@
           transform: translateY(-1px); box-shadow: 0 3px 8px rgba(0,0,0,0.08);
         }
         .rc-control-btn:active { transform: translateY(0); }
-        .rc-control-btn.rc-start { background: rgba(34,197,94,0.1); border-color: rgba(34,197,94,0.4); color: #16a34a; }
-        .rc-control-btn.rc-start:hover:not(:disabled) { background: rgba(34,197,94,0.2); border-color: rgba(34,197,94,0.6); }
+        .rc-control-btn.rc-start { background: rgba(101,103,201,0.1); border-color: rgba(101,103,201,0.4); color: #6567C9; }
+        .rc-control-btn.rc-start:hover:not(:disabled) { background: rgba(101,103,201,0.2); border-color: rgba(101,103,201,0.6); }
         .rc-control-btn.rc-pause { background: rgba(251,146,60,0.1); border-color: rgba(251,146,60,0.4); color: #ea580c; }
         .rc-control-btn.rc-pause:hover:not(:disabled) { background: rgba(251,146,60,0.2); border-color: rgba(251,146,60,0.6); }
         .rc-control-btn.rc-reset { background: rgba(239,68,68,0.1); border-color: rgba(239,68,68,0.4); color: #dc2626; }
@@ -254,17 +254,17 @@
         .rc-progress-row { display: grid; grid-template-columns: 90px 1fr 48px 50px; gap: 8px; align-items: center; }
         .rc-progress-label { font-size: 0.7rem; font-weight: 600; white-space: nowrap; }
         .rc-progress-label.rc-llava { color: #dc2626; }
-        .rc-progress-label.rc-cope { color: #2563eb; }
+        .rc-progress-label.rc-cope { color: #6567C9; }
         .rc-progress-track { height: 12px; min-width: 0; background: rgba(226,232,240,1); border-radius: 999px; overflow: hidden; border: 1px solid rgba(203,213,225,0.7); }
         .rc-progress-fill { height: 100%; width: 0%; border-radius: 999px; transition: width 0.15s linear; position: relative; }
         .rc-progress-fill.rc-llava { background: linear-gradient(90deg, #C00000, #f87171); box-shadow: 0 0 8px rgba(192,0,0,0.45); }
-        .rc-progress-fill.rc-cope { background: linear-gradient(90deg, #3A7BC8, #60a5fa); box-shadow: 0 0 8px rgba(78,149,217,0.45); }
+        .rc-progress-fill.rc-cope { background: linear-gradient(90deg, #6567C9, #9b9dea); box-shadow: 0 0 8px rgba(101,103,201,0.45); }
         .rc-progress-fill.complete { box-shadow: none; }
         .rc-progress-time { font-size: 0.7rem; font-weight: 600; color: var(--rc-muted); text-align: right; font-variant-numeric: tabular-nums; }
         .rc-progress-badge { font-size: 0.62rem; font-weight: 700; text-align: center; padding: 2px 5px; border-radius: 5px; opacity: 0; transition: opacity 0.35s ease; white-space: nowrap; }
-        .rc-progress-badge.winner { background: rgba(78,149,217,0.15); border: 1px solid rgba(78,149,217,0.4); color: #4E95D9; opacity: 1; font-weight: 800; }
+        .rc-progress-badge.winner { background: rgba(101,103,201,0.15); border: 1px solid rgba(101,103,201,0.4); color: #6567C9; opacity: 1; font-weight: 800; }
         .rc-progress-badge.slower { background: rgba(192,0,0,0.1); border: 1px solid rgba(192,0,0,0.3); color: #C00000; opacity: 1; font-weight: 500; }
-        .rc-progress-speedup { margin-top: 10px; font-size: 0.76rem; font-weight: 600; text-align: center; color: var(--rc-accent-green); min-height: 1.2em; opacity: 0; transition: opacity 0.4s ease; }
+        .rc-progress-speedup { margin-top: 10px; font-size: 0.76rem; font-weight: 600; text-align: center; color: #6567C9; min-height: 1.2em; opacity: 0; transition: opacity 0.4s ease; }
         .rc-progress-speedup.visible { opacity: 1; }
 
         @media (max-width: 600px) {
@@ -287,13 +287,13 @@
 
             <div id="authors">
                 <!-- TODO: Update authors -->
-                <div><a class="link" href="#" target="_blank">Sayan Deb Sarkar</a><sup> 1,*</sup></div>
-                <div><a class="link" href="#" target="_blank">Remi Pautrat</a><sup> 2 </sup></div>
+                <div><a class="link" href="#" target="_blank">Sayan Deb Sarkar</a><sup> 1<sup>*</sup></sup></div>
+                <div><a class="link" href="#" target="_blank">Rémi Pautrat</a><sup> 2 </sup></div>
                 <div><a class="link" href="#" target="_blank">Ondrej Miksik</a><sup> 2 </sup></div>
                 <div><a class="link" href="#" target="_blank">Marc Pollefeys</a><sup> 2,3 </sup></div>
                 <div><a class="link" href="#" target="_blank">Iro Armeni</a><sup> 1 </sup></div>
-                <div><a class="link" href="#" target="_blank">Mahdi Rad</a><sup> 2,†</sup></div>
-                <div><a class="link" href="#" target="_blank">Mihai Dusmanu</a><sup> 2,†</sup></div>
+                <div><a class="link" href="#" target="_blank">Mahdi Rad</a><sup> 2<sup>†</sup></sup></div>
+                <div><a class="link" href="#" target="_blank">Mihai Dusmanu</a><sup> 2<sup>†</sup></sup></div>
             </div>
 
             <div id="institution">
@@ -303,7 +303,7 @@
                 <div><sup>3 </sup>ETH Zurich</div>
             </div>
 
-            <div style="text-align: center; font-size: 13px; color: #6B7280; margin-top: 4px;">
+            <div style="text-align: center; font-size: 13px; color: rgb(96, 96, 96); margin-top: 4px;">
                 <span><sup>*</sup> Part of work done during an internship at Microsoft</span>
                 &nbsp;&nbsp;
                 <span><sup>†</sup> Equal supervision </span>
@@ -312,8 +312,9 @@
             <!-- Institution Logos -->
             <div id="logos" style="display: flex; align-items: center; justify-content: center; gap: 40px; margin: 20px 0 8px 0; flex-wrap: wrap;">
                 <a href="#" target="_blank"><img src="assets/logos/stanford.png" alt="Stanford University" style="height: 50px; object-fit: contain;"></a>
+                <a href="#" target="_blank"><img src="assets/logos/gradient_spaces.png" alt="Microsoft" style="height: 50px; object-fit: contain;"></a>
+                <a href="#" target="_blank"><img src="assets/logos/ethz.png" alt="ETH Zurich" style="height: 50px; object-fit: contain;"></a>
                 <a href="#" target="_blank"><img src="assets/logos/microsoft.png" alt="Microsoft" style="height: 50px; object-fit: contain;"></a>
-                <a href="#" target="_blank"><img src="assets/logos/eth.png" alt="ETH Zurich" style="height: 50px; object-fit: contain;"></a>
             </div>
 
             <div id="links">
@@ -546,7 +547,7 @@
             <p>
                 <i>
                     [Acknowledgements to be added]<br>
-                    Website template inspired by <a href="https://sayands.github.io/guideflow3d/" style="color: #3B5249;" target="_blank">GuideFlow3D</a>.
+                    Website template inspired by <a href="https://sayands.github.io/guideflow3d/" style="color: #6567C9;" target="_blank">GuideFlow3D</a>.
                 </i>
             </p>
         </div>
@@ -726,7 +727,7 @@
                 'InternVL2-8B': 54.6,
                 'Kangaroo-8B': 54.8,
                 'TimeMarker-7B': 56.3,
-                'LLaVA-OV-7B': 56.9,
+                'LLaVA-OV-7B': 56.5,
                 'CoPE-VideoLM-7B (Ours)': 56.9,
                 'LLaVA-Video-7B': 58.2
               }
@@ -734,12 +735,12 @@
           };
 
           function getBarColor(modelName) {
-            if (modelName.includes('(Ours)')) return '#4E95D9';
+            if (modelName.includes('(Ours)')) return '#6567C9';
             return '#CBD5E1';
           }
 
           function getBorderColor(modelName) {
-            if (modelName.includes('(Ours)')) return '#3A7BC8';
+            if (modelName.includes('(Ours)')) return '#5254B3';
             return '#A0AEC0';
           }
 
@@ -763,7 +764,7 @@
                 c.textBaseline = 'middle';
                 if (label.indexOf('(Ours)') !== -1) {
                   c.font = 'bold italic 12px "Avenir Next Cyr", "Inter", sans-serif';
-                  c.fillStyle = '#4E95D9';
+                  c.fillStyle = '#6567C9';
                   c.fillText(label, x, y);
                 } else {
                   c.font = '12px "Avenir Next Cyr", "Inter", sans-serif';
@@ -793,7 +794,7 @@
                     c.fillStyle = '#374151';
                     c.font = '11px "Avenir Next Cyr", "Inter", sans-serif';
                   } else {
-                    c.fillStyle = isOurs ? '#4E95D9' : '#374151';
+                    c.fillStyle = isOurs ? '#6567C9' : '#374151';
                     c.font = (isOurs ? 'bold ' : '') + '12px "Avenir Next Cyr", "Inter", sans-serif';
                   }
                   c.textAlign = 'left';
@@ -833,10 +834,10 @@
               var labels = entries.map(function(e) { return e[0]; });
               var woValues = entries.map(function(e) { return e[1].wo; });
               var wValues  = entries.map(function(e) { return e[1].w; });
-              var woColors = entries.map(function(e) { return e[0].indexOf('(Ours)') !== -1 ? '#93C5FD' : '#CBD5E1'; });
-              var wColors  = entries.map(function(e) { return e[0].indexOf('(Ours)') !== -1 ? '#4E95D9' : '#94A3B8'; });
-              var woBorders = entries.map(function(e) { return e[0].indexOf('(Ours)') !== -1 ? '#60A5FA' : '#A0AEC0'; });
-              var wBorders  = entries.map(function(e) { return e[0].indexOf('(Ours)') !== -1 ? '#3A7BC8' : '#64748B'; });
+              var woColors = entries.map(function(e) { return e[0].indexOf('(Ours)') !== -1 ? '#b8b9e8' : '#CBD5E1'; });
+              var wColors  = entries.map(function(e) { return e[0].indexOf('(Ours)') !== -1 ? '#6567C9' : '#94A3B8'; });
+              var woBorders = entries.map(function(e) { return e[0].indexOf('(Ours)') !== -1 ? '#9b9dea' : '#A0AEC0'; });
+              var wBorders  = entries.map(function(e) { return e[0].indexOf('(Ours)') !== -1 ? '#5254B3' : '#64748B'; });
               var allVals = woValues.concat(wValues).filter(function(v) { return v !== null; });
               var minVal = Math.floor(Math.min.apply(null, allVals) / 5) * 5;
               var maxVal = Math.ceil(Math.max.apply(null, allVals) / 5) * 5 + 5;
