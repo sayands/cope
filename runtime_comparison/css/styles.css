@@ -123,9 +123,27 @@ body {
 @media (max-width: 900px) {
   .content {
     grid-template-columns: minmax(0, 1fr);
-    gap: 24px;
+    gap: 20px;
   }
   
+  .left-pane {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .hero-video-wrapper {
+    max-width: 220px;
+    flex-shrink: 0;
+  }
+
+  .note {
+    max-width: 100%;
+    flex: 1;
+    min-width: 180px;
+  }
+
   body {
     padding: 12px;
     height: auto;
@@ -257,15 +275,103 @@ body {
 
 @media (max-width: 700px) {
   .phones {
-    grid-template-columns: minmax(0, 1fr);
-    max-width: 300px;
-    margin: 0 auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .phone-shell {
+    max-width: 100%;
+    border-radius: 22px;
+    padding: 6px;
+  }
+
+  .phone-notch {
+    height: 8px;
+    top: 5px;
+    width: 35%;
+  }
+
+  .phone-screen {
+    border-radius: 18px;
+    padding: 14px 8px 10px;
+    gap: 5px;
+  }
+
+  .status-row {
+    font-size: 0.55rem;
+  }
+
+  .status-dot {
+    width: 4px;
+    height: 4px;
+  }
+
+  .chat-header {
+    padding: 3px 0;
+    gap: 5px;
+  }
+
+  .chat-profile-pic {
+    width: 20px;
+    height: 20px;
+  }
+
+  .chat-contact-name {
+    font-size: 0.62rem;
+  }
+
+  .bubble {
+    max-width: 88%;
+    padding: 5px 7px;
+    font-size: 0.6rem;
+    border-radius: 12px;
+    line-height: 1.3;
+  }
+
+  .bubble.question {
+    padding-bottom: 12px;
+  }
+
+  .read-indicator {
+    font-size: 0.5rem;
+    bottom: 2px;
+    right: 5px;
+  }
+
+  .bubble.thought-time {
+    font-size: 0.52rem;
+    padding: 2px 5px;
+  }
+
+  .meta-label {
+    font-size: 0.55rem;
+  }
+
+  .typing-dot {
+    width: 3px;
+    height: 3px;
+  }
+
+  .chat-window {
+    gap: 4px;
+    padding-right: 2px;
+  }
+
+  .chat-window::-webkit-scrollbar {
+    width: 2px;
   }
 }
 
 @media (max-width: 500px) {
   .phones {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .phone-shell {
     max-width: 100%;
+    border-radius: 18px;
+    padding: 4px;
   }
 }
 
@@ -296,13 +402,7 @@ body {
   }
 }
 
-@media (max-width: 500px) {
-  .phone-shell {
-    max-width: 100%;
-    border-radius: 28px;
-    padding: 8px;
-  }
-}
+@media (max-width: 500px) {\n  .phone-shell {\n    max-width: 100%;\n    border-radius: 18px;\n    padding: 4px;\n  }\n}
 
 .phone-notch {
   position: absolute;

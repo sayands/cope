@@ -255,6 +255,8 @@ video {
     margin: 0px auto;
     padding-top: 100px;
     padding-bottom: 200px;
+    padding-left: 16px;
+    padding-right: 16px;
 }
 
 #title {
@@ -499,6 +501,58 @@ video {
 
 /* ==================== Benchmark Charts ==================== */
 
+.benchmark-selector {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin: 16px auto;
+    max-width: 800px;
+}
+
+.benchmark-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+
+.benchmark-category-label {
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.benchmark-btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+}
+
+@media screen and (max-width: 600px) {
+    .benchmark-selector {
+        align-items: stretch;
+        padding: 0 8px;
+    }
+
+    .benchmark-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .benchmark-btn-group {
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+
+    .benchmark-category-label {
+        font-size: 12px;
+    }
+}
+
 .benchmark-btn {
     cursor: pointer;
     transition: all 0.2s ease;
@@ -709,6 +763,21 @@ video {
     #bottombar div a {
         font-size: 10px;
     }
+
+    /* Benchmark buttons: allow wrapping */
+    .benchmark-btn {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+
+    /* Logo scaling */
+    #logos {
+        gap: 20px !important;
+    }
+
+    #logos img {
+        height: 36px !important;
+    }
 }
 
 @media screen and (max-width: 480px) {
@@ -760,5 +829,31 @@ video {
     #links a {
         width: 120px;
         font-size: 14px;
+    }
+
+    .benchmark-btn {
+        padding: 5px 8px;
+        font-size: 11px;
+    }
+
+    #logos img {
+        height: 28px !important;
+    }
+}
+
+/* ==================== Benchmark Chart Container ==================== */
+
+.benchmark-chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    height: 400px;
+}
+
+@media screen and (max-width: 600px) {
+    .benchmark-chart-container {
+        height: 300px;
+        margin: 0 8px;
     }
 }

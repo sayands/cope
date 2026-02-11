@@ -136,7 +136,7 @@ export const videoCarousel = [
 ];
 
 /**
- * Delays for each phone - used for ALL question-answer pairs
+ * Delays for each phone - used for ALL question-answer pairs (TTFT)
  */
 export const phoneDelays = {
   phone1: 2.39, // LLaVA-Video
@@ -144,9 +144,11 @@ export const phoneDelays = {
 };
 
 /**
- * Typewriter speeds for answers (calculated to match desired durations)
+ * Token generation time derived from E2E latency for 64 tokens:
+ * LLaVA: 3.78s E2E − 2.39s TTFT = 1.39s → 21.7ms/token
+ * CoPE:  1.66s E2E − 0.33s TTFT = 1.33s → 20.8ms/token
  */
-export const answerTypingSpeeds = {
-  phone1: 1390, // 1.39s total duration in ms
-  phone2: 1330, // 1.33s total duration in ms
+export const msPerToken = {
+  phone1: 1390 / 64, // ~21.7ms per token (LLaVA-Video)
+  phone2: 1330 / 64, // ~20.8ms per token (CoPE-VideoLM)
 };

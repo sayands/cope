@@ -52,34 +52,32 @@ export function createBubble({ type, text, side }) {
 }
 
 /**
- * Typewriter effect for text animation
+ * Typewriter effect — types word-by-word at realistic per-token speed
  */
-export function typewriterEffect(element, text, speed = 20) {
-  let index = 0;
+export function typewriterEffect(element, text, perWordDelay = 21) {
+  const words = text.split(/( +)/);
+  let wordIndex = 0;
   const chatWindow = element.closest('[data-role="chat-window"]');
-  
-  function type() {
-    if (index < text.length) {
-      const char = text.charAt(index);
-      const readIndicator = element.querySelector('.read-indicator');
-      if (readIndicator) {
-        // Insert text before the read indicator
-        const textNode = document.createTextNode(char);
-        element.insertBefore(textNode, readIndicator);
-      } else {
-        element.textContent += char;
-      }
-      index++;
+
+  element.textContent = '';
+  const intervalId = setInterval(() => {
+    if (wordIndex < words.length) {
+      element.textContent += words[wordIndex];
+      wordIndex++;
       scrollChatToBottom(chatWindow);
-      
-      if (index < text.length) {
-        setTimeout(type, speed);
-      }
+    } else {
+      clearInterval(intervalId);
     }
-  }
-  
-  type();
-  return text.length * speed;
+  }, perWordDelay);
+
+  return words.length * perWordDelay;
+}
+
+/**
+ * Calculate typewriter duration for a given text
+ */
+export function typingDuration(text, perWordDelay = 21) {
+  return text.split(/( +)/).length * perWordDelay;
 }
 
 /**

@@ -2,8 +2,8 @@
  * Animation Module - Handles chat animation sequences
  */
 
-import { createBubble, typewriterEffect, scrollChatToBottom } from './ui.js';
-import { phoneDelays, answerTypingSpeeds } from '../../data/config.js';
+import { createBubble, typewriterEffect, typingDuration, scrollChatToBottom } from './ui.js';
+import { phoneDelays, msPerToken } from '../../data/config.js';
 
 /**
  * Animation control state
@@ -117,13 +117,15 @@ export function playFirstQuestionSequence(phoneId, delaySeconds, scriptEntry) {
         const answerElement = aBubble.querySelector(".bubble");
         answerElement.classList.add("visible");
         
-        // Show answer text instantly (no typewriter)
-        answerElement.textContent = content.answer;
+        const phoneKey = isPhone1 ? 'phone1' : 'phone2';
+        typewriterEffect(answerElement, content.answer, msPerToken[phoneKey]);
       });
     }, delaySeconds * 1000);
   }, readDelayMs);
 
-  return readDelayMs + delaySeconds * 1000 + 500;
+  const phoneKey = isPhone1 ? 'phone1' : 'phone2';
+  const typingDur = content.answer.split(/( +)/).length * msPerToken[phoneKey];
+  return readDelayMs + delaySeconds * 1000 + typingDur + 300;
 }
 
 /**
@@ -210,12 +212,14 @@ export function playSubsequentQuestion(phoneId, scriptEntry, startDelay = 0) {
           const answerElement = aBubble.querySelector(".bubble");
           answerElement.classList.add("visible");
           
-          // Show answer text instantly (no typewriter)
-          answerElement.textContent = content.answer;
+          const phoneKey = isPhone1 ? 'phone1' : 'phone2';
+          typewriterEffect(answerElement, content.answer, msPerToken[phoneKey]);
         });
       }, subsequentDelay * 1000);
     }, 650);
   }, startDelay);
 
-  return 650 + subsequentDelay * 1000 + 500;
+  const phoneKey = isPhone1 ? 'phone1' : 'phone2';
+  const typingDur = content.answer.split(/( +)/).length * msPerToken[phoneKey];
+  return 650 + subsequentDelay * 1000 + typingDuration + 300;
 }

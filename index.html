@@ -26,7 +26,10 @@
           margin: 0 auto;
           padding: 0;
         }
-        /* Override global video/p styles inside RC */
+        /* Override global styles inside RC */
+        #runtime-comparison *, #runtime-comparison *::before, #runtime-comparison *::after {
+          box-sizing: border-box;
+        }
         #runtime-comparison video {
           width: 100% !important;
           height: 100% !important;
@@ -48,7 +51,13 @@
           width: 100%;
         }
         @media (max-width: 768px) {
-          .rc-content { grid-template-columns: 1fr; gap: 20px; }
+          .rc-content { grid-template-columns: 1fr; gap: 16px; }
+          .rc-left-pane { flex-direction: row; flex-wrap: wrap; gap: 8px; justify-content: center; }
+          .rc-hero-video-wrapper { max-width: 180px; }
+          .rc-note { max-width: 100%; font-size: 0.62rem; padding: 8px 10px; margin-top: 0; }
+          .rc-video-caption { font-size: 0.7rem; }
+          .rc-carousel-nav { margin-top: 4px; }
+          .rc-control-btn { padding: 4px 8px; font-size: 0.68rem; }
         }
         .rc-left-pane {
           display: flex; flex-direction: column; gap: 10px;
@@ -60,7 +69,7 @@
           background: #fff; border: 1px solid rgba(209,213,219,0.5);
           box-shadow: 0 4px 20px rgba(0,0,0,0.06);
         }
-        @media (max-width: 768px) { .rc-hero-video-wrapper { max-width: 320px; } }
+        @media (max-width: 768px) { .rc-hero-video-wrapper { max-width: 180px; } }
         .rc-hero-video { width: 100%; height: 100%; display: block; object-fit: cover; }
         .rc-video-caption { text-align: center; font-size: 0.8rem; color: var(--rc-muted); margin-top: 6px; font-weight: 500; }
         .rc-note {
@@ -75,7 +84,26 @@
           display: grid; grid-template-columns: repeat(2, minmax(0,1fr));
           gap: 12px; min-height: 0;
         }
-        @media (max-width: 600px) { .rc-phones { grid-template-columns: 1fr; max-width: 280px; margin: 0 auto; } }
+        @media (max-width: 600px) {
+          .rc-phones { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 8px; }
+          .rc-phone-shell { border-radius: 20px; padding: 5px; }
+          .rc-phone-notch { height: 8px; top: 5px; width: 35%; }
+          .rc-phone-screen { border-radius: 17px; padding: 14px 6px 8px; gap: 4px; }
+          .rc-status-row { font-size: 0.5rem; }
+          .rc-status-dot { width: 3px; height: 3px; }
+          .rc-status-bar-icon { width: 6px; height: 3px; }
+          .rc-chat-header { padding: 3px 0; gap: 4px; margin-bottom: 2px; }
+          .rc-chat-profile-pic { width: 16px; height: 16px; }
+          .rc-chat-contact-name { font-size: 0.55rem; }
+          #runtime-comparison .rc-bubble { max-width: 88%; padding: 4px 6px; font-size: 0.52rem; border-radius: 10px; line-height: 1.3; }
+          #runtime-comparison .rc-bubble.rc-question { padding-bottom: 10px; }
+          #runtime-comparison .rc-read-indicator { font-size: 0.42rem; bottom: 2px; right: 4px; }
+          #runtime-comparison .rc-bubble.rc-thought-time { font-size: 0.46rem; padding: 1px 4px; }
+          #runtime-comparison .rc-meta-label { font-size: 0.48rem; }
+          #runtime-comparison .rc-typing-dot { width: 3px; height: 3px; }
+          .rc-chat-window { gap: 3px; padding-right: 2px; }
+          .rc-chat-window::-webkit-scrollbar { width: 2px; }
+        }
         .rc-phone { display: flex; justify-content: center; align-items: flex-start; min-height: 0; }
         .rc-phone-shell {
           position: relative; width: 100%; max-width: 280px;
@@ -84,43 +112,48 @@
           border: 1px solid rgba(203,213,225,0.5);
           box-shadow: 0 8px 30px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04);
           overflow: hidden;
+          display: flex; flex-direction: column;
         }
-        @media (max-width: 500px) { .rc-phone-shell { max-width: 100%; border-radius: 28px; padding: 8px; } }
+        @media (max-width: 500px) { .rc-phone-shell { max-width: 100%; border-radius: 18px; padding: 4px; } }
         .rc-phone-notch {
           position: absolute; top: 8px; left: 50%; transform: translateX(-50%);
           width: 40%; height: 12px; background: #c9cdd3;
           border-radius: 999px; box-shadow: 0 0 0 1px #bcc0c6;
+          z-index: 2;
         }
         .rc-phone-screen {
           position: relative; width: 100%; height: 100%; border-radius: 26px;
           background: #f8f9fb; padding: 24px 14px 16px;
-          display: flex; flex-direction: column; gap: 8px;
+          display: flex; flex-direction: column; gap: 10px;
           overflow: hidden;
           min-height: 0;
+          flex: 1 1 0;
         }
         .rc-status-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.65rem; color: #9ca3af; flex-shrink: 0; }
         .rc-status-left { display: flex; align-items: center; gap: 5px; }
         .rc-status-dot { width: 5px; height: 5px; border-radius: 999px; background: var(--rc-accent-green); box-shadow: 0 0 10px rgba(34,197,94,0.6); }
         .rc-status-right { display: flex; align-items: center; gap: 4px; opacity: 0.8; }
         .rc-status-bar-icon { width: 9px; height: 5px; border-radius: 999px; border: 1px solid #9ca3af; }
-        .rc-chat-header { display: flex; align-items: center; justify-content: center; gap: 6px; padding: 4px 0; border-bottom: 1px solid rgba(209,213,219,0.6); margin-bottom: 2px; flex-shrink: 0; }
+        .rc-chat-header { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 6px 0; border-bottom: 1px solid rgba(209,213,219,0.6); margin-bottom: 4px; flex-shrink: 0; }
         .rc-chat-profile-pic { width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid rgba(209,213,219,0.6); display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden; background: #fff; }
         .rc-chat-profile-pic img { width: 100%; height: 100%; object-fit: cover; }
         .rc-chat-contact-name { font-size: 0.76rem; font-weight: 600; color: #1f2937; letter-spacing: 0.01em; }
         .rc-chat-window {
-          flex: 1 1 0; display: flex; flex-direction: column; gap: 5px;
+          flex: 1 1 0; display: flex; flex-direction: column; gap: 6px;
           justify-content: flex-start; overflow-y: auto; overflow-x: hidden;
-          padding: 4px 8px 20px 4px; min-height: 0;
+          padding-right: 4px; min-height: 0;
+          max-height: 100%;
         }
         .rc-chat-window::-webkit-scrollbar { width: 3px; }
         .rc-chat-window::-webkit-scrollbar-track { background: rgba(226,232,240,0.5); border-radius: 999px; }
         .rc-chat-window::-webkit-scrollbar-thumb { background: rgba(156,163,175,0.4); border-radius: 999px; }
-        #runtime-comparison .rc-message-row { display: flex; width: 100%; margin-top: 3px; }
+        #runtime-comparison .rc-message-row { display: flex; width: 100%; margin-top: 4px; flex-shrink: 0; }
         #runtime-comparison .rc-message-row.left { justify-content: flex-start; }
         #runtime-comparison .rc-message-row.right { justify-content: flex-end; }
         #runtime-comparison .rc-bubble {
-          max-width: 85%; padding: 8px 10px; font-size: 0.7rem;
-          border-radius: 14px; line-height: 1.35; word-wrap: break-word;
+          max-width: 80%; padding: 9px 11px; font-size: 0.76rem;
+          border-radius: 16px; line-height: 1.4; word-wrap: break-word;
+          overflow-wrap: break-word; word-break: break-word;
           opacity: 0; transform: translateY(4px);
           transition: opacity 0.25s ease-out, transform 0.25s ease-out;
         }
@@ -235,9 +268,13 @@
         .rc-progress-speedup.visible { opacity: 1; }
 
         @media (max-width: 600px) {
-          .rc-progress-row { grid-template-columns: 76px 1fr 40px 44px; gap: 5px; }
-          .rc-progress-label, .rc-progress-time { font-size: 0.65rem; }
-          .rc-progress-panel { padding: 10px 10px 8px; border-radius: 10px; }
+          .rc-progress-row { grid-template-columns: 56px 1fr 34px 38px; gap: 4px; }
+          .rc-progress-label, .rc-progress-time { font-size: 0.58rem; }
+          .rc-progress-panel { padding: 8px 8px 6px; border-radius: 8px; }
+          .rc-progress-header { font-size: 0.6rem; margin-bottom: 6px; }
+          .rc-progress-track { height: 8px; }
+          .rc-progress-badge { font-size: 0.52rem; padding: 1px 3px; }
+          .rc-progress-speedup { font-size: 0.65rem; margin-top: 6px; }
         }
         </style>
     </head>
@@ -324,33 +361,39 @@
             <div class="x-section-title"><div class="x-gradient-font">Benchmark Performance</div></div>
 
             <!-- Benchmark selector buttons -->
-            <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 12px; margin: 16px auto; max-width: 800px;">
-                <div style="display: flex; flex-wrap: nowrap; align-items: center; gap: 8px;">
-                    <span style="font-size: 13px; font-weight: 600; color: #43A047; white-space: nowrap; flex-shrink: 0;">General Video QA</span>
-                    <button class="benchmark-btn green is-active" data-benchmark="perceptiontest">PerceptionTest</button>
-                    <button class="benchmark-btn green" data-benchmark="nextqa">NExT-QA</button>
-                    <button class="benchmark-btn green" data-benchmark="actnetqa">ActNet-QA</button>
-                    <button class="benchmark-btn green" data-benchmark="videomme">VideoMME</button>
-                    <button class="benchmark-btn green" data-benchmark="egoschema">EgoSchema</button>
+            <div class="benchmark-selector">
+                <div class="benchmark-row">
+                    <span class="benchmark-category-label" style="color: #43A047;">General Video QA</span>
+                    <div class="benchmark-btn-group">
+                        <button class="benchmark-btn green is-active" data-benchmark="perceptiontest">PerceptionTest</button>
+                        <button class="benchmark-btn green" data-benchmark="nextqa">NExT-QA</button>
+                        <button class="benchmark-btn green" data-benchmark="actnetqa">ActNet-QA</button>
+                        <button class="benchmark-btn green" data-benchmark="videomme">VideoMME</button>
+                        <button class="benchmark-btn green" data-benchmark="egoschema">EgoSchema</button>
+                    </div>
                 </div>
-                <div style="display: flex; flex-wrap: nowrap; align-items: center; gap: 8px;">
-                    <span style="font-size: 13px; font-weight: 600; color: #F57C00; white-space: nowrap; flex-shrink: 0;">Temporal &amp; Motion Understanding</span>
-                    <button class="benchmark-btn orange" data-benchmark="tempcompass">TempCompass</button>
-                    <button class="benchmark-btn orange" data-benchmark="tomato">Tomato</button>
-                    <button class="benchmark-btn orange" data-benchmark="cvrres">CVRR-ES</button>
-                    <button class="benchmark-btn orange" data-benchmark="mvbench">MVBench</button>
+                <div class="benchmark-row">
+                    <span class="benchmark-category-label" style="color: #F57C00;">Temporal &amp; Motion Understanding</span>
+                    <div class="benchmark-btn-group">
+                        <button class="benchmark-btn orange" data-benchmark="tempcompass">TempCompass</button>
+                        <button class="benchmark-btn orange" data-benchmark="tomato">Tomato</button>
+                        <button class="benchmark-btn orange" data-benchmark="cvrres">CVRR-ES</button>
+                        <button class="benchmark-btn orange" data-benchmark="mvbench">MVBench</button>
+                    </div>
                 </div>
-                <div style="display: flex; flex-wrap: nowrap; align-items: center; gap: 8px;">
-                    <span style="font-size: 13px; font-weight: 600; color: #7E57C2; white-space: nowrap; flex-shrink: 0;">Instruction Following &amp; Long Form Reasoning</span>
-                    <button class="benchmark-btn purple" data-benchmark="videott">Video-TT</button>
-                    <button class="benchmark-btn purple" data-benchmark="videommmu">Video-MMMU</button>
-                    <button class="benchmark-btn purple" data-benchmark="lvbench">LVBench</button>
-                    <button class="benchmark-btn purple" data-benchmark="longvideobench">LongVideoBench</button>
+                <div class="benchmark-row">
+                    <span class="benchmark-category-label" style="color: #7E57C2;">Instruction Following &amp; Long Form Reasoning</span>
+                    <div class="benchmark-btn-group">
+                        <button class="benchmark-btn purple" data-benchmark="videott">Video-TT</button>
+                        <button class="benchmark-btn purple" data-benchmark="videommmu">Video-MMMU</button>
+                        <button class="benchmark-btn purple" data-benchmark="lvbench">LVBench</button>
+                        <button class="benchmark-btn purple" data-benchmark="longvideobench">LongVideoBench</button>
+                    </div>
                 </div>
             </div>
 
             <!-- Chart canvas -->
-            <div style="position: relative; width: 100%; max-width: 800px; margin: 0 auto; height: 400px;">
+            <div class="benchmark-chart-container">
                 <canvas id="benchmarkChart"></canvas>
             </div>
 
@@ -378,7 +421,7 @@
                       Your browser does not support the video tag.
                     </video>
                   </div>
-                  <div class="rc-video-caption" id="rcVideoCaption">Input Video 1</div>
+                  <div class="rc-video-caption" id="rcVideoCaption">Example Video</div>
 
                   <!-- Carousel Navigation -->
                   <div class="rc-carousel-nav">
@@ -691,12 +734,12 @@
           };
 
           function getBarColor(modelName) {
-            if (modelName.includes('(Ours)')) return '#5A9E72';
+            if (modelName.includes('(Ours)')) return '#4E95D9';
             return '#CBD5E1';
           }
 
           function getBorderColor(modelName) {
-            if (modelName.includes('(Ours)')) return '#3E7A52';
+            if (modelName.includes('(Ours)')) return '#3A7BC8';
             return '#A0AEC0';
           }
 
@@ -720,7 +763,7 @@
                 c.textBaseline = 'middle';
                 if (label.indexOf('(Ours)') !== -1) {
                   c.font = 'bold italic 12px "Avenir Next Cyr", "Inter", sans-serif';
-                  c.fillStyle = '#5A9E72';
+                  c.fillStyle = '#4E95D9';
                   c.fillText(label, x, y);
                 } else {
                   c.font = '12px "Avenir Next Cyr", "Inter", sans-serif';
@@ -750,7 +793,7 @@
                     c.fillStyle = '#374151';
                     c.font = '11px "Avenir Next Cyr", "Inter", sans-serif';
                   } else {
-                    c.fillStyle = isOurs ? '#5A9E72' : '#374151';
+                    c.fillStyle = isOurs ? '#4E95D9' : '#374151';
                     c.font = (isOurs ? 'bold ' : '') + '12px "Avenir Next Cyr", "Inter", sans-serif';
                   }
                   c.textAlign = 'left';
@@ -790,10 +833,10 @@
               var labels = entries.map(function(e) { return e[0]; });
               var woValues = entries.map(function(e) { return e[1].wo; });
               var wValues  = entries.map(function(e) { return e[1].w; });
-              var woColors = entries.map(function(e) { return e[0].indexOf('(Ours)') !== -1 ? '#A5D6B2' : '#CBD5E1'; });
-              var wColors  = entries.map(function(e) { return e[0].indexOf('(Ours)') !== -1 ? '#5A9E72' : '#94A3B8'; });
-              var woBorders = entries.map(function(e) { return e[0].indexOf('(Ours)') !== -1 ? '#7AB88A' : '#A0AEC0'; });
-              var wBorders  = entries.map(function(e) { return e[0].indexOf('(Ours)') !== -1 ? '#3E7A52' : '#64748B'; });
+              var woColors = entries.map(function(e) { return e[0].indexOf('(Ours)') !== -1 ? '#93C5FD' : '#CBD5E1'; });
+              var wColors  = entries.map(function(e) { return e[0].indexOf('(Ours)') !== -1 ? '#4E95D9' : '#94A3B8'; });
+              var woBorders = entries.map(function(e) { return e[0].indexOf('(Ours)') !== -1 ? '#60A5FA' : '#A0AEC0'; });
+              var wBorders  = entries.map(function(e) { return e[0].indexOf('(Ours)') !== -1 ? '#3A7BC8' : '#64748B'; });
               var allVals = woValues.concat(wValues).filter(function(v) { return v !== null; });
               var minVal = Math.floor(Math.min.apply(null, allVals) / 5) * 5;
               var maxVal = Math.ceil(Math.max.apply(null, allVals) / 5) * 5 + 5;
@@ -984,7 +1027,7 @@
           var videoCarousel = [
             {
               videoSrc: "runtime_comparison/assets/video_example1.mp4",
-              caption: "Input Video 1",
+              caption: "Example Video",
               conversations: [
                 { key:"q1", label:"Question 1",
                   phone1:{ question:"What is the score & time remaining in the first period of the hockey game?", answer:"The game is scoreless with 13:38 left on the clock." },
@@ -1014,7 +1057,7 @@
             },
             {
               videoSrc: "runtime_comparison/assets/video_example2.mp4",
-              caption: "Input Video 2",
+              caption: "Example Video",
               conversations: [
                 { key:"q1", label:"Question 1",
                   phone1:{ question:"What is the person preparing?", answer:"The person is making a sandwich." },
@@ -1033,7 +1076,9 @@
           ];
 
           var phoneDelays = { phone1: 2.39, phone2: 0.33 };
-          var answerTypingSpeeds = { phone1: 1390, phone2: 1330 };
+          /* Token generation: E2E - TTFT. LLaVA: 3.78-2.39=1.39s, CoPE: 1.66-0.33=1.33s for 64 tokens */
+          var tokenGenMs = { phone1: 1390, phone2: 1330 };
+          var msPerToken = { phone1: tokenGenMs.phone1 / 64, phone2: tokenGenMs.phone2 / 64 }; /* ~21.7 vs ~20.8 */
 
           /* ──── State ──── */
           var rcState = { isPlaying: false, isPaused: false, timeouts: [], intervals: [] };
@@ -1111,6 +1156,31 @@
                 chatWindow.scrollTop = chatWindow.scrollHeight;
               });
             });
+          }
+
+          /* Typewriter effect for answer bubbles — types word-by-word at realistic per-token speed */
+          function rcTypewriterEffect(element, text, chatWindow, phoneKey) {
+            var words = text.split(/( +)/);
+            var wordIndex = 0;
+            var perWordDelay = msPerToken[phoneKey] || 21;
+            element.textContent = '';
+            var intervalId = setInterval(function() {
+              if (wordIndex < words.length) {
+                element.textContent += words[wordIndex];
+                wordIndex++;
+                rcScrollToBottom(chatWindow);
+              } else {
+                clearInterval(intervalId);
+              }
+            }, perWordDelay);
+            rcState.intervals.push(intervalId);
+            return words.length * perWordDelay;
+          }
+
+          /* Calculate typewriter duration for a given text and phone */
+          function rcTypingDuration(text, phoneKey) {
+            var words = text.split(/( +)/);
+            return words.length * (msPerToken[phoneKey] || 21);
           }
 
           function rcResetChatWindows() {
@@ -1289,12 +1359,13 @@
                 requestAnimationFrame(function() {
                   var aEl = aBubble.querySelector('.rc-bubble');
                   aEl.classList.add('visible');
-                  aEl.textContent = content.answer;
+                  rcTypewriterEffect(aEl, content.answer, chatWindow, isPhone1 ? 'phone1' : 'phone2');
                 });
               }, delaySeconds * 1000);
             }, readDelayMs);
 
-            return readDelayMs + delaySeconds * 1000 + 500;
+            var typingDuration = rcTypingDuration(content.answer, isPhone1 ? 'phone1' : 'phone2');
+            return readDelayMs + delaySeconds * 1000 + typingDuration + 300;
           }
 
           function rcPlaySubsequentQuestion(phoneId, scriptEntry, startDelay) {
@@ -1341,13 +1412,14 @@
                   requestAnimationFrame(function() {
                     var aEl = aBubble.querySelector('.rc-bubble');
                     aEl.classList.add('visible');
-                    aEl.textContent = content.answer;
+                    rcTypewriterEffect(aEl, content.answer, chatWindow, isPhone1 ? 'phone1' : 'phone2');
                   });
                 }, subsequentDelay * 1000);
               }, 650);
             }, startDelay);
 
-            return 650 + subsequentDelay * 1000 + 500;
+            var typingDuration = rcTypingDuration(content.answer, isPhone1 ? 'phone1' : 'phone2');
+            return 650 + subsequentDelay * 1000 + typingDuration + 300;
           }
 
           /* ──── Main animation ──── */
