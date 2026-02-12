@@ -18,7 +18,7 @@
           --rc-muted: #6b7280;
           --rc-accent-green: #6567C9;
           --rc-accent-orange: #ff9349;
-          --rc-bubble-right: #6567C9;
+          --rc-bubble-right: #16a34a;
           --rc-bubble-left: #111827;
           --rc-radius-xl: 1.75rem;
           --rc-shadow-soft: 0 18px 45px rgba(0,0,0,0.12);
@@ -47,7 +47,7 @@
           display: grid;
           grid-template-columns: 2fr 3fr;
           gap: 24px;
-          align-items: start;
+          align-items: center;
           width: 100%;
         }
         @media (max-width: 768px) {
@@ -108,36 +108,36 @@
         .rc-phone-shell {
           position: relative; width: 100%; max-width: 280px;
           aspect-ratio: 9 / 18; border-radius: 34px; padding: 10px;
-          background: linear-gradient(145deg, #e2e6ec, #cdd1d8);
-          border: 1px solid rgba(203,213,225,0.5);
-          box-shadow: 0 8px 30px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04);
+          background: linear-gradient(145deg, #2a2a2e, #1a1a1e);
+          border: 1px solid rgba(60,60,68,0.7);
+          box-shadow: 0 8px 30px rgba(0,0,0,0.25), 0 2px 8px rgba(0,0,0,0.15);
           overflow: hidden;
           display: flex; flex-direction: column;
         }
         @media (max-width: 500px) { .rc-phone-shell { max-width: 100%; border-radius: 18px; padding: 4px; } }
         .rc-phone-notch {
           position: absolute; top: 8px; left: 50%; transform: translateX(-50%);
-          width: 40%; height: 12px; background: #c9cdd3;
-          border-radius: 999px; box-shadow: 0 0 0 1px #bcc0c6;
+          width: 40%; height: 12px; background: #1c1c1e;
+          border-radius: 999px; box-shadow: 0 0 0 1px #0a0a0a;
           z-index: 2;
         }
         .rc-phone-screen {
           position: relative; width: 100%; height: 100%; border-radius: 26px;
-          background: #f8f9fb; padding: 24px 14px 16px;
+          background: #000000; padding: 24px 14px 16px;
           display: flex; flex-direction: column; gap: 10px;
           overflow: hidden;
           min-height: 0;
           flex: 1 1 0;
         }
-        .rc-status-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.65rem; color: #9ca3af; flex-shrink: 0; }
+        .rc-status-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.65rem; color: #8e8e93; flex-shrink: 0; }
         .rc-status-left { display: flex; align-items: center; gap: 5px; }
         .rc-status-dot { width: 5px; height: 5px; border-radius: 999px; background: var(--rc-accent-green); box-shadow: 0 0 10px rgba(101,103,201,0.6); }
         .rc-status-right { display: flex; align-items: center; gap: 4px; opacity: 0.8; }
-        .rc-status-bar-icon { width: 9px; height: 5px; border-radius: 999px; border: 1px solid #9ca3af; }
-        .rc-chat-header { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 6px 0; border-bottom: 1px solid rgba(209,213,219,0.6); margin-bottom: 4px; flex-shrink: 0; }
-        .rc-chat-profile-pic { width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid rgba(209,213,219,0.6); display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden; background: #fff; }
+        .rc-status-bar-icon { width: 9px; height: 5px; border-radius: 999px; border: 1px solid #8e8e93; }
+        .rc-chat-header { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 6px 0; border-bottom: 1px solid rgba(56,56,60,0.6); margin-bottom: 4px; flex-shrink: 0; }
+        .rc-chat-profile-pic { width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid rgba(56,56,60,0.6); display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden; background: #1c1c1e; }
         .rc-chat-profile-pic img { width: 100%; height: 100%; object-fit: cover; }
-        .rc-chat-contact-name { font-size: 0.76rem; font-weight: 600; color: #1f2937; letter-spacing: 0.01em; }
+        .rc-chat-contact-name { font-size: 0.76rem; font-weight: 600; color: #e5e5ea; letter-spacing: 0.01em; }
         .rc-chat-window {
           flex: 1 1 0; display: flex; flex-direction: column; gap: 6px;
           justify-content: flex-start; overflow-y: auto; overflow-x: hidden;
@@ -145,8 +145,8 @@
           max-height: 100%;
         }
         .rc-chat-window::-webkit-scrollbar { width: 3px; }
-        .rc-chat-window::-webkit-scrollbar-track { background: rgba(226,232,240,0.5); border-radius: 999px; }
-        .rc-chat-window::-webkit-scrollbar-thumb { background: rgba(156,163,175,0.4); border-radius: 999px; }
+        .rc-chat-window::-webkit-scrollbar-track { background: rgba(40,40,44,0.5); border-radius: 999px; }
+        .rc-chat-window::-webkit-scrollbar-thumb { background: rgba(100,100,108,0.4); border-radius: 999px; }
         #runtime-comparison .rc-message-row { display: flex; width: 100%; margin-top: 4px; flex-shrink: 0; }
         #runtime-comparison .rc-message-row.left { justify-content: flex-start; }
         #runtime-comparison .rc-message-row.right { justify-content: flex-end; }
@@ -161,29 +161,29 @@
         #runtime-comparison .rc-bubble.rc-question {
           background: var(--rc-bubble-right); color: #fff;
           border-bottom-right-radius: 4px; font-weight: 500;
-          box-shadow: 0 6px 14px rgba(101,103,201,0.24);
+          box-shadow: 0 6px 14px rgba(22,163,74,0.24);
           position: relative; padding-bottom: 16px;
         }
         #runtime-comparison .rc-read-indicator {
           position: absolute; bottom: 3px; right: 6px; font-size: 0.58rem;
-          color: #fff; font-weight: 600; opacity: 0;
+          color: rgba(255,255,255,0.85); font-weight: 600; opacity: 0;
           transition: opacity 0.3s ease-out; visibility: hidden;
         }
         #runtime-comparison .rc-read-indicator.visible { opacity: 1; visibility: visible; }
         #runtime-comparison .rc-bubble.rc-answer {
-          background: #e5e7eb; color: #1f2937;
-          border-bottom-left-radius: 4px; border: 1px solid rgba(209,213,219,0.9);
+          background: #2c2c2e; color: #e5e5ea;
+          border-bottom-left-radius: 4px; border: 1px solid rgba(56,56,60,0.9);
         }
         #rc-phone-1 .rc-bubble.rc-answer { background: #C00000; border: 1px solid #A00000; color: #fff; }
         #rc-phone-2 .rc-bubble.rc-answer { background: #6567C9; border: 1px solid #5254B3; color: #fff; }
         #runtime-comparison .rc-bubble.rc-meta {
-          background: #f1f5f9; color: #6b7280;
-          border-bottom-left-radius: 4px; border: 1px solid rgba(209,213,219,0.9);
+          background: #1c1c1e; color: #8e8e93;
+          border-bottom-left-radius: 4px; border: 1px solid rgba(56,56,60,0.9);
           display: inline-flex; align-items: center; gap: 6px;
         }
-        #runtime-comparison .rc-meta-label { font-size: 0.65rem; font-weight: 500; color: #6b7280; }
+        #runtime-comparison .rc-meta-label { font-size: 0.65rem; font-weight: 500; color: #8e8e93; }
         #runtime-comparison .rc-bubble.rc-thought-time {
-          background: transparent; border: none; color: #9ca3af;
+          background: transparent; border: none; color: #8e8e93;
           font-size: 0.62rem; padding: 2px 6px; font-style: italic;
         }
         #runtime-comparison .rc-typing {
@@ -192,7 +192,7 @@
         }
         #runtime-comparison .rc-typing-dot {
           width: 4px; height: 4px; border-radius: 999px;
-          background: #6b7280; opacity: 0.25;
+          background: #8e8e93; opacity: 0.25;
           animation: rc-typing-bounce 1.1s infinite ease-in-out;
         }
         #runtime-comparison .rc-typing-dot:nth-child(2) { animation-delay: 0.15s; }
@@ -267,6 +267,28 @@
         .rc-progress-speedup { margin-top: 10px; font-size: 0.76rem; font-weight: 600; text-align: center; color: #6567C9; min-height: 1.2em; opacity: 0; transition: opacity 0.4s ease; }
         .rc-progress-speedup.visible { opacity: 1; }
 
+        /* Summary metrics table */
+        .rc-progress-summary {
+          margin-top: 0; padding-top: 0; max-height: 0; overflow: hidden;
+          border-top: none; opacity: 0;
+          transition: opacity 0.4s ease, max-height 0.35s ease, margin-top 0.3s ease, padding-top 0.3s ease;
+        }
+        .rc-progress-summary.visible {
+          margin-top: 10px; padding-top: 10px; max-height: 200px; overflow: visible;
+          border-top: 1px solid rgba(209,213,219,0.5); opacity: 1;
+        }
+        .rc-summary-grid {
+          display: grid; grid-template-columns: 70px 1fr 1fr; gap: 4px 10px;
+          font-size: 0.68rem; align-items: center;
+        }
+        .rc-summary-header { font-weight: 700; text-align: center; font-size: 0.62rem; letter-spacing: 0.02em; }
+        .rc-summary-header.rc-llava { color: #dc2626; }
+        .rc-summary-header.rc-cope { color: #6567C9; }
+        .rc-summary-label { font-weight: 600; color: var(--rc-muted); font-size: 0.66rem; text-align: center; }
+        .rc-summary-value { text-align: center; font-weight: 600; font-variant-numeric: tabular-nums; padding: 2px 0; }
+        .rc-summary-value.rc-llava { color: #dc2626; }
+        .rc-summary-value.rc-cope { color: #6567C9; }
+
         @media (max-width: 600px) {
           .rc-progress-row { grid-template-columns: 56px 1fr 34px 38px; gap: 4px; }
           .rc-progress-label, .rc-progress-time { font-size: 0.58rem; }
@@ -275,6 +297,9 @@
           .rc-progress-track { height: 8px; }
           .rc-progress-badge { font-size: 0.52rem; padding: 1px 3px; }
           .rc-progress-speedup { font-size: 0.65rem; margin-top: 6px; }
+          .rc-summary-grid { grid-template-columns: 55px 1fr 1fr; gap: 3px 6px; font-size: 0.58rem; }
+          .rc-summary-header { font-size: 0.54rem; }
+          .rc-summary-label { font-size: 0.56rem; }
         }
         </style>
     </head>
@@ -430,10 +455,7 @@
                     <span class="rc-carousel-indicator" id="rcCarouselIndicator">1 / 1</span>
                   </div>
 
-                  <!-- Note -->
-                  <div class="rc-note">
-                    <strong>Note:</strong> "Thought for" represents Time-to-First-Token (TTFT). The displayed values correspond to row 1 and 4 of Table 4 (main paper) for CoPE-VideoLM and LLaVA-Video respectively.
-                  </div>
+
                 </section>
 
                 <!-- RIGHT PANE: PHONES -->
@@ -520,6 +542,7 @@
                       </div>
                     </div>
                     <div class="rc-progress-speedup" id="rcProgressSpeedup"></div>
+                    <div class="rc-progress-summary" id="rcProgressSummary"></div>
                   </div>
                 </section>
               </div>
@@ -1054,32 +1077,52 @@
                   phone1:{ question:"Which country broadcasts this program?", answer:'The logo says "Hockey Night in Canada", which is a well-known broadcast program from Canada.' },
                   phone2:{ question:"Which country broadcasts this program?", answer:"Based on the logo, this program is broadcasted in Canada." }
                 }
-              ]
+              ],
+              metrics: null /* No timing data available yet */
             },
             {
               videoSrc: "runtime_comparison/assets/video_example2.mp4",
               caption: "Example Video",
               conversations: [
                 { key:"q1", label:"Question 1",
-                  phone1:{ question:"What is the person preparing?", answer:"The person is making a sandwich." },
+                  phone1:{ question:"What is the person preparing?", answer:"The person is preparing a sandwich." },
                   phone2:{ question:"What is the person preparing?", answer:"The person is preparing a sandwich." }
                 },
                 { key:"q2", label:"Question 2",
-                  phone1:{ question:"What are the ingredients being used?", answer:"Using Bread, lettuce, tomato, cheese, and meat slices." },
-                  phone2:{ question:"What are the ingredients being used?", answer:"The ingredients are bread, lettuce, tomato, cheese, and meat slices." }
+                  phone1:{ question:"What are the ingredients being used?", answer:"The ingredients include slices of bread, butter, cheese, and tomato." },
+                  phone2:{ question:"What are the ingredients being used?", answer:"The ingredients are slices of white bread, butter, and slices of ham." }
                 },
                 { key:"q3", label:"Question 3",
-                  phone1:{ question:"What is inside the cup?", answer:"The cup has a tea bag." },
-                  phone2:{ question:"What is inside the cup?", answer:"A tea bag can be seen inside the cup." }
+                  phone1:{ question:"What is inside the cup?", answer:"The cup contains a tea bag." },
+                  phone2:{ question:"What is inside the cup?", answer:"The cup contains a tea bag with dried herbs." }
                 }
-              ]
+              ],
+              metrics: {
+                phone1: { /* LLaVA-Video */
+                  questions: [
+                    { ttft: 1.0003, e2el: 8.6354 },
+                    { ttft: 0.0004, e2el: 0.4336 },
+                    { ttft: 0.0004, e2el: 0.2367 }
+                  ],
+                  avgTtft: 0.3337,
+                  avgE2el: 3.1019
+                },
+                phone2: { /* CoPE-VideoLM */
+                  questions: [
+                    { ttft: 0.3114, e2el: 0.7107 },
+                    { ttft: 0.0004, e2el: 0.4151 },
+                    { ttft: 0.0004, e2el: 0.2655 }
+                  ],
+                  avgTtft: 0.1041,
+                  avgE2el: 0.4638
+                }
+              }
             }
           ];
 
-          var phoneDelays = { phone1: 2.39, phone2: 0.33 };
-          /* Token generation: E2E - TTFT. LLaVA: 3.78-2.39=1.39s, CoPE: 1.66-0.33=1.33s for 64 tokens */
-          var tokenGenMs = { phone1: 1390, phone2: 1330 };
-          var msPerToken = { phone1: tokenGenMs.phone1 / 64, phone2: tokenGenMs.phone2 / 64 }; /* ~21.7 vs ~20.8 */
+          /* Fallback timing for videos without per-question metrics */
+          var defaultDelays = { phone1: 2.39, phone2: 0.33 };
+          var defaultMsPerToken = { phone1: 1390 / 64, phone2: 1330 / 64 };
 
           /* ──── State ──── */
           var rcState = { isPlaying: false, isPaused: false, timeouts: [], intervals: [] };
@@ -1093,6 +1136,48 @@
           var rcPhone2TotalDuration = 0;
           var rcPhone1Done = false;
           var rcPhone2Done = false;
+
+          /* ──── Metrics helpers ──── */
+          function getMetrics() { return videoCarousel[currentVideoIndex].metrics; }
+
+          function getQuestionMetrics(phoneKey, qIndex) {
+            var m = getMetrics();
+            if (m && m[phoneKey] && m[phoneKey].questions && m[phoneKey].questions[qIndex]) {
+              return m[phoneKey].questions[qIndex];
+            }
+            return null;
+          }
+
+          function getTtftDelay(phoneKey, qIndex) {
+            var qm = getQuestionMetrics(phoneKey, qIndex);
+            if (qm) return qm.ttft;
+            return defaultDelays[phoneKey] || 1;
+          }
+
+          function getTypingDuration(text, phoneKey, qIndex) {
+            var qm = getQuestionMetrics(phoneKey, qIndex);
+            if (qm) {
+              /* Use actual E2EL - TTFT as total typing time */
+              return Math.max((qm.e2el - qm.ttft) * 1000, 100);
+            }
+            /* Fallback: per-word based on default ms-per-token */
+            var words = text.split(/( +)/);
+            return words.length * (defaultMsPerToken[phoneKey] || 21);
+          }
+
+          function getTimingLabel(phoneKey, qIndex) {
+            var m = getMetrics();
+            if (!m) {
+              var delay = defaultDelays[phoneKey] || 1;
+              return 'Thought for ' + delay.toFixed(2) + 's';
+            }
+            var qm = getQuestionMetrics(phoneKey, qIndex);
+            if (!qm) return '';
+            if (qIndex === 0) {
+              return 'TTFT: ' + qm.ttft.toFixed(2) + 's · E2EL: ' + qm.e2el.toFixed(2) + 's';
+            }
+            return 'E2EL: ' + qm.e2el.toFixed(2) + 's';
+          }
 
           /* ──── Utility: tracked setTimeout ──── */
           function rcTrackedTimeout(cb, delay) {
@@ -1159,11 +1244,11 @@
             });
           }
 
-          /* Typewriter effect for answer bubbles — types word-by-word at realistic per-token speed */
-          function rcTypewriterEffect(element, text, chatWindow, phoneKey) {
+          /* Typewriter effect — types word-by-word over totalDurationMs */
+          function rcTypewriterEffect(element, text, chatWindow, totalDurationMs) {
             var words = text.split(/( +)/);
             var wordIndex = 0;
-            var perWordDelay = msPerToken[phoneKey] || 21;
+            var perWordDelay = Math.max(totalDurationMs / words.length, 10);
             element.textContent = '';
             var intervalId = setInterval(function() {
               if (wordIndex < words.length) {
@@ -1176,12 +1261,6 @@
             }, perWordDelay);
             rcState.intervals.push(intervalId);
             return words.length * perWordDelay;
-          }
-
-          /* Calculate typewriter duration for a given text and phone */
-          function rcTypingDuration(text, phoneKey) {
-            var words = text.split(/( +)/);
-            return words.length * (msPerToken[phoneKey] || 21);
           }
 
           function rcResetChatWindows() {
@@ -1240,6 +1319,9 @@
             var speedup = document.getElementById('rcProgressSpeedup');
             speedup.textContent = '';
             speedup.classList.remove('visible');
+            var summary = document.getElementById('rcProgressSummary');
+            summary.innerHTML = '';
+            summary.classList.remove('visible');
             var panel = document.getElementById('rcProgressPanel');
             panel.classList.remove('visible');
             void panel.offsetWidth;
@@ -1305,6 +1387,27 @@
               speedup.textContent = 'Both models finished at the same time';
             }
             speedup.classList.add('visible');
+
+            /* Show avg TTFT / E2EL summary if metrics available */
+            var m = getMetrics();
+            if (m) {
+              var summary = document.getElementById('rcProgressSummary');
+              var html = '<div class="rc-summary-grid">';
+              html += '<span></span>';
+              html += '<span class="rc-summary-header rc-llava">LLaVA-Video</span>';
+              html += '<span class="rc-summary-header rc-cope">CoPE-VideoLM</span>';
+              html += '<span class="rc-summary-label">Avg TTFT</span>';
+              html += '<span class="rc-summary-value rc-llava">' + m.phone1.avgTtft.toFixed(2) + 's</span>';
+              html += '<span class="rc-summary-value rc-cope">' + m.phone2.avgTtft.toFixed(2) + 's</span>';
+              html += '<span class="rc-summary-label">Avg E2EL</span>';
+              html += '<span class="rc-summary-value rc-llava">' + m.phone1.avgE2el.toFixed(2) + 's</span>';
+              html += '<span class="rc-summary-value rc-cope">' + m.phone2.avgE2el.toFixed(2) + 's</span>';
+              html += '</div>';
+              summary.innerHTML = html;
+              /* Trigger reflow then animate in */
+              void summary.offsetWidth;
+              summary.classList.add('visible');
+            }
           }
 
           function rcResetProgressBars() {
@@ -1316,67 +1419,19 @@
           }
 
           /* ──── Animation ──── */
-          function rcPlayFirstQuestion(phoneId, delaySeconds, scriptEntry) {
+          function rcPlayQuestion(phoneId, qIndex, scriptEntry, startDelay) {
             var shell = document.getElementById(phoneId);
             var chatWindow = shell.querySelector('[data-role="rc-chat-window"]');
             var isPhone1 = phoneId === 'rc-phone-1';
+            var phoneKey = isPhone1 ? 'phone1' : 'phone2';
             var content = isPhone1 ? scriptEntry.phone1 : scriptEntry.phone2;
+            var ttft = getTtftDelay(phoneKey, qIndex);
+            var typingMs = getTypingDuration(content.answer, phoneKey, qIndex);
+            var timingLabel = getTimingLabel(phoneKey, qIndex);
+            var thinkingDuration = Math.max(ttft * 1000, 200); /* min 200ms so dots are briefly visible */
 
-            var qBubble = rcCreateBubble({ type:'question', text:content.question, side:'right' });
-            chatWindow.appendChild(qBubble);
-            rcScrollToBottom(chatWindow);
-
-            requestAnimationFrame(function() {
-              var qEl = qBubble.querySelector('.rc-bubble');
-              qEl.classList.add('visible');
-              var ri = qEl.querySelector('.rc-read-indicator');
-              if (ri) { qEl.insertBefore(document.createTextNode(content.question), ri); }
-              else { qEl.textContent = content.question; }
-              setTimeout(function() { if (ri) ri.classList.add('visible'); }, 450);
-            });
-
-            var readDelayMs = 650;
-
-            rcTrackedTimeout(function() {
-              var rBubble = rcCreateBubble({ type:'read', text:'', side:'left' });
-              chatWindow.appendChild(rBubble);
-              rcScrollToBottom(chatWindow);
-              requestAnimationFrame(function() {
-                rBubble.querySelector('.rc-bubble').classList.add('visible');
-                var t = rBubble.querySelector('.rc-typing');
-                if (t) t.classList.add('active');
-              });
-
-              rcTrackedTimeout(function() {
-                rBubble.remove();
-                var tBubble = rcCreateBubble({ type:'thought-time', text:'Thought for ' + delaySeconds.toFixed(2) + 's', side:'left' });
-                chatWindow.appendChild(tBubble);
-                rcScrollToBottom(chatWindow);
-                requestAnimationFrame(function() { tBubble.querySelector('.rc-bubble').classList.add('visible'); });
-
-                var aBubble = rcCreateBubble({ type:'answer', text:content.answer, side:'left' });
-                chatWindow.appendChild(aBubble);
-                rcScrollToBottom(chatWindow);
-                requestAnimationFrame(function() {
-                  var aEl = aBubble.querySelector('.rc-bubble');
-                  aEl.classList.add('visible');
-                  rcTypewriterEffect(aEl, content.answer, chatWindow, isPhone1 ? 'phone1' : 'phone2');
-                });
-              }, delaySeconds * 1000);
-            }, readDelayMs);
-
-            var typingDuration = rcTypingDuration(content.answer, isPhone1 ? 'phone1' : 'phone2');
-            return readDelayMs + delaySeconds * 1000 + typingDuration + 300;
-          }
-
-          function rcPlaySubsequentQuestion(phoneId, scriptEntry, startDelay) {
-            var shell = document.getElementById(phoneId);
-            var chatWindow = shell.querySelector('[data-role="rc-chat-window"]');
-            var isPhone1 = phoneId === 'rc-phone-1';
-            var content = isPhone1 ? scriptEntry.phone1 : scriptEntry.phone2;
-            var subsequentDelay = isPhone1 ? phoneDelays.phone1 : phoneDelays.phone2;
-
-            rcTrackedTimeout(function() {
+            var doWork = function() {
+              /* Show question bubble */
               var qBubble = rcCreateBubble({ type:'question', text:content.question, side:'right' });
               chatWindow.appendChild(qBubble);
               rcScrollToBottom(chatWindow);
@@ -1390,7 +1445,10 @@
                 setTimeout(function() { if (ri) ri.classList.add('visible'); }, 450);
               });
 
+              var readDelayMs = 650;
+
               rcTrackedTimeout(function() {
+                /* Show thinking dots */
                 var rBubble = rcCreateBubble({ type:'read', text:'', side:'left' });
                 chatWindow.appendChild(rBubble);
                 rcScrollToBottom(chatWindow);
@@ -1402,25 +1460,35 @@
 
                 rcTrackedTimeout(function() {
                   rBubble.remove();
-                  var tBubble = rcCreateBubble({ type:'thought-time', text:'Thought for ' + subsequentDelay.toFixed(2) + 's', side:'left' });
+
+                  /* Show timing label (TTFT for Q1, E2EL for Q2+, or "Thought for" if no metrics) */
+                  var tBubble = rcCreateBubble({ type:'thought-time', text: timingLabel, side:'left' });
                   chatWindow.appendChild(tBubble);
                   rcScrollToBottom(chatWindow);
                   requestAnimationFrame(function() { tBubble.querySelector('.rc-bubble').classList.add('visible'); });
 
+                  /* Show answer with typewriter */
                   var aBubble = rcCreateBubble({ type:'answer', text:content.answer, side:'left' });
                   chatWindow.appendChild(aBubble);
                   rcScrollToBottom(chatWindow);
                   requestAnimationFrame(function() {
                     var aEl = aBubble.querySelector('.rc-bubble');
                     aEl.classList.add('visible');
-                    rcTypewriterEffect(aEl, content.answer, chatWindow, isPhone1 ? 'phone1' : 'phone2');
+                    rcTypewriterEffect(aEl, content.answer, chatWindow, typingMs);
                   });
-                }, subsequentDelay * 1000);
-              }, 650);
-            }, startDelay);
+                }, thinkingDuration);
+              }, readDelayMs);
+            };
 
-            var typingDuration = rcTypingDuration(content.answer, isPhone1 ? 'phone1' : 'phone2');
-            return 650 + subsequentDelay * 1000 + typingDuration + 300;
+            var totalTurnTime = 650 + thinkingDuration + typingMs + 300;
+
+            if (startDelay > 0) {
+              rcTrackedTimeout(doWork, startDelay);
+            } else {
+              doWork();
+            }
+
+            return totalTurnTime;
           }
 
           /* ──── Main animation ──── */
@@ -1430,32 +1498,30 @@
             rcState.isPaused = false;
             rcUpdateControlButtons();
 
-            var first = conversationScript[0];
-            var p1Dur = rcPlayFirstQuestion('rc-phone-1', phoneDelays.phone1, first);
-            var p2Dur = rcPlayFirstQuestion('rc-phone-2', phoneDelays.phone2, first);
-            var phone1Total = p1Dur;
-            var phone2Total = p2Dur;
+            var phone1Total = 0;
+            var phone2Total = 0;
+            var p1Delay = 0;
+            var p2Delay = 0;
 
-            if (conversationScript.length > 1) {
-              var p1Delay = p1Dur + 1000;
-              var p2Delay = p2Dur + 1000;
-              for (var i = 1; i < conversationScript.length; i++) {
-                var entry = conversationScript[i];
-                var p1Turn = rcPlaySubsequentQuestion('rc-phone-1', entry, p1Delay);
-                var p2Turn = rcPlaySubsequentQuestion('rc-phone-2', entry, p2Delay);
-                p1Delay += p1Turn + 1000;
-                p2Delay += p2Turn + 1000;
-              }
-              phone1Total = p1Delay - 1000;
-              phone2Total = p2Delay - 1000;
+            for (var i = 0; i < conversationScript.length; i++) {
+              var entry = conversationScript[i];
+              var p1Turn = rcPlayQuestion('rc-phone-1', i, entry, p1Delay);
+              var p2Turn = rcPlayQuestion('rc-phone-2', i, entry, p2Delay);
+              p1Delay += p1Turn + 1000;
+              p2Delay += p2Turn + 1000;
             }
+
+            phone1Total = p1Delay - 1000;
+            phone2Total = p2Delay - 1000;
 
             rcInitProgressBars(phone1Total, phone2Total);
             rcStartProgressTicking();
 
+            /* Mark phone1 orange after first question's TTFT */
+            var firstTtft = getTtftDelay('phone1', 0);
             setTimeout(function() {
               document.getElementById('rc-phone-1').classList.add('is-orange');
-            }, phoneDelays.phone1 * 1000 + 400);
+            }, firstTtft * 1000 + 400);
 
             var totalDuration = Math.max(phone1Total, phone2Total);
             setTimeout(function() {
