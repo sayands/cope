@@ -178,19 +178,21 @@ document.addEventListener('DOMContentLoaded', function() {
     afterDraw: function(chartInst) {
       var yAxis = chartInst.scales.y;
       var c = chartInst.ctx;
+      var mobile = window.innerWidth <= 600;
+      var fontSize = mobile ? '11px' : '13px';
       yAxis.ticks.forEach(function(tick, index) {
         var label = typeof tick.label === 'string' ? tick.label : String(tick.label);
         var y = yAxis.getPixelForTick(index);
-        var x = yAxis.right - 10;
+        var x = yAxis.right - (mobile ? 6 : 10);
         c.save();
         c.textAlign = 'right';
         c.textBaseline = 'middle';
         if (label.indexOf('(Ours)') !== -1) {
-          c.font = 'italic 600 13px "Inter", "Avenir Next Cyr", sans-serif';
+          c.font = 'italic 600 ' + fontSize + ' "Inter", "Avenir Next Cyr", sans-serif';
           c.fillStyle = '#6567C9';
           c.fillText(label, x, y);
         } else {
-          c.font = '13px "Inter", "Avenir Next Cyr", sans-serif';
+          c.font = fontSize + ' "Inter", "Avenir Next Cyr", sans-serif';
           c.fillStyle = '#7a6e62';
           c.fillText(label, x, y);
         }
@@ -204,6 +206,7 @@ document.addEventListener('DOMContentLoaded', function() {
     id: 'valueLabels',
     afterDatasetsDraw: function(chartInst) {
       var c = chartInst.ctx;
+      var mobile = window.innerWidth <= 600;
       var isGrouped = chartInst.data.datasets.length > 1;
       chartInst.data.datasets.forEach(function(dataset, i) {
         var meta = chartInst.getDatasetMeta(i);
@@ -213,16 +216,18 @@ document.addEventListener('DOMContentLoaded', function() {
           var label = chartInst.data.labels[index];
           var isOurs = typeof label === 'string' && label.indexOf('(Ours)') !== -1;
           c.save();
+          var fontSize = mobile ? '10px' : '13px';
+          var groupedFontSize = mobile ? '9px' : '12px';
           if (isGrouped) {
             c.fillStyle = '#7a6e62';
-            c.font = '12px "Inter", "Avenir Next Cyr", sans-serif';
+            c.font = groupedFontSize + ' "Inter", "Avenir Next Cyr", sans-serif';
           } else {
             c.fillStyle = isOurs ? '#6567C9' : '#7a6e62';
-            c.font = (isOurs ? '600 ' : '') + '13px "Inter", "Avenir Next Cyr", sans-serif';
+            c.font = (isOurs ? '600 ' : '') + fontSize + ' "Inter", "Avenir Next Cyr", sans-serif';
           }
           c.textAlign = 'left';
           c.textBaseline = 'middle';
-          c.fillText(value.toFixed(1), bar.x + 6, bar.y);
+          c.fillText(value.toFixed(1), bar.x + (mobile ? 4 : 6), bar.y);
           c.restore();
         });
       });
@@ -248,9 +253,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (chart) chart.destroy();
 
+    /* Dynamically size chart height based on number of models */
+    var isMobile = window.innerWidth <= 600;
+    var barHeight = isMobile ? 40 : 50;
+
     if (data.grouped) {
       /* ---- Grouped bar chart (VideoMME) ---- */
-      chartContainer.style.height = '500px';
+      var numModels = Object.keys(data.models).length;
+      chartContainer.style.height = Math.max(350, numModels * barHeight * 1.5) + 'px';
       var entries = Object.entries(data.models).sort(function(a, b) {
         return (a[1].wo || 0) - (b[1].wo || 0);
       });
@@ -334,7 +344,7 @@ document.addEventListener('DOMContentLoaded', function() {
             y: {
               grid: { display: false },
               ticks: { color: 'transparent', font: { size: 13 } },
-              afterFit: function(axis) { axis.width = Math.max(axis.width, 200); }
+              afterFit: function(axis) { axis.width = Math.max(axis.width, isMobile ? 130 : 200); }
             }
           }
         },
@@ -342,7 +352,8 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     } else {
       /* ---- Standard single-bar chart ---- */
-      chartContainer.style.height = '400px';
+      var numModels = Object.keys(data.models).length;
+      chartContainer.style.height = Math.max(300, numModels * barHeight) + 'px';
       var entries = Object.entries(data.models).sort(function(a, b) { return a[1] - b[1]; });
       var labels = entries.map(function(e) { return e[0]; });
       var values = entries.map(function(e) { return e[1]; });
@@ -360,8 +371,8 @@ document.addEventListener('DOMContentLoaded', function() {
             backgroundColor: bgColors,
             borderColor: bdColors,
             borderWidth: 0,
-            borderRadius: 20,
-            barThickness: 32
+            borderRadius: isMobile ? 12 : 20,
+            barThickness: isMobile ? 22 : 32
           }]
         },
         options: {
@@ -369,7 +380,7 @@ document.addEventListener('DOMContentLoaded', function() {
           responsive: true,
           maintainAspectRatio: false,
           animation: { duration: 600, easing: 'easeOutQuart' },
-          layout: { padding: { left: 10, right: 50 } },
+          layout: { padding: { left: isMobile ? 4 : 10, right: isMobile ? 36 : 50 } },
           plugins: {
             legend: { display: false },
             title: {
@@ -405,7 +416,7 @@ document.addEventListener('DOMContentLoaded', function() {
             y: {
               grid: { display: false },
               ticks: { color: 'transparent', font: { size: 13 } },
-              afterFit: function(axis) { axis.width = Math.max(axis.width, 200); }
+              afterFit: function(axis) { axis.width = Math.max(axis.width, isMobile ? 130 : 200); }
             }
           }
         },
