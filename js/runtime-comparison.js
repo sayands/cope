@@ -5,7 +5,7 @@
   var videoCarousel = [
     {
       videoSrc: "assets/videos/video_example1.mp4",
-      caption: "Example Video",
+      caption: "Input Video",
       conversations: [
         { key:"q1", label:"Question 1",
           phone1:{ question:"What is the score & time remaining in the first period of the hockey game?", answer:"The game is scoreless with 13:38 left on the clock." },
@@ -36,7 +36,7 @@
     },
     {
       videoSrc: "assets/videos/video_example2.mp4",
-      caption: "Example Video",
+      caption: "Input Video",
       conversations: [
         { key:"q1", label:"Question 1",
           phone1:{ question:"What is the person preparing?", answer:"The person is preparing a sandwich." },

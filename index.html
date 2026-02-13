@@ -144,17 +144,6 @@
               User chat experience comparing LLaVA-Video and CoPE-VideoLM.
             </p>
             <div id="runtime-comparison">
-              <!-- Header controls -->
-              <div class="rc-header">
-                <div class="rc-control-panel" id="rcControlPanel">
-                  <button class="rc-control-btn rc-nav" id="rcPrevBtn">&#8592; Prev</button>
-                  <button class="rc-control-btn rc-start" id="rcStartBtn">&#9654; Start</button>
-                  <button class="rc-control-btn rc-pause" id="rcPauseBtn" disabled>&#9208; Pause</button>
-                  <button class="rc-control-btn rc-reset" id="rcResetBtn">&#8635; Reset</button>
-                  <button class="rc-control-btn rc-nav" id="rcNextBtn">Next &#8594;</button>
-                </div>
-              </div>
-
               <div class="rc-content">
                 <!-- LEFT PANE -->
                 <section class="rc-left-pane">
@@ -164,7 +153,7 @@
                       Your browser does not support the video tag.
                     </video>
                   </div>
-                  <div class="rc-video-caption" id="rcVideoCaption">Example Video</div>
+                  <div class="rc-video-caption" id="rcVideoCaption">Input Video</div>
 
                   <!-- Carousel Navigation -->
                   <div class="rc-carousel-nav">
@@ -234,6 +223,17 @@
                     <div class="rc-progress-summary" id="rcProgressSummary"></div>
                   </div>
                 </section>
+              </div>
+
+              <!-- Controls below content -->
+              <div class="rc-header" style="margin-top: 16px;">
+                <div class="rc-control-panel" id="rcControlPanel">
+                  <button class="rc-control-btn rc-nav" id="rcPrevBtn">&#8592; Prev</button>
+                  <button class="rc-control-btn rc-start" id="rcStartBtn">&#9654; Start</button>
+                  <button class="rc-control-btn rc-pause" id="rcPauseBtn" disabled>&#9208; Pause</button>
+                  <button class="rc-control-btn rc-reset" id="rcResetBtn">&#8635; Reset</button>
+                  <button class="rc-control-btn rc-nav" id="rcNextBtn">Next &#8594;</button>
+                </div>
               </div>
             </div>
 
