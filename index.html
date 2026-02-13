@@ -53,7 +53,14 @@
             <div id="links">
                 <div><a id="paper" href="#" target="_blank">Paper</a></div>
                 <div><a id="arxiv" href="#" target="_blank"><i class="ai ai-arxiv"></i> arXiv</a></div>
-                <div><a id="code" href="#" target="_blank" style="pointer-events: none; opacity: 0.5; background: #e5e7eb; color: #9ca3af; cursor: not-allowed;">Code</a></div>
+                <div style="position: relative;">
+                    <a id="code" href="#" target="_blank" style="pointer-events: none; opacity: 0.5; background: #e5e7eb; color: #9ca3af; cursor: not-allowed;">Code</a>
+                    <span class="coming-soon-badge">Coming Soon</span>
+                </div>
+                <div style="position: relative;">
+                    <a id="demo" href="#" target="_blank" style="pointer-events: none; opacity: 0.5; background: #e5e7eb; color: #9ca3af; cursor: not-allowed;">Demo</a>
+                    <span class="coming-soon-badge">Coming Soon</span>
+                </div>
             </div>
 
             <div id="teaser">
@@ -103,8 +110,10 @@
             <!-- ==================== Benchmark Performance ==================== -->
             <div class="x-section-title"><div class="x-gradient-font">Benchmark Performance</div></div>
             <p>
-                We conduct a comprehensive evaluation of our method across multiple video benchmarks, covering four categories: (i) general video question answering, (ii) temporal reasoning and motion understanding, (iii) long-form and instruction-following tasks, and (iv) spatial scene understanding.
-                Our primary point of comparison is LLaVA-Video-7B, which also serves as our base model. In addition, we benchmark against several closely related open-source approaches to provide a broader assessment. Following standard practice, all evaluations are performed using the lmms-eval framework to ensure consistency and reproducibility.
+                Comprehensive evaluation across multiple video benchmarks, covering four categories: (i) general video question answering, (ii) temporal reasoning and motion understanding, (iii) long-form and instruction-following tasks, and (iv) spatial scene understanding.
+                <br> <br>
+                Primary comparison with LLaVA-Video-7B (base model) alongside several closely related open-source approaches, 
+                all evaluations conducted using <a href="https://github.com/EvolvingLMMs-Lab/lmms-eval" style="color: #9a8c7e;" target="_blank">lmms-eval</a> to ensure consistency.
             </p>
 
             <!-- Benchmark selector buttons -->
@@ -133,6 +142,9 @@
 
             <!-- ==================== Interactive Runtime Comparison ==================== -->
             <div class="x-section-title"><div class="x-gradient-font">Interactive Runtime Comparison</div></div>
+            <p>
+              User chat experience comparing LLaVA-Video and CoPE-VideoLM.
+            </p>
             <div id="runtime-comparison">
               <!-- Header controls -->
               <div class="rc-header">
@@ -252,7 +264,7 @@
             </p> -->
 
             <p>
-              Theoretical plot showing token efficiency across configurations - enable scaling to significantly longer videos without exceeding context limits.
+              Theoretical plot showing token efficiency across configurations - enable scaling to longer videos without exceeding context limits.
             </p>
             <div class="benchmark-chart-container" id="scalingChartContainer" style="height: 440px;">
                 <canvas id="scalingChart"></canvas>

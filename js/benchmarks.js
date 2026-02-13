@@ -417,14 +417,17 @@ document.addEventListener('DOMContentLoaded', function() {
   // Initialize with first benchmark
   updateChart('perceptiontest');
 
-  // Button click handlers
-  document.querySelectorAll('.benchmark-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      document.querySelectorAll('.benchmark-btn').forEach(function(b) {
-        b.classList.remove('is-active');
+  // Button click handlers — scoped to benchmark selector only
+  var benchmarkSelector = document.querySelector('.benchmark-selector');
+  if (benchmarkSelector) {
+    benchmarkSelector.querySelectorAll('.benchmark-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        benchmarkSelector.querySelectorAll('.benchmark-btn').forEach(function(b) {
+          b.classList.remove('is-active');
+        });
+        this.classList.add('is-active');
+        updateChart(this.getAttribute('data-benchmark'));
       });
-      this.classList.add('is-active');
-      updateChart(this.getAttribute('data-benchmark'));
     });
-  });
+  }
 });
