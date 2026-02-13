@@ -62,9 +62,8 @@
               </div>
             </div>
             <div class="x-center-text" style="font-size: 20px; font-weight: 500; color: #3f3f3f; margin-top: 24px;">
-              <b>TL;DR:</b> <i>Replace costly per-frame image embedding, use video codec primitives to reduce time-to-first-token (TTFT)
-                by up to 86% and tokens by up to 93% while matching or beating standard VideoLMs on multiple 
-                video understanding benchmarks.</i>
+              <b>TL;DR:</b> <i>Replace dense per-frame image embeddings, use video codec primitives to reduce TTFT
+                by up to 86% and token usage by up to 93% while maintaining video understanding peformance.</i>
             </div>
 
             <div id="abstract" class="x-gradient-block">
@@ -132,7 +131,7 @@
             </div>
 
 
-            <!-- ==================== Runtime Comparison ==================== -->
+            <!-- ==================== Interactive Runtime Comparison ==================== -->
             <div class="x-section-title"><div class="x-gradient-font">Interactive Runtime Comparison</div></div>
             <div id="runtime-comparison">
               <!-- Header controls -->
@@ -228,9 +227,12 @@
               </div>
             </div>
 
-            <!-- ==================== Runtime Table Chart ==================== -->
-            <div class="x-section-title"><div class="x-gradient-font">Runtime Comparison</div></div>
-            <p style="text-align: center; color: #7a6e62; margin-bottom: 4px;">
+            <!-- ==================== Runtime and Memory ==================== -->
+            <div class="x-section-title"><div class="x-gradient-font">Runtime and Memory</div></div>
+
+            <!-- Subsection: Runtime Comparison -->
+            <div class="x-subsection-title">Runtime Comparison</div>
+            <p style="text-align: center;">
                 TTFT and E2EL for generating 64 text tokens at several keyframe densities compared to the 64 keyframe baseline at 1 FPS.
             </p>
             <!-- Metric toggle buttons -->
@@ -241,6 +243,19 @@
             </div>
             <div class="benchmark-chart-container" id="runtimeChartContainer" style="height: 320px;">
                 <canvas id="runtimeChart"></canvas>
+            </div>
+
+            <!-- Subsection: Token Budget vs Video Length -->
+            <div class="x-subsection-title">Token Budget vs. Video Length</div>
+            <!-- <p>
+                The token efficiency of the &Delta;-token formulation enables scaling to sequences previously inaccessible to open-source models. Standard dense RGB sampling saturates quickly, limiting coverage to short sequences as memory constraints are rapidly encountered. In contrast, CoPE-VideoLM exhibits a highly efficient relationship between video length and token budget &mdash; our most compact configuration allows processing videos up to 8 hours in duration (at 1 FPS) within a 1M token context, an order-of-magnitude increase over the baseline.
+            </p> -->
+
+            <p>
+              Theoretical plot showing token efficiency across configurations - enable scaling to significantly longer videos without exceeding context limits.
+            </p>
+            <div class="benchmark-chart-container" id="scalingChartContainer" style="height: 440px;">
+                <canvas id="scalingChart"></canvas>
             </div>
 
 
@@ -264,7 +279,7 @@
                 </div>
                 <div class="delta-encoder-text">
                     <p>
-                        The <b>&Delta;-Encoder</b> processes motion vectors and residuals through two lightweight branches designed to extract and compress codec-domain information. The resulting motion and residual tokens are concatenated to form the &Delta;-tokens used for P-frames, providing an efficient representation that is projected to the RGB token space during pre-training.
+                        <b>&Delta;-Encoder</b> processes motion vectors and residuals through two lightweight branches designed to extract and compress codec-domain information. The resulting motion and residual tokens are concatenated to form the &Delta;-tokens used for P-frames, providing an efficient representation that is projected to the RGB token space during pre-training.
                     </p>
                     <p style="margin-top: 10px;">
                         <b>Training Paradigm.</b> First, the &Delta;-Encoder is <i>pre-trained</i> to align its output with the frozen vision encoder. The resulting features are aligned with ground-truth image tokens via a patch-wise MSE loss, enforcing spatially consistent alignment across patches. After pre-training, the &Delta;-Encoder is integrated into the VideoLM for end-to-end fine-tuning &mdash; the reference-conditioned branches from pre-training are dropped, so no RGB reference frames are processed for P-frames. This yields a substantial compute and memory reduction while keeping the standard instruction tuning objective unchanged.
@@ -320,5 +335,8 @@
 
         <!-- ==================== Runtime Table Chart Script ==================== -->
         <script src="js/runtime-chart.js"></script>
+
+        <!-- ==================== Scaling Chart Script ==================== -->
+        <script src="js/scaling-chart.js"></script>
     </body>
 </html>
