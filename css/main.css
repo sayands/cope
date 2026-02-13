@@ -35,6 +35,7 @@ body {
     margin: 0px;
     padding: 0px;
     background: transparent;
+    overflow-x: hidden;
 }
 
 p {
@@ -66,6 +67,75 @@ video {
     mix-blend-mode: multiply;
 }
 
+/* Teaser figure: constrain to layout, no overflow */
+#teaser {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+#teaser img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    box-sizing: border-box;
+}
+
+/* Delta Encoder: side-by-side image + text */
+.delta-encoder-row {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin: 16px;
+}
+
+.delta-encoder-img {
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+
+.delta-encoder-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.delta-encoder-text {
+    flex: 1;
+}
+
+.delta-encoder-text p {
+    margin: 0;
+    text-align: justify;
+}
+
+@media screen and (max-width: 768px) {
+    .delta-encoder-row {
+        flex-direction: column;
+        gap: 12px;
+        margin: 12px 16px;
+    }
+
+    .delta-encoder-img {
+        flex: none;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .delta-encoder-text p {
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .delta-encoder-row {
+        gap: 8px;
+        margin: 10px 8px;
+    }
+}
+
 .x-row {
     width: 100%;
     display: flex;
@@ -85,6 +155,15 @@ video {
 .x-center-text {
     margin: 16px 32px;
     text-align: center;
+}
+
+/* TL;DR: constrain width so text wraps to ~2 lines, no overflow */
+.tldr-block {
+    max-width: 720px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
 }
 
 .x-left-align {
@@ -513,8 +592,8 @@ video {
 }
 
 .benchmark-btn-group {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
     gap: 6px;
     align-items: center;
 }
@@ -532,7 +611,7 @@ video {
     }
 
     .benchmark-btn-group {
-        flex-wrap: wrap;
+        grid-template-columns: repeat(3, 1fr);
         gap: 4px;
     }
 
@@ -552,71 +631,33 @@ video {
     font-size: 14px;
     font-weight: 500;
     font-family: inherit;
+    text-align: center;
+    white-space: nowrap;
 }
 
-.benchmark-btn.green {
+.benchmark-btn.green,
+.benchmark-btn.orange,
+.benchmark-btn.purple {
     background: #f5f0eb;
     color: #7a6e62;
     border-color: rgba(122, 110, 98, 0.3);
 }
 
-.benchmark-btn.orange {
-    background: #f0ebe5;
-    color: #8b7d6f;
-    border-color: rgba(139, 125, 111, 0.3);
-}
-
-.benchmark-btn.purple {
-    background: #ede5dc;
-    color: #a89888;
-    border-color: rgba(168, 152, 136, 0.3);
-}
-
-.benchmark-btn:hover {
-    border-color: #9a8c7e;
-    color: #9a8c7e;
-}
-
-.benchmark-btn.green:hover {
+.benchmark-btn:hover,
+.benchmark-btn.green:hover,
+.benchmark-btn.orange:hover,
+.benchmark-btn.purple:hover {
     border-color: #7a6e62;
     color: #7a6e62;
 }
 
-.benchmark-btn.is-active {
-    background: linear-gradient(107.54deg, #9a8c7e .39%, #b8a99a 51.23%, #c4b5a5 100%);
-    color: #fff;
-    border-color: #9a8c7e;
-    font-weight: 600;
-}
-
-.benchmark-btn.green.is-active {
+.benchmark-btn.is-active,
+.benchmark-btn.green.is-active,
+.benchmark-btn.orange.is-active,
+.benchmark-btn.purple.is-active {
     background: linear-gradient(120deg, #7a6e62 0%, #9a8c7e 50%, #b8a99a 100%);
     color: #fff;
     border-color: #7a6e62;
-    font-weight: 600;
-}
-
-.benchmark-btn.orange:hover {
-    border-color: #8b7d6f;
-    color: #8b7d6f;
-}
-
-.benchmark-btn.orange.is-active {
-    background: linear-gradient(120deg, #8b7d6f 0%, #a89888 50%, #c4b5a5 100%);
-    color: #fff;
-    border-color: #8b7d6f;
-    font-weight: 600;
-}
-
-.benchmark-btn.purple:hover {
-    border-color: #a89888;
-    color: #a89888;
-}
-
-.benchmark-btn.purple.is-active {
-    background: linear-gradient(120deg, #a89888 0%, #b8a99a 50%, #d4c8bc 100%);
-    color: #fff;
-    border-color: #a89888;
     font-weight: 600;
 }
 
@@ -626,6 +667,8 @@ video {
     #main {
         padding-top: 40px;
         padding-bottom: 120px;
+        padding-left: 12px;
+        padding-right: 12px;
     }
 
     #title {
@@ -667,18 +710,27 @@ video {
         margin: 12px 16px;
     }
 
+    .tldr-block {
+        max-width: 100%;
+        padding: 0 8px;
+    }
+
     #links {
-        flex-direction: column;
-        gap: 4px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px;
     }
 
     #links div {
-        width: 200px;
+        width: auto;
         margin: 4px;
     }
 
     #links a {
-        width: 160px;
+        width: auto;
+        padding: 8px 16px;
+        font-size: 14px;
     }
 
     #abstract {
@@ -752,10 +804,14 @@ video {
         font-size: 10px;
     }
 
-    /* Benchmark buttons: allow wrapping */
+    /* Benchmark buttons: 4 per row on tablets */
     .benchmark-btn {
         padding: 6px 10px;
         font-size: 12px;
+    }
+
+    .benchmark-btn-group {
+        grid-template-columns: repeat(4, 1fr);
     }
 
     /* Logo scaling */
@@ -766,11 +822,23 @@ video {
     #logos img {
         height: 36px !important;
     }
+
+    /* Teaser */
+    #teaser {
+        margin-top: 16px !important;
+    }
+
+    /* Chart containers */
+    .benchmark-chart-container {
+        max-width: 100%;
+    }
 }
 
 @media screen and (max-width: 480px) {
     #main {
         padding-top: 30px;
+        padding-left: 8px;
+        padding-right: 8px;
     }
 
     #title span:first-child {
@@ -796,36 +864,192 @@ video {
 
     .x-center-text {
         font-size: 14px !important;
+        margin: 10px 8px;
+    }
+
+    .tldr-block {
+        max-width: 100%;
+        padding: 0 4px;
     }
 
     #abstract {
         font-size: 12px;
+        margin: 12px 8px;
+        padding: 10px 12px;
     }
 
     p {
         font-size: 12px;
+        margin: 10px 8px;
     }
 
     .x-section-title {
         font-size: 20px !important;
+        padding-left: 8px;
+    }
+
+    #links {
+        gap: 4px;
     }
 
     #links div {
-        width: 160px;
+        width: auto;
     }
 
     #links a {
-        width: 120px;
-        font-size: 14px;
+        width: auto;
+        font-size: 13px;
+        padding: 6px 12px;
     }
 
+    /* Benchmark buttons: 3 per row */
     .benchmark-btn {
-        padding: 5px 8px;
+        padding: 5px 6px;
         font-size: 11px;
+        white-space: nowrap;
+    }
+
+    .benchmark-btn-group {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4px;
     }
 
     #logos img {
         height: 28px !important;
+    }
+
+    #logos {
+        gap: 16px !important;
+    }
+
+    /* Chart containers */
+    .benchmark-chart-container {
+        height: 300px !important;
+        margin: 0 4px;
+    }
+
+    #efficiencyChartContainer {
+        height: 320px !important;
+    }
+
+    #runtimeChartContainer {
+        height: 280px !important;
+    }
+}
+
+/* ==================== iPhone SE / small phones (375px) ==================== */
+@media screen and (max-width: 375px) {
+    #main {
+        padding-top: 24px;
+        padding-left: 6px;
+        padding-right: 6px;
+        padding-bottom: 80px;
+    }
+
+    #title span:first-child {
+        font-size: 26px !important;
+    }
+
+    #title span:last-child {
+        font-size: 16px !important;
+    }
+
+    #authors {
+        font-size: 11px;
+        gap: 2px;
+    }
+
+    #institution {
+        font-size: 11px;
+        gap: 2px;
+    }
+
+    .x-center-text {
+        font-size: 13px !important;
+        margin: 8px 6px;
+    }
+
+    .tldr-block {
+        max-width: 100%;
+        padding: 0;
+    }
+
+    #abstract {
+        font-size: 11px;
+        margin: 10px 6px;
+        padding: 8px 10px;
+    }
+
+    p {
+        font-size: 11px;
+        margin: 8px 6px;
+        line-height: 1.5;
+    }
+
+    .x-section-title {
+        font-size: 18px !important;
+        margin: 24px 0px 8px 0px;
+        padding-left: 6px;
+    }
+
+    #links {
+        gap: 4px;
+    }
+
+    #links a {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+
+    /* Benchmark buttons: 2 per row on very small screens */
+    .benchmark-btn {
+        padding: 5px 4px;
+        font-size: 10px;
+    }
+
+    .benchmark-btn-group {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3px;
+    }
+
+    .benchmark-selector {
+        padding: 0 4px;
+    }
+
+    #logos {
+        gap: 12px !important;
+    }
+
+    #logos img {
+        height: 24px !important;
+    }
+
+    .bibtex {
+        font-size: 7px;
+        margin: 10px 4px;
+        padding: 6px 8px;
+    }
+
+    /* Chart containers */
+    .benchmark-chart-container {
+        height: 260px !important;
+        margin: 0 2px;
+    }
+
+    #efficiencyChartContainer {
+        height: 280px !important;
+    }
+
+    #runtimeChartContainer {
+        height: 240px !important;
+    }
+
+    #bottombar div {
+        font-size: 9px;
+    }
+
+    #bottombar div a {
+        font-size: 9px;
     }
 }
 
@@ -837,6 +1061,7 @@ video {
     max-width: 800px;
     margin: 0 auto;
     height: 400px;
+    box-sizing: border-box;
 }
 
 @media screen and (max-width: 600px) {

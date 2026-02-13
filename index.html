@@ -4,6 +4,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>CoPE-VideoLM</title>
         <link rel="stylesheet" href="fonts/avenir-next/stylesheet.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
         <link rel="stylesheet" href="icons/style.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
         <link rel="stylesheet" href="css/main.css">
@@ -18,21 +21,19 @@
             </div>
 
             <div id="authors">
-                <!-- TODO: Update authors -->
-                <div><a class="link" href="#" target="_blank">Sayan Deb Sarkar</a><sup> 1,2<sup>*</sup></sup></div>
-                <div><a class="link" href="#" target="_blank">Rémi Pautrat</a><sup> 2 </sup></div>
-                <div><a class="link" href="#" target="_blank">Ondrej Miksik</a><sup> 2 </sup></div>
-                <div><a class="link" href="#" target="_blank">Marc Pollefeys</a><sup> 2,3 </sup></div>
-                <div><a class="link" href="#" target="_blank">Iro Armeni</a><sup> 1 </sup></div>
-                <div><a class="link" href="#" target="_blank">Mahdi Rad</a><sup> 2<sup>†</sup></sup></div>
-                <div><a class="link" href="#" target="_blank">Mihai Dusmanu</a><sup> 2<sup>†</sup></sup></div>
+                <div><a class="link" href="https://sayands.github.io/" target="_blank">Sayan Deb Sarkar</a><sup> 1,2<sup>*</sup></sup></div>
+                <div><a class="link" href="https://rpautrat.github.io/" target="_blank">Rémi Pautrat</a><sup> 2 </sup></div>
+                <div><a class="link" href="https://miksik.co.uk/" target="_blank">Ondrej Miksik</a><sup> 2 </sup></div>
+                <div><a class="link" href="https://people.inf.ethz.ch/marc.pollefeys/" target="_blank">Marc Pollefeys</a><sup> 2,3 </sup></div>
+                <div><a class="link" href="https://ir0.github.io/" target="_blank">Iro Armeni</a><sup> 1 </sup></div>
+                <div><a class="link" href="https://radmahdi.github.io/Home.html" target="_blank">Mahdi Rad</a><sup> 2<sup>†</sup></sup></div>
+                <div><a class="link" href="https://dusmanu.com/" target="_blank">Mihai Dusmanu</a><sup> 2<sup>†</sup></sup></div>
             </div>
 
             <div id="institution">
-                <!-- TODO: Update institutions -->
-                <div><sup>1 </sup>Stanford University</div>
-                <div><sup>2 </sup>Microsoft Spatial AI Lab</div>
-                <div><sup>3 </sup>ETH Zurich</div>
+                <div><sup>1 </sup><a class="link" href="https://www.stanford.edu/" target="_blank">Stanford University</a></div>
+                <div><sup>2 </sup><a class="link" href="https://www.microsoft.com/en-us/research/lab/spatial-ai-zurich/" target="_blank">Microsoft Spatial AI Lab</a></div>
+                <div><sup>3 </sup><a class="link" href="https://ethz.ch/" target="_blank">ETH Zurich</a></div>
             </div>
 
             <div style="text-align: center; font-size: 13px; color: rgb(96, 96, 96); margin-top: 4px;">
@@ -52,18 +53,19 @@
             <div id="links">
                 <div><a id="paper" href="#" target="_blank">Paper</a></div>
                 <div><a id="arxiv" href="#" target="_blank"><i class="ai ai-arxiv"></i> arXiv</a></div>
-                <div><a id="code" href="#" target="_blank">Code</a></div>
+                <div><a id="code" href="#" target="_blank" style="pointer-events: none; opacity: 0.5; background: #e5e7eb; color: #9ca3af; cursor: not-allowed;">Code</a></div>
             </div>
 
-            <!-- Teaser: placeholder for teaser image/video -->
-            <!-- <div id="teaser">
-                <div style="width: 100%;"><img src="assets/images/teaser.png" alt="CoPE-VideoLM Teaser" style="width: 100%;"></div>
-            </div> -->
-
-            <!-- TL;DR -->
-            <!-- <div class="x-center-text" style="font-size: 20px; font-weight: 500; color: #3f3f3f;">
-                <b>TL;DR:</b> <i>[One-line summary to be added]</i>
-            </div> -->
+            <div id="teaser">
+              <div style="width: 100%;">
+                <img src="assets/figs/teaser.png" alt="CoPE-VideoLM Teaser">
+              </div>
+            </div>
+            <div class="x-center-text" style="font-size: 20px; font-weight: 500; color: #3f3f3f; margin-top: 24px;">
+              <b>TL;DR:</b> <i>Replace costly per-frame image embedding, use video codec primitives to reduce time-to-first-token (TTFT)
+                by up to 86% and tokens by up to 93% while matching or beating standard VideoLMs on multiple 
+                video understanding benchmarks.</i>
+            </div>
 
             <div id="abstract" class="x-gradient-block">
                 Video Language Models (VideoLMs) empower AI systems to understand temporal dynamics in videos. To fit to the maximum context 
@@ -80,48 +82,47 @@
             </div>
 
 
-            <!-- ==================== Method ==================== -->
-            <div class="x-section-title"><div class="x-gradient-font">Method</div></div>
-            <p>
-                [Method description to be added]
+            <!-- ==================== Token Efficiency vs Accuracy ==================== -->
+            <div class="x-section-title"><div class="x-gradient-font">Token Efficiency vs. Video QA Accuracy</div></div>
+            <p style="text-align: left; color: #7a6e62; margin-bottom: 4px;">
+              Performance of LLaVA-Video (7B) at different number of keyframes per GOP, as well as in the default setup of selecting 64 keyframes regardless
+              of video length compared to CoPE-VideoLM. ur method only adds a low number of &Delta;-tokens compared to its associated baseline and 
+              these help close the gap compared to the next baseline that is using a significantly
+              larger number of tokens.
             </p>
-            <!-- <p>
-                <img class="pipeline-img" src="assets/images/pipeline.png" alt="Overview of the method" style="width: 100%;">
-            </p> -->
+            <!-- Benchmark toggle buttons -->
+            <div style="display: flex; justify-content: center; gap: 8px; margin-bottom: 16px; flex-wrap: wrap;">
+                <button class="benchmark-btn green is-active" id="effBtnPT" onclick="updateEfficiencyChart('perceptiontest')">PerceptionTest</button>
+                <button class="benchmark-btn green" id="effBtnNQ" onclick="updateEfficiencyChart('nextqa')">NExT-QA</button>
+                <button class="benchmark-btn green" id="effBtnAQ" onclick="updateEfficiencyChart('actnetqa')">ActNet-QA</button>
+            </div>
+            <div class="benchmark-chart-container" id="efficiencyChartContainer" style="height: 420px;">
+                <canvas id="efficiencyChart"></canvas>
+            </div>
 
 
             <!-- ==================== Benchmark Performance ==================== -->
             <div class="x-section-title"><div class="x-gradient-font">Benchmark Performance</div></div>
+            <p>
+                We conduct a comprehensive evaluation of our method across multiple video benchmarks, covering four categories: (i) general video question answering, (ii) temporal reasoning and motion understanding, (iii) long-form and instruction-following tasks, and (iv) spatial scene understanding.
+                Our primary point of comparison is LLaVA-Video-7B, which also serves as our base model. In addition, we benchmark against several closely related open-source approaches to provide a broader assessment. Following standard practice, all evaluations are performed using the lmms-eval framework to ensure consistency and reproducibility.
+            </p>
 
             <!-- Benchmark selector buttons -->
             <div class="benchmark-selector">
-                <div class="benchmark-row">
-                    <span class="benchmark-category-label" style="color: #7a6e62;">General Video QA</span>
-                    <div class="benchmark-btn-group">
-                        <button class="benchmark-btn green is-active" data-benchmark="perceptiontest">PerceptionTest</button>
-                        <button class="benchmark-btn green" data-benchmark="nextqa">NExT-QA</button>
-                        <button class="benchmark-btn green" data-benchmark="actnetqa">ActNet-QA</button>
-                        <button class="benchmark-btn green" data-benchmark="videomme">VideoMME</button>
-                        <button class="benchmark-btn green" data-benchmark="egoschema">EgoSchema</button>
-                    </div>
-                </div>
-                <div class="benchmark-row">
-                    <span class="benchmark-category-label" style="color: #8b7d6f;">Temporal &amp; Motion Understanding</span>
-                    <div class="benchmark-btn-group">
-                        <button class="benchmark-btn orange" data-benchmark="tempcompass">TempCompass</button>
-                        <button class="benchmark-btn orange" data-benchmark="tomato">Tomato</button>
-                        <button class="benchmark-btn orange" data-benchmark="cvrres">CVRR-ES</button>
-                        <button class="benchmark-btn orange" data-benchmark="mvbench">MVBench</button>
-                    </div>
-                </div>
-                <div class="benchmark-row">
-                    <span class="benchmark-category-label" style="color: #a89888;">Instruction Following &amp; Long Form Reasoning</span>
-                    <div class="benchmark-btn-group">
-                        <button class="benchmark-btn purple" data-benchmark="videott">Video-TT</button>
-                        <button class="benchmark-btn purple" data-benchmark="videommmu">Video-MMMU</button>
-                        <button class="benchmark-btn purple" data-benchmark="lvbench">LVBench</button>
-                        <button class="benchmark-btn purple" data-benchmark="longvideobench">LongVideoBench</button>
-                    </div>
+                <div class="benchmark-btn-group">
+                    <button class="benchmark-btn green is-active" data-benchmark="perceptiontest">PerceptionTest</button>
+                    <button class="benchmark-btn green" data-benchmark="nextqa">NExT-QA</button>
+                    <button class="benchmark-btn green" data-benchmark="actnetqa">ActNet-QA</button>
+                    <button class="benchmark-btn green" data-benchmark="videomme">VideoMME</button>
+                    <button class="benchmark-btn green" data-benchmark="tempcompass">TempCompass</button>
+                    <button class="benchmark-btn green" data-benchmark="tomato">Tomato</button>
+                    <button class="benchmark-btn green" data-benchmark="cvrres">CVRR-ES</button>
+                    <button class="benchmark-btn green" data-benchmark="mvbench">MVBench</button>
+                    <button class="benchmark-btn green" data-benchmark="videott">Video-TT</button>
+                    <button class="benchmark-btn green" data-benchmark="videommmu">Video-MMMU</button>
+                    <button class="benchmark-btn green" data-benchmark="lvbench">LVBench</button>
+                    <button class="benchmark-btn green" data-benchmark="longvideobench">LongVideoBench</button>
                 </div>
             </div>
 
@@ -227,6 +228,60 @@
               </div>
             </div>
 
+            <!-- ==================== Runtime Table Chart ==================== -->
+            <div class="x-section-title"><div class="x-gradient-font">Runtime Comparison</div></div>
+            <p style="text-align: center; color: #7a6e62; margin-bottom: 4px;">
+                TTFT and E2EL for generating 64 text tokens at several keyframe densities compared to the 64 keyframe baseline at 1 FPS.
+            </p>
+            <!-- Metric toggle buttons -->
+            <div style="display: flex; justify-content: center; gap: 8px; margin-bottom: 16px; flex-wrap: wrap;">
+                <button class="benchmark-btn green is-active" id="runtimeBtnTTFT" onclick="updateRuntimeChart('ttft')">TTFT</button>
+                <button class="benchmark-btn green" id="runtimeBtnE2EL" onclick="updateRuntimeChart('e2el')">E2EL</button>
+                <button class="benchmark-btn green" id="runtimeBtnBoth" onclick="updateRuntimeChart('both')">Both</button>
+            </div>
+            <div class="benchmark-chart-container" id="runtimeChartContainer" style="height: 320px;">
+                <canvas id="runtimeChart"></canvas>
+            </div>
+
+
+            <!-- ==================== Method ==================== -->
+            <div class="x-section-title"><div class="x-gradient-font">Methodology</div></div>
+            <p>
+                <img class="pipeline-img" src="assets/figs/pipeline.png" alt="Overview of the method" style="width: 100%;">
+            </p>
+            <p>
+                Given a video in its raw codec representation, our framework leverages the GOP structure for efficient, codec-aware tokenization.
+                <i>I-frames</i> are processed by a standard frozen vision encoder (&phi;<sub>RGB</sub>) to produce dense RGB tokens.
+                <i>P-frames</i>, however, bypass full RGB decoding. Their raw components, motion vectors and residuals, are instead fed into our
+                lightweight &Delta;-Encoder (&phi;<sub>&Delta;</sub>) to generate a small set of highly compact &Delta;-tokens. The final token stream,
+                an interleaved sequence of I-frame tokens and &Delta;-tokens, is consumed by the LLM, enabling dense temporal coverage at a fraction
+                of the standard token count and runtime.
+            </p>
+
+            <div class="delta-encoder-row" style="margin-top: 50px;">
+                <div class="delta-encoder-img">
+                    <img class="pipeline-img" src="assets/figs/delta_encoder.png" alt="Delta Encoder architecture">
+                </div>
+                <div class="delta-encoder-text">
+                    <p>
+                        The <b>&Delta;-Encoder</b> processes motion vectors and residuals through two lightweight branches designed to extract and compress codec-domain information. The resulting motion and residual tokens are concatenated to form the &Delta;-tokens used for P-frames, providing an efficient representation that is projected to the RGB token space during pre-training.
+                    </p>
+                    <p style="margin-top: 10px;">
+                        <b>Training Paradigm.</b> First, the &Delta;-Encoder is <i>pre-trained</i> to align its output with the frozen vision encoder. The resulting features are aligned with ground-truth image tokens via a patch-wise MSE loss, enforcing spatially consistent alignment across patches. After pre-training, the &Delta;-Encoder is integrated into the VideoLM for end-to-end fine-tuning &mdash; the reference-conditioned branches from pre-training are dropped, so no RGB reference frames are processed for P-frames. This yields a substantial compute and memory reduction while keeping the standard instruction tuning objective unchanged.
+                    </p>
+                </div>
+            </div>
+
+
+            <!-- ==================== Acknowledgements ==================== -->
+            <div class="x-section-title"><div class="x-gradient-font">Acknowledgements</div></div>
+            <p>
+                <i>
+                    We would like to thank (in alphabetical order): Isar Meijer and Krzysztof Waraksa from Microsoft for help with training pipeline setup; Tao Sun and Jianhao Zheng from Stanford for feedback at different stages of the project.<br>
+                    Website template inspired by <a href="https://sayands.github.io/guideflow3d/" style="color: #9a8c7e;" target="_blank">GuideFlow3D</a>.
+                </i>
+            </p>
+
 
             <!-- ==================== Citation ==================== -->
             <div class="x-section-title"><div class="x-gradient-font">Citation</div></div>
@@ -242,16 +297,6 @@
     archivePrefix={arXiv},
     primaryClass={cs.CV}
 }</p>
-
-
-            <!-- ==================== Acknowledgements ==================== -->
-            <div class="x-section-title"><div class="x-gradient-font">Acknowledgements</div></div>
-            <p>
-                <i>
-                    [Acknowledgements to be added]<br>
-                    Website template inspired by <a href="https://sayands.github.io/guideflow3d/" style="color: #9a8c7e;" target="_blank">GuideFlow3D</a>.
-                </i>
-            </p>
         </div>
 
         <!-- Bottom Bar -->
@@ -264,10 +309,16 @@
             </div>
         </div>
 
+        <!-- ==================== Token Efficiency Chart Script ==================== -->
+        <script src="js/efficiency-chart.js"></script>
+
         <!-- ==================== Benchmark Chart Script ==================== -->
         <script src="js/benchmarks.js"></script>
 
         <!-- ==================== Runtime Comparison Script ==================== -->
         <script src="js/runtime-comparison.js"></script>
+
+        <!-- ==================== Runtime Table Chart Script ==================== -->
+        <script src="js/runtime-chart.js"></script>
     </body>
 </html>

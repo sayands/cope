@@ -54,17 +54,6 @@ document.addEventListener('DOMContentLoaded', function() {
         'LLaVA-Video-7B': { wo: 63.3, w: 69.7 }
       }
     },
-    egoschema: {
-      label: 'EgoSchema',
-      models: {
-        'Video-LaViT': 37.3,
-        'IXC-2.5-7B': 37.3,
-        'LLaVA-OV-7B': 50.1,
-        'LongVA-7B': 56.3,
-        'VILA-40B': 58.0,
-        'LLaVA-Video-7B': 57.3
-      }
-    },
     tempcompass: {
       label: 'TempCompass',
       models: {
@@ -170,12 +159,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function getBarColor(modelName) {
     if (modelName.includes('(Ours)')) return '#6567C9';
-    return '#CBD5E1';
+    return '#E5E7EB';
   }
 
   function getBorderColor(modelName) {
-    if (modelName.includes('(Ours)')) return '#5254B3';
-    return '#A0AEC0';
+    if (modelName.includes('(Ours)')) return '#6567C9';
+    return '#E5E7EB';
   }
 
   var ctx = document.getElementById('benchmarkChart');
@@ -197,12 +186,12 @@ document.addEventListener('DOMContentLoaded', function() {
         c.textAlign = 'right';
         c.textBaseline = 'middle';
         if (label.indexOf('(Ours)') !== -1) {
-          c.font = 'bold italic 12px "Avenir Next Cyr", "Inter", sans-serif';
+          c.font = 'italic 600 13px "Inter", "Avenir Next Cyr", sans-serif';
           c.fillStyle = '#6567C9';
           c.fillText(label, x, y);
         } else {
-          c.font = '12px "Avenir Next Cyr", "Inter", sans-serif';
-          c.fillStyle = '#374151';
+          c.font = '13px "Inter", "Avenir Next Cyr", sans-serif';
+          c.fillStyle = '#7a6e62';
           c.fillText(label, x, y);
         }
         c.restore();
@@ -225,11 +214,11 @@ document.addEventListener('DOMContentLoaded', function() {
           var isOurs = typeof label === 'string' && label.indexOf('(Ours)') !== -1;
           c.save();
           if (isGrouped) {
-            c.fillStyle = '#374151';
-            c.font = '11px "Avenir Next Cyr", "Inter", sans-serif';
+            c.fillStyle = '#7a6e62';
+            c.font = '12px "Inter", "Avenir Next Cyr", sans-serif';
           } else {
-            c.fillStyle = isOurs ? '#6567C9' : '#374151';
-            c.font = (isOurs ? 'bold ' : '') + '12px "Avenir Next Cyr", "Inter", sans-serif';
+            c.fillStyle = isOurs ? '#6567C9' : '#7a6e62';
+            c.font = (isOurs ? '600 ' : '') + '13px "Inter", "Avenir Next Cyr", sans-serif';
           }
           c.textAlign = 'left';
           c.textBaseline = 'middle';
@@ -243,15 +232,15 @@ document.addEventListener('DOMContentLoaded', function() {
   function updateChart(benchmarkKey) {
     var data = benchmarkData[benchmarkKey];
     var chartContainer = ctx.parentElement;
-    var greenBenchmarks = ['perceptiontest', 'nextqa', 'actnetqa', 'videomme', 'egoschema'];
+    var greenBenchmarks = ['perceptiontest', 'nextqa', 'actnetqa', 'videomme'];
     var orangeBenchmarks = ['tempcompass', 'tomato', 'cvrres', 'mvbench'];
     var purpleBenchmarks = ['videott', 'videommmu', 'lvbench', 'longvideobench'];
     if (greenBenchmarks.indexOf(benchmarkKey) !== -1) {
-      chartContainer.style.backgroundColor = '#f5f0eb';
+      chartContainer.style.backgroundColor = 'transparent';
     } else if (orangeBenchmarks.indexOf(benchmarkKey) !== -1) {
-      chartContainer.style.backgroundColor = '#f0ebe5';
+      chartContainer.style.backgroundColor = 'transparent';
     } else if (purpleBenchmarks.indexOf(benchmarkKey) !== -1) {
-      chartContainer.style.backgroundColor = '#ede5dc';
+      chartContainer.style.backgroundColor = 'transparent';
     } else {
       chartContainer.style.backgroundColor = 'transparent';
     }
@@ -268,10 +257,10 @@ document.addEventListener('DOMContentLoaded', function() {
       var labels = entries.map(function(e) { return e[0]; });
       var woValues = entries.map(function(e) { return e[1].wo; });
       var wValues  = entries.map(function(e) { return e[1].w; });
-      var woColors = entries.map(function(e) { return e[0].indexOf('(Ours)') !== -1 ? '#b8b9e8' : '#CBD5E1'; });
-      var wColors  = entries.map(function(e) { return e[0].indexOf('(Ours)') !== -1 ? '#6567C9' : '#94A3B8'; });
-      var woBorders = entries.map(function(e) { return e[0].indexOf('(Ours)') !== -1 ? '#9b9dea' : '#A0AEC0'; });
-      var wBorders  = entries.map(function(e) { return e[0].indexOf('(Ours)') !== -1 ? '#5254B3' : '#64748B'; });
+      var woColors = entries.map(function(e) { return e[0].indexOf('(Ours)') !== -1 ? '#b8b9e8' : '#E5E7EB'; });
+      var wColors  = entries.map(function(e) { return e[0].indexOf('(Ours)') !== -1 ? '#6567C9' : '#D1D5DB'; });
+      var woBorders = entries.map(function(e) { return e[0].indexOf('(Ours)') !== -1 ? '#b8b9e8' : '#E5E7EB'; });
+      var wBorders  = entries.map(function(e) { return e[0].indexOf('(Ours)') !== -1 ? '#6567C9' : '#D1D5DB'; });
       var allVals = woValues.concat(wValues).filter(function(v) { return v !== null; });
       var minVal = Math.floor(Math.min.apply(null, allVals) / 5) * 5;
       var maxVal = Math.ceil(Math.max.apply(null, allVals) / 5) * 5 + 5;
@@ -286,20 +275,20 @@ document.addEventListener('DOMContentLoaded', function() {
               data: woValues,
               backgroundColor: woColors,
               borderColor: woBorders,
-              borderWidth: 1,
-              borderRadius: 4,
-              barPercentage: 0.8,
-              categoryPercentage: 0.7
+            borderWidth: 0,
+            borderRadius: 20,
+            barPercentage: 0.75,
+            categoryPercentage: 0.75
             },
             {
               label: 'w/ subtitles',
               data: wValues,
               backgroundColor: wColors,
               borderColor: wBorders,
-              borderWidth: 1,
-              borderRadius: 4,
-              barPercentage: 0.8,
-              categoryPercentage: 0.7
+              borderWidth: 0,
+              borderRadius: 20,
+              barPercentage: 0.75,
+              categoryPercentage: 0.75
             }
           ]
         },
@@ -308,21 +297,18 @@ document.addEventListener('DOMContentLoaded', function() {
           responsive: true,
           maintainAspectRatio: false,
           animation: { duration: 600, easing: 'easeOutQuart' },
-          layout: { padding: { left: 10, right: 40 } },
+          layout: { padding: { left: 10, right: 50 } },
           plugins: {
             legend: { display: false },
             title: {
-              display: true,
-              text: data.label,
-              font: { size: 16, weight: '600' },
-              padding: { bottom: 16 }
+              display: false
             },
             tooltip: {
-              backgroundColor: 'rgba(0,0,0,0.8)',
-              titleFont: { size: 13 },
-              bodyFont: { size: 13 },
+              backgroundColor: 'rgba(0,0,0,0.75)',
+              titleFont: { size: 13, family: '"Inter", sans-serif' },
+              bodyFont: { size: 13, family: '"Inter", sans-serif' },
               padding: 10,
-              cornerRadius: 6,
+              cornerRadius: 8,
               callbacks: {
                 label: function(context) {
                   if (context.raw === null) return '';
@@ -336,21 +322,18 @@ document.addEventListener('DOMContentLoaded', function() {
             x: {
               min: minVal,
               max: maxVal,
-              grid: { color: 'rgba(0,0,0,0.06)' },
+              grid: { display: false },
               ticks: {
-                font: { size: 12 },
+                font: { size: 12, family: '"Inter", sans-serif' },
+                color: '#9CA3AF',
                 stepSize: 5,
                 callback: function(value) { return value.toFixed(0); }
               },
-              title: {
-                display: true,
-                text: 'Accuracy',
-                font: { size: 13, weight: '500' }
-              }
+              title: { display: false }
             },
             y: {
               grid: { display: false },
-              ticks: { color: 'transparent', font: { size: 12 } },
+              ticks: { color: 'transparent', font: { size: 13 } },
               afterFit: function(axis) { axis.width = Math.max(axis.width, 200); }
             }
           }
@@ -376,9 +359,9 @@ document.addEventListener('DOMContentLoaded', function() {
             data: values,
             backgroundColor: bgColors,
             borderColor: bdColors,
-            borderWidth: 1,
-            borderRadius: 4,
-            barThickness: 28
+            borderWidth: 0,
+            borderRadius: 20,
+            barThickness: 32
           }]
         },
         options: {
@@ -386,21 +369,18 @@ document.addEventListener('DOMContentLoaded', function() {
           responsive: true,
           maintainAspectRatio: false,
           animation: { duration: 600, easing: 'easeOutQuart' },
-          layout: { padding: { left: 10, right: 40 } },
+          layout: { padding: { left: 10, right: 50 } },
           plugins: {
             legend: { display: false },
             title: {
-              display: true,
-              text: data.label,
-              font: { size: 16, weight: '600' },
-              padding: { bottom: 16 }
+              display: false
             },
             tooltip: {
-              backgroundColor: 'rgba(0,0,0,0.8)',
-              titleFont: { size: 13 },
-              bodyFont: { size: 13 },
+              backgroundColor: 'rgba(0,0,0,0.75)',
+              titleFont: { size: 13, family: '"Inter", sans-serif' },
+              bodyFont: { size: 13, family: '"Inter", sans-serif' },
               padding: 10,
-              cornerRadius: 6,
+              cornerRadius: 8,
               callbacks: {
                 label: function(context) {
                   return 'Score: ' + context.raw.toFixed(1);
@@ -413,21 +393,18 @@ document.addEventListener('DOMContentLoaded', function() {
             x: {
               min: minVal,
               max: maxVal,
-              grid: { color: 'rgba(0,0,0,0.06)' },
+              grid: { display: false },
               ticks: {
-                font: { size: 12 },
+                font: { size: 12, family: '"Inter", sans-serif' },
+                color: '#9CA3AF',
                 stepSize: 5,
                 callback: function(value) { return value.toFixed(0); }
               },
-              title: {
-                display: true,
-                text: 'Accuracy',
-                font: { size: 13, weight: '500' }
-              }
+              title: { display: false }
             },
             y: {
               grid: { display: false },
-              ticks: { color: 'transparent', font: { size: 12 } },
+              ticks: { color: 'transparent', font: { size: 13 } },
               afterFit: function(axis) { axis.width = Math.max(axis.width, 200); }
             }
           }
