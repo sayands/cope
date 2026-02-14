@@ -87,7 +87,7 @@
           var delta = datasets[d].data[i].delta;
           if (delta) {
             c.save();
-            c.font = '600 10px "Inter", "Avenir Next Cyr", sans-serif';
+            c.font = '600 10px "Avenir", "Avenir Next Cyr", "Avenir", "Avenir Next Cyr", "Inter", sans-serif';
             var labelX = ox + 12;
             var labelY = oy - 12;
             var textWidth = c.measureText(delta).width;
@@ -220,7 +220,7 @@
             display: true,
             position: 'top',
             labels: {
-              font: { size: 13, family: '"Inter", "Avenir Next Cyr", sans-serif', weight: '500' },
+              font: { size: 13, family: '"Avenir", "Avenir Next Cyr", "Avenir", "Avenir Next Cyr", "Inter", sans-serif', weight: '500' },
               color: labelColor,
               usePointStyle: true,
               padding: 16
@@ -231,8 +231,8 @@
           },
           tooltip: {
             backgroundColor: 'rgba(0,0,0,0.8)',
-            titleFont: { size: 13, family: '"Inter", sans-serif' },
-            bodyFont: { size: 13, family: '"Inter", sans-serif' },
+            titleFont: { size: 13, family: '"Avenir", "Avenir Next Cyr", "Inter", sans-serif' },
+            bodyFont: { size: 13, family: '"Avenir", "Avenir Next Cyr", "Inter", sans-serif' },
             padding: 12,
             cornerRadius: 8,
             callbacks: {
@@ -263,15 +263,15 @@
               drawBorder: false
             },
             ticks: {
-              font: { size: 12, family: '"Inter", sans-serif' },
+              font: { size: 12, family: '"Avenir", "Avenir Next Cyr", "Inter", sans-serif' },
               color: '#9CA3AF',
               stepSize: 20,
               callback: function(value) { return value + '%'; }
             },
             title: {
               display: true,
-              text: 'Number ofTokens (% of 64-keyframe LLaVA-Video-7B)',
-              font: { size: 14, weight: '500', family: '"Inter", "Avenir Next Cyr", sans-serif' },
+              text: 'Number of Tokens (% of 64-keyframe LLaVA-Video-7B)',
+              font: { size: 14, weight: '500', family: '"Avenir", "Avenir Next Cyr", "Avenir", "Avenir Next Cyr", "Inter", sans-serif' },
               color: labelColor,
               padding: { top: 8 }
             }
@@ -284,7 +284,7 @@
               drawBorder: false
             },
             ticks: {
-              font: { size: 12, family: '"Inter", sans-serif' },
+              font: { size: 12, family: '"Avenir", "Avenir Next Cyr", "Inter", sans-serif' },
               color: '#9CA3AF',
               stepSize: 5,
               callback: function(value) { return value.toFixed(0) + '%'; }
@@ -292,7 +292,7 @@
             title: {
               display: true,
               text: 'Accuracy (%)',
-              font: { size: 14, weight: '500', family: '"Inter", "Avenir Next Cyr", sans-serif' },
+              font: { size: 14, weight: '500', family: '"Avenir", "Avenir Next Cyr", "Avenir", "Avenir Next Cyr", "Inter", sans-serif' },
               color: labelColor,
               padding: { bottom: 8 }
             }

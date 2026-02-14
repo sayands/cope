@@ -120,7 +120,7 @@
           display: true,
           position: 'top',
           labels: {
-            font: { size: 13, family: '"Inter", "Avenir Next Cyr", sans-serif', weight: '500' },
+            font: { size: 13, family: '"Avenir", "Avenir Next Cyr", "Avenir", "Avenir Next Cyr", "Inter", sans-serif', weight: '500' },
             color: labelColor,
             usePointStyle: true,
             padding: 16
@@ -131,8 +131,8 @@
         },
         tooltip: {
           backgroundColor: 'rgba(0,0,0,0.8)',
-          titleFont: { size: 13, family: '"Inter", sans-serif' },
-          bodyFont: { size: 13, family: '"Inter", sans-serif' },
+          titleFont: { size: 13, family: '"Avenir", "Avenir Next Cyr", "Inter", sans-serif' },
+          bodyFont: { size: 13, family: '"Avenir", "Avenir Next Cyr", "Inter", sans-serif' },
           padding: 12,
           cornerRadius: 8,
           callbacks: {
@@ -162,7 +162,7 @@
             drawBorder: false
           },
           ticks: {
-            font: { size: 12, weight: '600', family: '"Inter", sans-serif' },
+            font: { size: 12, weight: '600', family: '"Avenir", "Avenir Next Cyr", "Inter", sans-serif' },
             color: '#7a6e62',
             callback: function(value) {
               var idx = tokenBudgets.indexOf(value);
@@ -178,7 +178,7 @@
           title: {
             display: true,
             text: 'Token Budget',
-            font: { size: 14, weight: '600', family: '"Inter", "Avenir Next Cyr", sans-serif' },
+            font: { size: 14, weight: '600', family: '"Avenir", "Avenir Next Cyr", "Avenir", "Avenir Next Cyr", "Inter", sans-serif' },
             color: labelColor,
             padding: { top: 8 }
           }
@@ -192,7 +192,7 @@
             drawBorder: false
           },
           ticks: {
-            font: { size: 12, weight: '600', family: '"Inter", sans-serif' },
+            font: { size: 12, weight: '600', family: '"Avenir", "Avenir Next Cyr", "Inter", sans-serif' },
             color: '#7a6e62',
             stepSize: 60,
             callback: function(value) {
@@ -206,7 +206,7 @@
           title: {
             display: true,
             text: 'Video Length',
-            font: { size: 14, weight: '600', family: '"Inter", "Avenir Next Cyr", sans-serif' },
+            font: { size: 14, weight: '600', family: '"Avenir", "Avenir Next Cyr", "Avenir", "Avenir Next Cyr", "Inter", sans-serif' },
             color: labelColor,
             padding: { bottom: 8 }
           }
@@ -231,7 +231,7 @@
           var midY = (yScale.top + yScale.bottom) / 2;
 
           c.save();
-          c.font = '600 11px "Inter", "Avenir Next Cyr", sans-serif';
+          c.font = '600 11px "Avenir", "Avenir Next Cyr", "Avenir", "Avenir Next Cyr", "Inter", sans-serif';
           var textWidth = c.measureText(ann.label).width;
 
           /* Draw vertical dashed line */

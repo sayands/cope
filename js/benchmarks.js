@@ -188,11 +188,11 @@ document.addEventListener('DOMContentLoaded', function() {
         c.textAlign = 'right';
         c.textBaseline = 'middle';
         if (label.indexOf('(Ours)') !== -1) {
-          c.font = 'italic 600 ' + fontSize + ' "Inter", "Avenir Next Cyr", sans-serif';
+          c.font = 'italic 600 ' + fontSize + ' "Avenir", "Avenir Next Cyr", "Avenir", "Avenir Next Cyr", "Inter", sans-serif';
           c.fillStyle = '#6567C9';
           c.fillText(label, x, y);
         } else {
-          c.font = fontSize + ' "Inter", "Avenir Next Cyr", sans-serif';
+          c.font = fontSize + ' "Avenir", "Avenir Next Cyr", "Avenir", "Avenir Next Cyr", "Inter", sans-serif';
           c.fillStyle = '#7a6e62';
           c.fillText(label, x, y);
         }
@@ -220,10 +220,10 @@ document.addEventListener('DOMContentLoaded', function() {
           var groupedFontSize = mobile ? '9px' : '12px';
           if (isGrouped) {
             c.fillStyle = '#7a6e62';
-            c.font = groupedFontSize + ' "Inter", "Avenir Next Cyr", sans-serif';
+            c.font = groupedFontSize + ' "Avenir", "Avenir Next Cyr", "Avenir", "Avenir Next Cyr", "Inter", sans-serif';
           } else {
             c.fillStyle = isOurs ? '#6567C9' : '#7a6e62';
-            c.font = (isOurs ? '600 ' : '') + fontSize + ' "Inter", "Avenir Next Cyr", sans-serif';
+            c.font = (isOurs ? '600 ' : '') + fontSize + ' "Avenir", "Avenir Next Cyr", "Avenir", "Avenir Next Cyr", "Inter", sans-serif';
           }
           c.textAlign = 'left';
           c.textBaseline = 'middle';
@@ -315,8 +315,8 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             tooltip: {
               backgroundColor: 'rgba(0,0,0,0.75)',
-              titleFont: { size: 13, family: '"Inter", sans-serif' },
-              bodyFont: { size: 13, family: '"Inter", sans-serif' },
+              titleFont: { size: 13, family: '"Avenir", "Avenir Next Cyr", "Inter", sans-serif' },
+              bodyFont: { size: 13, family: '"Avenir", "Avenir Next Cyr", "Inter", sans-serif' },
               padding: 10,
               cornerRadius: 8,
               callbacks: {
@@ -334,7 +334,7 @@ document.addEventListener('DOMContentLoaded', function() {
               max: maxVal,
               grid: { display: false },
               ticks: {
-                font: { size: 12, family: '"Inter", sans-serif' },
+                font: { size: 12, family: '"Avenir", "Avenir Next Cyr", "Inter", sans-serif' },
                 color: '#9CA3AF',
                 stepSize: 5,
                 callback: function(value) { return value.toFixed(0); }
@@ -388,8 +388,8 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             tooltip: {
               backgroundColor: 'rgba(0,0,0,0.75)',
-              titleFont: { size: 13, family: '"Inter", sans-serif' },
-              bodyFont: { size: 13, family: '"Inter", sans-serif' },
+              titleFont: { size: 13, family: '"Avenir", "Avenir Next Cyr", "Inter", sans-serif' },
+              bodyFont: { size: 13, family: '"Avenir", "Avenir Next Cyr", "Inter", sans-serif' },
               padding: 10,
               cornerRadius: 8,
               callbacks: {
@@ -406,7 +406,7 @@ document.addEventListener('DOMContentLoaded', function() {
               max: maxVal,
               grid: { display: false },
               ticks: {
-                font: { size: 12, family: '"Inter", sans-serif' },
+                font: { size: 12, family: '"Avenir", "Avenir Next Cyr", "Inter", sans-serif' },
                 color: '#9CA3AF',
                 stepSize: 5,
                 callback: function(value) { return value.toFixed(0); }

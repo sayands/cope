@@ -497,7 +497,13 @@
     document.getElementById('rcNextBtn').addEventListener('click', function() { rcNavigateCarousel(1); });
 
     document.getElementById('rcStartBtn').addEventListener('click', function() {
-      if (!rcState.isPlaying) { rcResetChatWindows(); rcStartAnimation(); }
+      if (!rcState.isPlaying) {
+        rcResetChatWindows();
+        rcStartAnimation();
+        var vid = document.getElementById('rcHeroVideo');
+        vid.currentTime = 0;
+        vid.play();
+      }
     });
     document.getElementById('rcPauseBtn').addEventListener('click', function() {
       if (rcState.isPlaying) {
@@ -505,6 +511,7 @@
         rcState.isPlaying = false;
         rcState.isPaused = true;
         rcUpdateControlButtons();
+        document.getElementById('rcHeroVideo').pause();
       }
     });
     document.getElementById('rcResetBtn').addEventListener('click', function() {
@@ -514,6 +521,9 @@
       rcState.isPlaying = false;
       rcState.isPaused = false;
       rcUpdateControlButtons();
+      var vid = document.getElementById('rcHeroVideo');
+      vid.pause();
+      vid.currentTime = 0;
     });
   }
 

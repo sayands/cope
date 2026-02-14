@@ -42,16 +42,16 @@
           var startY = y - ((lines.length - 1) * lineHeight) / 2;
           lines.forEach(function(line, li) {
             if (li === 0) {
-              c.font = (isOurs ? '600 ' : '') + '13px "Inter", "Avenir Next Cyr", sans-serif';
+              c.font = (isOurs ? '600 ' : '') + '13px "Avenir", "Avenir Next Cyr", "Avenir", "Avenir Next Cyr", "Inter", sans-serif';
               c.fillStyle = isOurs ? oursColor : labelColor;
             } else {
-              c.font = '11px "Inter", "Avenir Next Cyr", sans-serif';
+              c.font = '11px "Avenir", "Avenir Next Cyr", "Avenir", "Avenir Next Cyr", "Inter", sans-serif';
               c.fillStyle = '#9CA3AF';
             }
             c.fillText(line, x, startY + li * lineHeight);
           });
         } else {
-          c.font = (isOurs ? '600 ' : '') + '13px "Inter", "Avenir Next Cyr", sans-serif';
+          c.font = (isOurs ? '600 ' : '') + '13px "Avenir", "Avenir Next Cyr", "Avenir", "Avenir Next Cyr", "Inter", sans-serif';
           c.fillStyle = isOurs ? oursColor : labelColor;
           c.fillText(lines[0], x, y);
         }
@@ -74,7 +74,7 @@
           var isOurs = typeof label === 'string' && label.indexOf('Ours') !== -1;
           c.save();
           c.fillStyle = isOurs ? oursColor : labelColor;
-          c.font = (isOurs ? '600 ' : '') + '13px "Inter", "Avenir Next Cyr", sans-serif';
+          c.font = (isOurs ? '600 ' : '') + '13px "Avenir", "Avenir Next Cyr", "Avenir", "Avenir Next Cyr", "Inter", sans-serif';
           c.textAlign = 'left';
           c.textBaseline = 'middle';
           c.fillText(value.toFixed(2) + 's', bar.x + 6, bar.y);
@@ -163,7 +163,7 @@
             display: mode === 'both',
             position: 'top',
             labels: {
-              font: { size: 13, family: '"Inter", "Avenir Next Cyr", sans-serif', weight: '500' },
+              font: { size: 13, family: '"Avenir", "Avenir Next Cyr", "Avenir", "Avenir Next Cyr", "Inter", sans-serif', weight: '500' },
               color: labelColor,
               usePointStyle: true,
               pointStyle: 'rectRounded',
@@ -175,8 +175,8 @@
           },
           tooltip: {
             backgroundColor: 'rgba(0,0,0,0.75)',
-            titleFont: { size: 13, family: '"Inter", sans-serif' },
-            bodyFont: { size: 13, family: '"Inter", sans-serif' },
+            titleFont: { size: 13, family: '"Avenir", "Avenir Next Cyr", "Inter", sans-serif' },
+            bodyFont: { size: 13, family: '"Avenir", "Avenir Next Cyr", "Inter", sans-serif' },
             padding: 10,
             cornerRadius: 8,
             callbacks: {
@@ -196,7 +196,7 @@
             max: maxVal,
             grid: { display: false },
             ticks: {
-              font: { size: 12, family: '"Inter", sans-serif' },
+              font: { size: 12, family: '"Avenir", "Avenir Next Cyr", "Inter", sans-serif' },
               color: '#9CA3AF',
               stepSize: 1,
               callback: function(value) { return value.toFixed(0) + 's'; }
