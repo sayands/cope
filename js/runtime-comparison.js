@@ -231,7 +231,7 @@
     var pauseBtn = document.getElementById('rcPauseBtn');
     var resetBtn = document.getElementById('rcResetBtn');
     if (rcState.isPlaying) {
-      startBtn.textContent = '\u25B6 Playing...';
+      startBtn.textContent = '\u25B6 Start';
       startBtn.disabled = true;
       pauseBtn.disabled = false;
       resetBtn.disabled = false;

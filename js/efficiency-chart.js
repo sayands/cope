@@ -1,7 +1,7 @@
 (function() {
   var oursColor = '#6567C9';
-  var baseColor = '#9a8c7e';
-  var labelColor = '#7a6e62';
+  var baseColor = '#5B93D4';
+  var labelColor = '#3A7BC8';
 
   /* Data from the table: { tokens%, accuracy } */
   var effData = {
@@ -126,9 +126,9 @@
 
   /* Single benchmark color schemes */
   var benchmarkColors = {
-    perceptiontest: { base: '#9a8c7e', ours: '#6567C9' },
-    nextqa:         { base: '#b8a99a', ours: '#8486d9' },
-    actnetqa:       { base: '#c4b5a5', ours: '#a5a6e3' }
+    perceptiontest: { base: '#5B93D4', ours: '#6567C9' },
+    nextqa:         { base: '#7BAADE', ours: '#8486d9' },
+    actnetqa:       { base: '#9BC2E8', ours: '#a5a6e3' }
   };
 
   function buildDatasets(mode) {

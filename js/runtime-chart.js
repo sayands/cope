@@ -14,7 +14,7 @@
   var oursColorLight = '#b8b9e8';
   var baseColor = '#E5E7EB';
   var baseColorDark = '#D1D5DB';
-  var labelColor = '#7a6e62';
+  var labelColor = '#3A7BC8';
 
   var ctx = document.getElementById('runtimeChart');
   if (!ctx) return;

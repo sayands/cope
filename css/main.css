@@ -2,18 +2,18 @@
 .slider-navigation-next {
     margin-top: -32px !important;
     color: white !important;
-    background: #9a8c7e !important;
+    background: #5B93D4 !important;
 }
 
 .slider-navigation-previous {
     margin-top: -32px !important;
     color: white !important;
-    background: #9a8c7e !important;
+    background: #5B93D4 !important;
 }
 
 .slider-page {
     color: white !important;
-    background: #9a8c7e !important;
+    background: #5B93D4 !important;
 }
 
 * {
@@ -21,12 +21,12 @@
 }
 
 a {
-    color: #9a8c7e;
+    color: #5B93D4;
     text-decoration: none;
 }
   
 a.link:focus, a.link:hover {
-    color: #b8a99a;
+    color: #7BAADE;
     text-decoration: none;
 }
 
@@ -201,7 +201,7 @@ video {
     color: white;
     font-size: 12px;
     font-weight: 600;
-    background: #9a8c7e;
+    background: #5B93D4;
     border-radius: 16px;
     display: flex;
     align-items: center;
@@ -211,7 +211,7 @@ video {
 .x-button {
     height: 40px;
     padding: 0px 14px;
-    background: #9a8c7e;
+    background: #5B93D4;
     color: white;
     border-radius: 50px;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
@@ -238,7 +238,7 @@ video {
 }
 
 .x-gradient-font {
-    background: linear-gradient(107.54deg, #9a8c7e .39%, #b8a99a 51.23%, #c4b5a5 100%);
+    background: #3A7BC8;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -246,7 +246,7 @@ video {
 
 .x-gradient-block {
     color: #3f3f3f;
-    background: linear-gradient(107.54deg, #f0ebe5 .39%, #ede5dc 51.23%, #f5f0eb 100%);
+    background: #EEF4FB;
     border-radius: 16px;
 }
 
@@ -268,7 +268,7 @@ video {
     z-index: -1;
     margin: -3px;
     border-radius: 16px;
-    background: linear-gradient(107.54deg, #9a8c7e .39%, #b8a99a 51.23%, #c4b5a5 100%);
+    background: #5B93D4;
 }
 
 .x-section-title {
@@ -433,7 +433,7 @@ video {
     color: white;
     font-size: 16px;
     font-weight: 500;
-    background: linear-gradient(107.54deg, #9a8c7e .39%, #b8a99a 51.23%, #c4b5a5 100%) fixed;
+    background: #5B93D4;
     border-radius: 50px;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
     display: flex;
@@ -553,22 +553,25 @@ video {
 #bottombar {
     position: absolute;
     bottom: 0px;
-    height: 60px;
     width: 100%;
-    background: linear-gradient(107.54deg, #9a8c7e .39%, #b8a99a 51.23%, #c4b5a5 100%);
+    padding: 14px 0;
+    background: #5B93D4;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     user-select: none;
+    box-sizing: border-box;
 }
 
 #bottombar .row {
-    width: 80%;
-    padding: 0px 10%;
+    width: 90%;
+    max-width: 1200px;
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    gap: 8px;
     user-select: none;
 }
 
@@ -651,10 +654,10 @@ video {
     cursor: pointer;
     transition: all 0.2s ease;
     padding: 8px 16px;
-    border: 1.5px solid rgba(154, 140, 126, 0.2);
+    border: 1.5px solid rgba(58, 123, 200, 0.2);
     border-radius: 8px;
-    background: #f5f0eb;
-    color: #9a8c7e;
+    background: #EEF4FB;
+    color: #5B93D4;
     font-size: 14px;
     font-weight: 500;
     font-family: inherit;
@@ -665,26 +668,26 @@ video {
 .benchmark-btn.green,
 .benchmark-btn.orange,
 .benchmark-btn.purple {
-    background: #f5f0eb;
-    color: #7a6e62;
-    border-color: rgba(122, 110, 98, 0.3);
+    background: #EEF4FB;
+    color: #3A7BC8;
+    border-color: rgba(58, 123, 200, 0.3);
 }
 
 .benchmark-btn:hover,
 .benchmark-btn.green:hover,
 .benchmark-btn.orange:hover,
 .benchmark-btn.purple:hover {
-    border-color: #7a6e62;
-    color: #7a6e62;
+    border-color: #3A7BC8;
+    color: #3A7BC8;
 }
 
 .benchmark-btn.is-active,
 .benchmark-btn.green.is-active,
 .benchmark-btn.orange.is-active,
 .benchmark-btn.purple.is-active {
-    background: linear-gradient(120deg, #7a6e62 0%, #9a8c7e 50%, #b8a99a 100%);
+    background: #5B93D4;
     color: #fff;
-    border-color: #7a6e62;
+    border-color: #5B93D4;
     font-weight: 600;
 }
 
@@ -816,16 +819,8 @@ video {
         padding-left: 20px;
     }
 
-    #bottombar {
-        height: auto;
-        padding: 12px 0;
-    }
-
     #bottombar .row {
-        width: 90%;
-        padding: 0px 5%;
         flex-direction: column;
-        gap: 8px;
         text-align: center;
     }
 

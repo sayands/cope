@@ -193,7 +193,7 @@ document.addEventListener('DOMContentLoaded', function() {
           c.fillText(label, x, y);
         } else {
           c.font = fontSize + ' "Avenir", "Avenir Next Cyr", "Avenir", "Avenir Next Cyr", "Inter", sans-serif';
-          c.fillStyle = '#7a6e62';
+          c.fillStyle = '#3A7BC8';
           c.fillText(label, x, y);
         }
         c.restore();
@@ -219,10 +219,10 @@ document.addEventListener('DOMContentLoaded', function() {
           var fontSize = mobile ? '10px' : '13px';
           var groupedFontSize = mobile ? '9px' : '12px';
           if (isGrouped) {
-            c.fillStyle = '#7a6e62';
+            c.fillStyle = '#3A7BC8';
             c.font = groupedFontSize + ' "Avenir", "Avenir Next Cyr", "Avenir", "Avenir Next Cyr", "Inter", sans-serif';
           } else {
-            c.fillStyle = isOurs ? '#6567C9' : '#7a6e62';
+            c.fillStyle = isOurs ? '#6567C9' : '#3A7BC8';
             c.font = (isOurs ? '600 ' : '') + fontSize + ' "Avenir", "Avenir Next Cyr", "Avenir", "Avenir Next Cyr", "Inter", sans-serif';
           }
           c.textAlign = 'left';

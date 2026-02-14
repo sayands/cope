@@ -2,7 +2,7 @@
   var ctx = document.getElementById('scalingChart');
   if (!ctx) return;
 
-  var labelColor = '#7a6e62';
+  var labelColor = '#3A7BC8';
   var oursColor = '#6567C9';
   var baselineColor = '#C00000';
 
@@ -163,7 +163,7 @@
           },
           ticks: {
             font: { size: 12, weight: '600', family: '"Avenir", "Avenir Next Cyr", "Inter", sans-serif' },
-            color: '#7a6e62',
+            color: '#3A7BC8',
             callback: function(value) {
               var idx = tokenBudgets.indexOf(value);
               if (idx !== -1) return tokenLabels[idx];
@@ -193,7 +193,7 @@
           },
           ticks: {
             font: { size: 12, weight: '600', family: '"Avenir", "Avenir Next Cyr", "Inter", sans-serif' },
-            color: '#7a6e62',
+            color: '#3A7BC8',
             stepSize: 60,
             callback: function(value) {
               if (value === 0) return '0';

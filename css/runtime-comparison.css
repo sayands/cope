@@ -5,8 +5,8 @@
   --rc-border: #d1d5db;
   --rc-text: #1f2937;
   --rc-muted: #6b7280;
-  --rc-accent-green: #9a8c7e;
-  --rc-accent-orange: #b8a99a;
+  --rc-accent-green: #5B93D4;
+  --rc-accent-orange: #7BAADE;
   --rc-bubble-right: #16a34a;
   --rc-bubble-left: #111827;
   --rc-radius-xl: 1.75rem;
@@ -216,7 +216,7 @@
   transform: translateY(-1px); box-shadow: 0 3px 8px rgba(0,0,0,0.08);
 }
 .rc-control-btn:active { transform: translateY(0); }
-.rc-control-btn.rc-start { background: rgba(154,140,126,0.1); border-color: rgba(154,140,126,0.4); color: #9a8c7e; }
+.rc-control-btn.rc-start { background: rgba(74,124,181,0.1); border-color: rgba(74,124,181,0.4); color: #5B93D4; }
 .rc-control-btn.rc-start:hover:not(:disabled) { background: rgba(154,140,126,0.2); border-color: rgba(154,140,126,0.6); }
 .rc-control-btn.rc-pause { background: rgba(251,146,60,0.1); border-color: rgba(251,146,60,0.4); color: #ea580c; }
 .rc-control-btn.rc-pause:hover:not(:disabled) { background: rgba(251,146,60,0.2); border-color: rgba(251,146,60,0.6); }
