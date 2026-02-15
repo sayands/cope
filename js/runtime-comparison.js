@@ -180,6 +180,46 @@
           visionTokens: 1320
         }
       }
+    },
+    {
+      videoSrc: "assets/videos/video_example5.mp4",
+      caption: "Input Video",
+      conversations: [
+        { key:"q1", label:"Question 1",
+          phone1:{ question:"What is happening in the video? Describe in one sentence.", answer:"The video shows a race between two athletes, one in a blue uniform and the other in a white and red uniform." },
+          phone2:{ question:"What is happening in the video? Describe in one sentence.", answer:"The video shows a race between two athletes, one in blue and the other in white and red, with the blue athlete winning impressively." }
+        },
+        { key:"q2", label:"Question 2",
+          phone1:{ question:"Which runner performed the leg-slapping motion before running?", answer:"The athlete in the blue uniform performed the leg-slapping motion before running." },
+          phone2:{ question:"Which runner performed the leg-slapping motion before running?", answer:"The white and red runner performed the leg-slapping motion before running." }
+        },
+        { key:"q3", label:"Question 3",
+          phone1:{ question:"Who won the race?", answer:"The athlete in the blue uniform won the race." },
+          phone2:{ question:"Who won the race?", answer:"The blue athlete won the race." }
+        }
+      ],
+      metrics: {
+        phone1: { /* LLaVA-Video-7B */
+          questions: [
+            { ttft: 1.2972, e2el: 6.5145 },
+            { ttft: 0.0004, e2el: 0.4334 },
+            { ttft: 0.0004, e2el: 0.2989 }
+          ],
+          avgTtft: 0.4327,
+          avgE2el: 2.4156,
+          visionTokens: 9870
+        },
+        phone2: { /* CoPE-VideoLM-7B */
+          questions: [
+            { ttft: 0.7096, e2el: 1.7034 },
+            { ttft: 0.0004, e2el: 0.3955 },
+            { ttft: 0.0004, e2el: 0.2033 }
+          ],
+          avgTtft: 0.2368,
+          avgE2el: 0.7674,
+          visionTokens: 1629
+        }
+      }
     }
   ];
 
