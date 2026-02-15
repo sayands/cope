@@ -149,7 +149,7 @@
                 <!-- LEFT PANE -->
                 <section class="rc-left-pane">
                   <div class="rc-hero-video-wrapper">
-                    <video class="rc-hero-video" id="rcHeroVideo" muted loop playsinline>
+                    <video class="rc-hero-video" id="rcHeroVideo" muted loop playsinline autoplay>
                       <source src="assets/videos/video_example1.mp4" type="video/mp4" id="rcVideoSource" />
                       Your browser does not support the video tag.
                     </video>
@@ -158,8 +158,9 @@
 
                   <!-- Carousel Navigation -->
                   <div class="rc-carousel-nav">
+                    <button class="rc-carousel-arrow" id="rcPrevBtn" aria-label="Previous video">&#8249;</button>
                     <div class="rc-carousel-dots" id="rcCarouselDots"></div>
-                    <span class="rc-carousel-indicator" id="rcCarouselIndicator" style="display:none;"></span>
+                    <button class="rc-carousel-arrow" id="rcNextBtn" aria-label="Next video">&#8250;</button>
                   </div>
 
 
@@ -226,16 +227,6 @@
                 </section>
               </div>
 
-              <!-- Controls below content -->
-              <div class="rc-header" style="margin-top: 16px;">
-                <div class="rc-control-panel" id="rcControlPanel">
-                  <button class="rc-control-btn rc-nav" id="rcPrevBtn">&#8592; Prev</button>
-                  <button class="rc-control-btn rc-start" id="rcStartBtn">&#9654; Start</button>
-                  <button class="rc-control-btn rc-pause" id="rcPauseBtn" disabled>&#9208; Pause</button>
-                  <button class="rc-control-btn rc-reset" id="rcResetBtn">&#8635; Reset</button>
-                  <button class="rc-control-btn rc-nav" id="rcNextBtn">Next &#8594;</button>
-                </div>
-              </div>
             </div>
 
             <!-- ==================== Runtime and Memory ==================== -->

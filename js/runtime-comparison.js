@@ -228,7 +228,7 @@
   var defaultMsPerToken = { phone1: 1390 / 64, phone2: 1330 / 64 };
 
   /* ──── State ──── */
-  var rcState = { isPlaying: false, isPaused: false, timeouts: [], intervals: [] };
+  var rcState = { isPlaying: false, timeouts: [], intervals: [] };
   var currentVideoIndex = 0;
   var conversationScript = videoCarousel[0].conversations;
 
@@ -373,26 +373,11 @@
     });
   }
 
-  function rcUpdateControlButtons() {
-    var startBtn = document.getElementById('rcStartBtn');
-    var pauseBtn = document.getElementById('rcPauseBtn');
-    var resetBtn = document.getElementById('rcResetBtn');
-    if (rcState.isPlaying) {
-      startBtn.textContent = '\u25B6 Start';
-      startBtn.disabled = true;
-      pauseBtn.disabled = false;
-      resetBtn.disabled = false;
-    } else if (rcState.isPaused) {
-      startBtn.textContent = '\u25B6 Resume';
-      startBtn.disabled = false;
-      pauseBtn.disabled = true;
-      resetBtn.disabled = false;
-    } else {
-      startBtn.textContent = '\u25B6 Start';
-      startBtn.disabled = false;
-      pauseBtn.disabled = true;
-      resetBtn.disabled = false;
-    }
+  function rcUpdateArrowButtons() {
+    var prevBtn = document.getElementById('rcPrevBtn');
+    var nextBtn = document.getElementById('rcNextBtn');
+    prevBtn.disabled = currentVideoIndex === 0;
+    nextBtn.disabled = currentVideoIndex === videoCarousel.length - 1;
   }
 
   /* ──── Results summary ──── */
@@ -547,12 +532,15 @@
   /* ──── Main animation ──── */
   function rcStartAnimation() {
     if (!conversationScript.length) return;
+    rcClearAllTimers();
+    rcResetChatWindows();
+    rcResetResultsPanel();
     rcState.isPlaying = true;
-    rcState.isPaused = false;
-    rcUpdateControlButtons();
 
-    var phone1Total = 0;
-    var phone2Total = 0;
+    var vid = document.getElementById('rcHeroVideo');
+    vid.currentTime = 0;
+    vid.play();
+
     var p1Delay = 0;
     var p2Delay = 0;
 
@@ -564,23 +552,25 @@
       p2Delay += p2Turn + 1000;
     }
 
-    phone1Total = p1Delay - 1000;
-    phone2Total = p2Delay - 1000;
+    var phone1Total = p1Delay - 1000;
+    var phone2Total = p2Delay - 1000;
 
     /* Mark phone1 orange after first question's TTFT */
     var firstTtft = getTtftDelay('phone1', 0);
-    setTimeout(function() {
+    rcTrackedTimeout(function() {
       document.getElementById('rc-phone-1').classList.add('is-orange');
     }, firstTtft * 1000 + 400);
 
     var totalDuration = Math.max(phone1Total, phone2Total);
-    setTimeout(function() {
+    rcTrackedTimeout(function() {
       rcShowResultsSummary();
     }, totalDuration + 500);
-    setTimeout(function() {
+
+    /* Loop: after showing results for a while, restart */
+    rcTrackedTimeout(function() {
       rcState.isPlaying = false;
-      rcUpdateControlButtons();
-    }, totalDuration + 2000);
+      rcStartAnimation();
+    }, totalDuration + 5000);
   }
 
   /* ──── Carousel ──── */
@@ -592,43 +582,39 @@
       dot.className = 'rc-carousel-dot';
       if (idx === currentVideoIndex) dot.classList.add('active');
       dot.addEventListener('click', function() {
-        if (rcState.isPlaying) return;
+        rcClearAllTimers();
+        rcState.isPlaying = false;
         currentVideoIndex = idx;
         conversationScript = videoCarousel[currentVideoIndex].conversations;
         rcUpdateCarouselUI();
-        rcResetChatWindows();
-        rcResetResultsPanel();
+        rcStartAnimation();
       });
       dotsContainer.appendChild(dot);
     });
   }
 
   function rcUpdateCarouselUI() {
-    var prevBtn = document.getElementById('rcPrevBtn');
-    var nextBtn = document.getElementById('rcNextBtn');
-    var indicator = document.getElementById('rcCarouselIndicator');
     var videoSource = document.getElementById('rcVideoSource');
     var heroVideo = document.getElementById('rcHeroVideo');
     var videoCaption = document.getElementById('rcVideoCaption');
-    prevBtn.disabled = currentVideoIndex === 0;
-    nextBtn.disabled = currentVideoIndex === videoCarousel.length - 1;
-    indicator.textContent = (currentVideoIndex + 1) + ' / ' + videoCarousel.length;
+    rcUpdateArrowButtons();
     videoSource.src = videoCarousel[currentVideoIndex].videoSrc;
     heroVideo.load();
+    heroVideo.play();
     videoCaption.textContent = videoCarousel[currentVideoIndex].caption;
     var dots = document.querySelectorAll('.rc-carousel-dot');
     dots.forEach(function(dot, idx) { dot.classList.toggle('active', idx === currentVideoIndex); });
   }
 
   function rcNavigateCarousel(direction) {
-    if (rcState.isPlaying) return;
     var newIdx = currentVideoIndex + direction;
     if (newIdx >= 0 && newIdx < videoCarousel.length) {
+      rcClearAllTimers();
+      rcState.isPlaying = false;
       currentVideoIndex = newIdx;
       conversationScript = videoCarousel[currentVideoIndex].conversations;
       rcUpdateCarouselUI();
-      rcResetChatWindows();
-      rcResetResultsPanel();
+      rcStartAnimation();
     }
   }
 
@@ -643,35 +629,8 @@
     document.getElementById('rcPrevBtn').addEventListener('click', function() { rcNavigateCarousel(-1); });
     document.getElementById('rcNextBtn').addEventListener('click', function() { rcNavigateCarousel(1); });
 
-    document.getElementById('rcStartBtn').addEventListener('click', function() {
-      if (!rcState.isPlaying) {
-        rcResetChatWindows();
-        rcStartAnimation();
-        var vid = document.getElementById('rcHeroVideo');
-        vid.currentTime = 0;
-        vid.play();
-      }
-    });
-    document.getElementById('rcPauseBtn').addEventListener('click', function() {
-      if (rcState.isPlaying) {
-        rcClearAllTimers();
-        rcState.isPlaying = false;
-        rcState.isPaused = true;
-        rcUpdateControlButtons();
-        document.getElementById('rcHeroVideo').pause();
-      }
-    });
-    document.getElementById('rcResetBtn').addEventListener('click', function() {
-      rcClearAllTimers();
-      rcResetChatWindows();
-      rcResetResultsPanel();
-      rcState.isPlaying = false;
-      rcState.isPaused = false;
-      rcUpdateControlButtons();
-      var vid = document.getElementById('rcHeroVideo');
-      vid.pause();
-      vid.currentTime = 0;
-    });
+    /* Autoplay on load */
+    rcStartAnimation();
   }
 
   if (document.readyState === 'loading') {
