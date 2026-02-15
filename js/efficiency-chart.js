@@ -266,7 +266,7 @@
               font: { size: 12, family: '"Avenir", "Avenir Next Cyr", "Inter", sans-serif' },
               color: '#9CA3AF',
               stepSize: 20,
-              callback: function(value) { return value + '%'; }
+              callback: function(value) { return value; }
             },
             title: {
               display: true,
@@ -287,7 +287,7 @@
               font: { size: 12, family: '"Avenir", "Avenir Next Cyr", "Inter", sans-serif' },
               color: '#9CA3AF',
               stepSize: 5,
-              callback: function(value) { return value.toFixed(0) + '%'; }
+              callback: function(value) { return value.toFixed(0); }
             },
             title: {
               display: true,

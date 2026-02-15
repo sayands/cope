@@ -399,11 +399,11 @@
       }
       html += '</div>';
       html += '<div class="rc-token-bar-row">';
-      html += '<span class="rc-token-bar-label rc-llava">LLaVA</span>';
+      html += '<span class="rc-token-bar-label rc-llava">LLaVA-Video</span>';
       html += '<div class="rc-token-bar-track"><div class="rc-token-bar-fill rc-llava" style="width:0%" data-target="' + pct1 + '"></div></div>';
       html += '</div>';
       html += '<div class="rc-token-bar-row">';
-      html += '<span class="rc-token-bar-label rc-cope">CoPE</span>';
+      html += '<span class="rc-token-bar-label rc-cope">CoPE-VideoLM</span>';
       html += '<div class="rc-token-bar-track"><div class="rc-token-bar-fill rc-cope" style="width:0%" data-target="' + pct2 + '"></div></div>';
       html += '</div>';
       html += '</div>';
