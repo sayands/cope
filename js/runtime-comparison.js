@@ -13,7 +13,7 @@
         },
         { key:"q2", label:"Question 2",
           phone1:{ question:"What are the ingredients being used?", answer:"The ingredients being used are slices of bread, butter, ham, and tomato." },
-          phone2:{ question:"What are the ingredients being used?", answer:"The ingredients are slices of white bread, butter, and slices of ham." }
+          phone2:{ question:"What are the ingredients being used?", answer:"The ingredients are slices of white bread, butter, slices of ham and tomato." }
         },
         { key:"q3", label:"Question 3",
           phone1:{ question:"What is inside the cup?", answer:"The cup contains a tea bag." },
@@ -154,8 +154,8 @@
           phone2:{ question:"Where is the person in blue chopping wood?", answer:"In a backyard setting." }
         },
         { key:"q3", label:"Question 3",
-          phone1:{ question:"Is the left wrist worn by a person in blue?", answer:"Yes." },
-          phone2:{ question:"Is the left wrist worn by a person in blue?", answer:"Yes." }
+          phone1:{ question:"Is the person the cufflinks on his left wrist?", answer:"Yes." },
+          phone2:{ question:"Is the person the cufflinks on his left wrist?", answer:"Yes." }
         }
       ],
       metrics: {

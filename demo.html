@@ -1,0 +1,123 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CoPE-VideoLM — Interactive Runtime Comparison</title>
+        <link rel="icon" type="image/png" href="assets/logos/logo.png">
+        <link rel="stylesheet" href="fonts/avenir-next/stylesheet.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/runtime-comparison.css">
+    </head>
+    <body>
+        <div id="main">
+            <div id="title" class="x-gradient-font">
+              <span style="font-size: 80px;"><img src="assets/logos/logo.png" alt="CoPE-VideoLM Logo" style="height: 80px; vertical-align: top; margin-right: 20px;">CoPE-VideoLM</span><br>
+                <span style="font-size: 28px;">Interactive Runtime Comparison</span>
+            </div>
+
+            <!-- ==================== Interactive Runtime Comparison ==================== -->
+            <p style="text-align: center; max-width: 720px; margin: 0 auto 24px;">
+              User chat experience comparing LLaVA-Video and CoPE-VideoLM at 1 FPS video input.
+            </p>
+            <div id="runtime-comparison">
+              <!-- Controls above content -->
+              <div class="rc-header" style="margin-bottom: 16px;">
+                <div class="rc-control-panel" id="rcControlPanel">
+                  <button class="rc-control-btn rc-nav" id="rcPrevBtn">&#8592; Prev</button>
+                  <button class="rc-control-btn rc-start" id="rcStartBtn">&#9654; Start</button>
+                  <button class="rc-control-btn rc-pause" id="rcPauseBtn" disabled>&#9208; Pause</button>
+                  <button class="rc-control-btn rc-reset" id="rcResetBtn">&#8635; Reset</button>
+                  <button class="rc-control-btn rc-nav" id="rcNextBtn">Next &#8594;</button>
+                </div>
+              </div>
+
+              <div class="rc-content">
+                <!-- LEFT PANE -->
+                <section class="rc-left-pane">
+                  <div class="rc-hero-video-wrapper">
+                    <video class="rc-hero-video" id="rcHeroVideo" muted loop playsinline>
+                      <source src="assets/videos/video_example1.mp4" type="video/mp4" id="rcVideoSource" />
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                  <div class="rc-video-caption" id="rcVideoCaption">Input Video</div>
+
+                  <!-- Carousel Navigation -->
+                  <div class="rc-carousel-nav">
+                    <div class="rc-carousel-dots" id="rcCarouselDots"></div>
+                    <span class="rc-carousel-indicator" id="rcCarouselIndicator" style="display:none;"></span>
+                  </div>
+                </section>
+
+                <!-- RIGHT PANE: PHONES -->
+                <section class="rc-right-pane">
+                  <div class="rc-phones">
+                    <!-- PHONE 1 -->
+                    <div class="rc-phone">
+                      <div class="rc-phone-shell" id="rc-phone-1">
+                        <div class="rc-phone-notch"></div>
+                        <div class="rc-phone-screen">
+                          <div class="rc-status-row">
+                            <div class="rc-status-left">
+                              <span class="rc-status-dot"></span>
+                              <span>Chat</span>
+                            </div>
+                            <div class="rc-status-right">
+                              <span>9:41</span>
+                              <span class="rc-status-bar-icon"></span>
+                            </div>
+                          </div>
+
+                          <div class="rc-chat-header">
+                            <div class="rc-chat-contact-name">LLaVA-Video</div>
+                          </div>
+
+                          <div class="rc-chat-window" data-role="rc-chat-window"></div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- PHONE 2 -->
+                    <div class="rc-phone">
+                      <div class="rc-phone-shell" id="rc-phone-2">
+                        <div class="rc-phone-notch"></div>
+                        <div class="rc-phone-screen">
+                          <div class="rc-status-row">
+                            <div class="rc-status-left">
+                              <span class="rc-status-dot"></span>
+                              <span>Chat</span>
+                            </div>
+                            <div class="rc-status-right">
+                              <span>9:41</span>
+                              <span class="rc-status-bar-icon"></span>
+                            </div>
+                          </div>
+
+                          <div class="rc-chat-header">
+                            <div class="rc-chat-contact-name">CoPE-VideoLM</div>
+                          </div>
+
+                          <div class="rc-chat-window" data-role="rc-chat-window"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Results Summary Panel -->
+                  <div class="rc-progress-panel" id="rcProgressPanel">
+                    <div class="rc-progress-summary" id="rcProgressSummary"></div>
+                  </div>
+                </section>
+
+              </div>
+            </div>
+
+        </div>
+
+        <!-- ==================== Runtime Comparison Script ==================== -->
+        <script src="js/runtime-comparison.js"></script>
+    </body>
+</html>
