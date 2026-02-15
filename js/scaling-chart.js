@@ -5,6 +5,7 @@
   var labelColor = '#3A7BC8';
   var oursColor = '#6567C9';
   var baselineColor = '#C00000';
+  var hasAnimated = false;
 
   /*
    * Data computed from paper formulas:
@@ -35,6 +36,9 @@
     if (h === Math.floor(h)) return Math.floor(h) + 'h';
     return h.toFixed(1) + 'h';
   }
+
+  /* Store empty data initially; populate on scroll */
+  var fullDatasets = null;
 
   var chart = new Chart(ctx, {
     type: 'scatter',
@@ -113,7 +117,33 @@
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      animation: { duration: 800, easing: 'easeOutQuart' },
+      animation: {
+        x: {
+          type: 'number',
+          easing: 'easeOutQuart',
+          duration: function(ctx) { return 1200 + ctx.dataIndex * 200; },
+          from: NaN,
+          delay: function(ctx) { return ctx.datasetIndex * 300 + ctx.dataIndex * 100; }
+        },
+        y: {
+          type: 'number',
+          easing: 'easeOutQuart',
+          duration: function(ctx) { return 1200 + ctx.dataIndex * 200; },
+          from: function(ctx) {
+            if (ctx.type === 'data' && ctx.mode === 'default' && !ctx.dropped) {
+              ctx.dropped = true;
+              return ctx.chart.scales.y.getPixelForValue(0);
+            }
+          },
+          delay: function(ctx) { return ctx.datasetIndex * 300 + ctx.dataIndex * 100; }
+        },
+        radius: {
+          duration: 400,
+          easing: 'linear',
+          from: 0,
+          delay: function(ctx) { return ctx.datasetIndex * 300 + ctx.dataIndex * 100; }
+        }
+      },
       layout: { padding: { top: 16, right: 20, bottom: 10, left: 10 } },
       plugins: {
         legend: {
@@ -267,4 +297,46 @@
       }
     }]
   });
+
+  /* Trigger animation on scroll into view */
+  if ('IntersectionObserver' in window) {
+    var chartContainer = ctx.closest('.chart-container') || ctx.parentElement;
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting && !hasAnimated) {
+          hasAnimated = true;
+          /* Force re-animation by resetting and updating */
+          chart.data.datasets.forEach(function(ds) {
+            ds.data = ds.data.map(function(pt) { return { x: pt.x, y: pt.y }; });
+          });
+          chart.update();
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+    observer.observe(chartContainer);
+
+    /* Initially hide data to prevent animation on load */
+    var savedData = chart.data.datasets.map(function(ds) {
+      return ds.data.slice();
+    });
+    chart.data.datasets.forEach(function(ds) { ds.data = []; });
+    chart.update('none');
+
+    /* Override observer callback to restore data */
+    observer.disconnect();
+    observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting && !hasAnimated) {
+          hasAnimated = true;
+          chart.data.datasets.forEach(function(ds, i) {
+            ds.data = savedData[i];
+          });
+          chart.update();
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+    observer.observe(chartContainer);
+  }
 })();

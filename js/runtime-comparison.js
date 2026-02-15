@@ -4,37 +4,6 @@
   /* ──── Config Data ──── */
   var videoCarousel = [
     {
-      videoSrc: "assets/videos/video_example1.mp4",
-      caption: "Input Video",
-      conversations: [
-        { key:"q1", label:"Question 1",
-          phone1:{ question:"What is the score & time remaining in the first period of the hockey game?", answer:"The game is scoreless with 13:38 left on the clock." },
-          phone2:{ question:"What is the score & time remaining in the first period of the hockey game?", answer:"The score is tied at 0-0 with 13:38 remaining." }
-        },
-        { key:"q2", label:"Question 2",
-          phone1:{ question:"What happens to the player, number 52, during the game?", answer:"He's hurt and ends up falling on the ice several times throughout the game." },
-          phone2:{ question:"What happens to the player, number 52, during the game?", answer:"He is injured and falls to the ice multiple times during the game." }
-        },
-        { key:"q3", label:"Question 3",
-          phone1:{ question:"Who attends to the injured Toronto player, number 52?", answer:"A healthcare worker wearing a blue jacket." },
-          phone2:{ question:"Who attends to the injured Toronto player, number 52?", answer:"A medical staff member wearing a blue jacket." }
-        },
-        { key:"q4", label:"Question 4",
-          phone1:{ question:"Which player pushed player number 52?", answer:"Player 52 is being pushed by the player wearing the black-and-yellow jersey with number 46." },
-          phone2:{ question:"Which player pushed player number 52?", answer:"Player 52 was pushed by the player wearing the black-and-yellow jersey with number 46." }
-        },
-        { key:"q5", label:"Question 5",
-          phone1:{ question:"Which player is fighting with player number 51?", answer:"The player wearing number 51 (in the white-and-blue uniform) is engaged with a player wearing a dark jersey with yellow accents." },
-          phone2:{ question:"Which player is fighting with player number 51?", answer:"The player wearing a dark jersey with yellow accents is fighting with player number 51." }
-        },
-        { key:"q6", label:"Question 6",
-          phone1:{ question:"Which country broadcasts this program?", answer:'The logo says "Hockey Night in Canada", which is a well-known broadcast program from Canada.' },
-          phone2:{ question:"Which country broadcasts this program?", answer:"Based on the logo, this program is broadcasted in Canada." }
-        }
-      ],
-      metrics: null /* No timing data available yet */
-    },
-    {
       videoSrc: "assets/videos/video_example2.mp4",
       caption: "Input Video",
       conversations: [
@@ -70,6 +39,144 @@
           ],
           avgTtft: 0.1284,
           avgE2el: 0.5103,
+          visionTokens: 1320
+        }
+      }
+    },
+    {
+      videoSrc: "assets/videos/video_example1.mp4",
+      caption: "Input Video",
+      conversations: [
+        { key:"q1", label:"Question 1",
+          phone1:{ question:"What is the score & time remaining in the first period of the hockey game?", answer:"The score is 0-0 with 13:38 remaining in the first period." },
+          phone2:{ question:"What is the score & time remaining in the first period of the hockey game?", answer:"The score is tied at 0-0 with 13:38 remaining in the first period." }
+        },
+        { key:"q2", label:"Question 2",
+          phone1:{ question:"What happens to the player, number 52, during the game?", answer:"The player, number 52, is seen lying on the ice near the boards, appearing to be in pain." },
+          phone2:{ question:"What happens to the player, number 52, during the game?", answer:"The player, number 52, is seen lying on the ice, appearing to be injured." }
+        },
+        { key:"q3", label:"Question 3",
+          phone1:{ question:"Who attends to the injured Toronto player, number 52?", answer:"A medical staff member in a blue uniform attends to the injured player." },
+          phone2:{ question:"Who attends to the injured Toronto player, number 52?", answer:"A medical staff member in a blue jacket attends to the injured player." }
+        },
+        { key:"q4", label:"Question 4",
+          phone1:{ question:"Which player pushed player number 52?", answer:"Player number 46 from the Boston team pushed player number 52." },
+          phone2:{ question:"Which player pushed player number 52?", answer:"Player number 46 from the Boston Bruins pushed player number 52." }
+        },
+        { key:"q5", label:"Question 5",
+          phone1:{ question:"Which player is fighting with player number 51?", answer:"Player number 46 from the Boston team is fighting with player number 51 from the Toronto team." },
+          phone2:{ question:"Which player is fighting with player number 51?", answer:"Player number 46 from the Boston Bruins is fighting with player number 51." }
+        },
+        { key:"q6", label:"Question 6",
+          phone1:{ question:"Which country broadcasts this program?", answer:"The program is broadcasted in Canada." },
+          phone2:{ question:"Which country broadcasts this program?", answer:"The program is broadcast in Canada." }
+        }
+      ],
+      metrics: {
+        phone1: { /* LLaVA-Video-7B */
+          questions: [
+            { ttft: 2.7863, e2el: 11.2522 },
+            { ttft: 0.0004, e2el: 0.7350 },
+            { ttft: 0.0004, e2el: 0.4326 },
+            { ttft: 0.0003, e2el: 0.4737 },
+            { ttft: 0.0003, e2el: 0.6329 },
+            { ttft: 0.0004, e2el: 0.2776 }
+          ],
+          avgTtft: 0.4647,
+          avgE2el: 2.3006,
+          visionTokens: 13440
+        },
+        phone2: { /* CoPE-VideoLM-7B */
+          questions: [
+            { ttft: 1.0465, e2el: 2.0410 },
+            { ttft: 0.0004, e2el: 0.5563 },
+            { ttft: 0.0004, e2el: 0.7387 },
+            { ttft: 0.0003, e2el: 0.3981 },
+            { ttft: 0.0004, e2el: 0.4457 },
+            { ttft: 0.0004, e2el: 0.2128 }
+          ],
+          avgTtft: 0.1747,
+          avgE2el: 0.7321,
+          visionTokens: 2439
+        }
+      }
+    },
+    {
+      videoSrc: "assets/videos/video_example3.mp4",
+      caption: "Input Video",
+      conversations: [
+        { key:"q1", label:"Question 1",
+          phone1:{ question:"How many people are wearing ties in the video?", answer:"Two people are wearing ties in the video." },
+          phone2:{ question:"How many people are wearing ties in the video?", answer:"Two people are wearing ties in the video." }
+        },
+        { key:"q2", label:"Question 2",
+          phone1:{ question:"According to the video, who becomes the best man?", answer:"The person in the green t-shirt becomes the best man." },
+          phone2:{ question:"According to the video, who becomes the best man?", answer:"Joey becomes the best man." }
+        },
+        { key:"q3", label:"Question 3",
+          phone1:{ question:"What are the people in the video arguing about?", answer:"The people in the video are arguing about who will be the best man." },
+          phone2:{ question:"What are the people in the video arguing about?", answer:"They are arguing about who will be the best man at their wedding." }
+        }
+      ],
+      metrics: {
+        phone1: { /* LLaVA-Video-7B */
+          questions: [
+            { ttft: 1.0052, e2el: 8.9993 },
+            { ttft: 0.0005, e2el: 0.3766 },
+            { ttft: 0.0004, e2el: 0.4571 }
+          ],
+          avgTtft: 0.3354,
+          avgE2el: 3.2777,
+          visionTokens: 13440
+        },
+        phone2: { /* CoPE-VideoLM-7B */
+          questions: [
+            { ttft: 0.4357, e2el: 1.0813 },
+            { ttft: 0.0004, e2el: 0.2237 },
+            { ttft: 0.0006, e2el: 0.4016 }
+          ],
+          avgTtft: 0.1456,
+          avgE2el: 0.5689,
+          visionTokens: 3213
+        }
+      }
+    },
+    {
+      videoSrc: "assets/videos/video_example4.mp4",
+      caption: "Input Video",
+      conversations: [
+        { key:"q1", label:"Question 1",
+          phone1:{ question:"What is the person in blue clothes doing?", answer:"The person in blue clothes is chopping wood with an axe." },
+          phone2:{ question:"What is the person in blue clothes doing?", answer:"The person in blue clothes is chopping wood." }
+        },
+        { key:"q2", label:"Question 2",
+          phone1:{ question:"Where is the person in blue chopping wood?", answer:"The person in blue is chopping wood in a backyard setting." },
+          phone2:{ question:"Where is the person in blue chopping wood?", answer:"In a backyard setting." }
+        },
+        { key:"q3", label:"Question 3",
+          phone1:{ question:"Is the left wrist worn by a person in blue?", answer:"Yes." },
+          phone2:{ question:"Is the left wrist worn by a person in blue?", answer:"Yes." }
+        }
+      ],
+      metrics: {
+        phone1: { /* LLaVA-Video-7B */
+          questions: [
+            { ttft: 0.9255, e2el: 2.1919 },
+            { ttft: 0.0005, e2el: 0.4177 },
+            { ttft: 0.0004, e2el: 0.0833 }
+          ],
+          avgTtft: 0.3088,
+          avgE2el: 0.8976,
+          visionTokens: 7350
+        },
+        phone2: { /* CoPE-VideoLM-7B */
+          questions: [
+            { ttft: 0.3379, e2el: 0.7848 },
+            { ttft: 0.0005, e2el: 0.1656 },
+            { ttft: 0.0004, e2el: 0.0753 }
+          ],
+          avgTtft: 0.1129,
+          avgE2el: 0.3419,
           visionTokens: 1320
         }
       }
@@ -287,7 +394,7 @@
       html += '<div class="rc-token-header-row">';
       html += '<span class="rc-token-title">Number of Tokens</span>';
       if (t1 > 0 && t2 > 0) {
-        var reduction = ((1 - t2 / t1) * 100).toFixed(0);
+        var reduction = ((1 - t2 / t1) * 100).toFixed(2);
         html += '<span class="rc-token-ratio">🚀 ' + reduction + '% fewer</span>';
       }
       html += '</div>';
