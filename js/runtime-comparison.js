@@ -456,6 +456,59 @@
     summary.classList.remove('visible');
   }
 
+  /* ──── Chat progress bars ──── */
+  function rcShowChatProgress(phone1Duration, phone2Duration) {
+    var container = document.getElementById('rcChatProgress');
+    var fill1 = document.getElementById('rcProgressFill1');
+    var fill2 = document.getElementById('rcProgressFill2');
+    var check1 = document.getElementById('rcProgressCheck1');
+    var check2 = document.getElementById('rcProgressCheck2');
+
+    fill1.style.transition = 'none';
+    fill2.style.transition = 'none';
+    fill1.style.width = '0%';
+    fill2.style.width = '0%';
+    check1.textContent = '';
+    check2.textContent = '';
+    check1.classList.remove('done');
+    check2.classList.remove('done');
+    container.classList.remove('fade-out');
+    container.classList.add('visible');
+
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() {
+        fill1.style.transition = 'width ' + phone1Duration + 'ms linear';
+        fill2.style.transition = 'width ' + phone2Duration + 'ms linear';
+        fill1.style.width = '100%';
+        fill2.style.width = '100%';
+      });
+    });
+
+    rcTrackedTimeout(function() {
+      check2.textContent = '\u2714';
+      check2.classList.add('done');
+    }, phone2Duration);
+  }
+
+  function rcHideChatProgress() {
+    var container = document.getElementById('rcChatProgress');
+    container.classList.add('fade-out');
+    rcTrackedTimeout(function() {
+      container.classList.remove('visible', 'fade-out');
+    }, 350);
+  }
+
+  function rcResetChatProgress() {
+    var container = document.getElementById('rcChatProgress');
+    container.classList.remove('visible', 'fade-out');
+    var fill1 = document.getElementById('rcProgressFill1');
+    var fill2 = document.getElementById('rcProgressFill2');
+    fill1.style.width = '0%';
+    fill2.style.width = '0%';
+    document.getElementById('rcProgressCheck1').classList.remove('done');
+    document.getElementById('rcProgressCheck2').classList.remove('done');
+  }
+
   /* ──── Animation ──── */
   function rcPlayQuestion(phoneId, qIndex, scriptEntry, startDelay) {
     var shell = document.getElementById(phoneId);
@@ -535,6 +588,7 @@
     rcClearAllTimers();
     rcResetChatWindows();
     rcResetResultsPanel();
+    rcResetChatProgress();
     rcState.isPlaying = true;
 
     var vid = document.getElementById('rcHeroVideo');
@@ -555,6 +609,9 @@
     var phone1Total = p1Delay - 1000;
     var phone2Total = p2Delay - 1000;
 
+    /* Show chat progress bars */
+    rcShowChatProgress(phone1Total, phone2Total);
+
     /* Mark phone1 orange after first question's TTFT */
     var firstTtft = getTtftDelay('phone1', 0);
     rcTrackedTimeout(function() {
@@ -562,15 +619,21 @@
     }, firstTtft * 1000 + 400);
 
     var totalDuration = Math.max(phone1Total, phone2Total);
+
+    /* Hide progress bars after both chats finish, then show results */
+    rcTrackedTimeout(function() {
+      rcHideChatProgress();
+    }, totalDuration + 300);
+
     rcTrackedTimeout(function() {
       rcShowResultsSummary();
-    }, totalDuration + 500);
+    }, totalDuration + 700);
 
-    /* Loop: after showing results for a while, restart */
+    /* Loop: after showing results, wait 20s then restart */
     rcTrackedTimeout(function() {
       rcState.isPlaying = false;
       rcStartAnimation();
-    }, totalDuration + 5000);
+    }, totalDuration + 20700);
   }
 
   /* ──── Carousel ──── */

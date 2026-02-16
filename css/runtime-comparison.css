@@ -213,6 +213,55 @@
 .rc-carousel-arrow:active:not(:disabled) { transform: scale(0.96); }
 .rc-carousel-arrow:disabled { opacity: 0.3; cursor: not-allowed; transform: none !important; }
 
+/* Chat progress bars (during animation) */
+.rc-chat-progress {
+  display: none; width: 100%; padding: 10px 14px;
+  background: #fff; border: 1px solid rgba(209,213,219,0.6);
+  border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+  flex-shrink: 0; margin-top: 4px;
+  flex-direction: column; gap: 8px;
+}
+.rc-chat-progress-heading {
+  font-size: 0.66rem; font-weight: 700; color: var(--rc-muted);
+  letter-spacing: 0.02em; text-align: left;
+}
+.rc-chat-progress.visible { display: flex; animation: rc-progressFadeIn 0.3s ease forwards; }
+.rc-chat-progress.fade-out { animation: rc-progressFadeOut 0.35s ease forwards; }
+@keyframes rc-progressFadeOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-4px); }
+}
+.rc-chat-progress-row {
+  display: flex; align-items: center; gap: 8px;
+}
+.rc-chat-progress-label {
+  font-size: 0.6rem; font-weight: 700; width: 72px; text-align: right; flex-shrink: 0;
+  letter-spacing: 0.01em;
+}
+.rc-chat-progress-label.rc-llava { color: #dc2626; }
+.rc-chat-progress-label.rc-cope { color: #6567C9; }
+.rc-chat-progress-track {
+  flex: 1; height: 10px; background: rgba(209,213,219,0.18); border-radius: 5px; overflow: hidden;
+}
+.rc-chat-progress-fill {
+  height: 100%; width: 0%; border-radius: 5px;
+  transition: width linear;
+}
+.rc-chat-progress-fill.rc-llava { background: linear-gradient(90deg, #dc2626, #ef4444); }
+.rc-chat-progress-fill.rc-cope { background: linear-gradient(90deg, #6567C9, #8183db); }
+.rc-chat-progress-check {
+  font-size: 0.72rem; width: 18px; text-align: center; opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.rc-chat-progress-check.done { opacity: 1; color: #16a34a; }
+
+@media (max-width: 600px) {
+  .rc-chat-progress { padding: 6px 8px; gap: 5px; border-radius: 8px; }
+  .rc-chat-progress-label { font-size: 0.52rem; width: 58px; }
+  .rc-chat-progress-track { height: 7px; }
+  .rc-chat-progress-check { font-size: 0.6rem; width: 14px; }
+}
+
 /* Results panel */
 .rc-progress-panel {
   display: none; width: 100%; padding: 12px 14px 10px;
