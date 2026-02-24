@@ -4,46 +4,6 @@
   /* ──── Config Data ──── */
   var videoCarousel = [
     {
-      videoSrc: "assets/videos/video_example2.mp4",
-      caption: "Input Video",
-      conversations: [
-        { key:"q1", label:"Question 1",
-          phone1:{ question:"What is the person preparing?", answer:"The person is preparing a sandwich." },
-          phone2:{ question:"What is the person preparing?", answer:"The person is preparing a sandwich." }
-        },
-        { key:"q2", label:"Question 2",
-          phone1:{ question:"What are the ingredients being used?", answer:"The ingredients being used are slices of bread, butter, ham, and tomato." },
-          phone2:{ question:"What are the ingredients being used?", answer:"The ingredients are slices of white bread, butter, slices of ham and tomato." }
-        },
-        { key:"q3", label:"Question 3",
-          phone1:{ question:"What is inside the cup?", answer:"The cup contains a tea bag." },
-          phone2:{ question:"What is inside the cup?", answer:"The cup contains a tea bag with dried herbs." }
-        }
-      ],
-      metrics: {
-        phone1: { /* LLaVA-Video-7B */
-          questions: [
-            { ttft: 1.1775, e2el: 2.8606 },
-            { ttft: 0.0004, e2el: 0.4340 },
-            { ttft: 0.0004, e2el: 0.2078 }
-          ],
-          avgTtft: 0.3927,
-          avgE2el: 1.1675,
-          visionTokens: 7350
-        },
-        phone2: { /* CoPE-VideoLM-7B */
-          questions: [
-            { ttft: 0.3845, e2el: 0.8259 },
-            { ttft: 0.0004, e2el: 0.4309 },
-            { ttft: 0.0004, e2el: 0.2742 }
-          ],
-          avgTtft: 0.1284,
-          avgE2el: 0.5103,
-          visionTokens: 1320
-        }
-      }
-    },
-    {
       videoSrc: "assets/videos/video_example1.mp4",
       caption: "Input Video",
       conversations: [
@@ -98,6 +58,46 @@
           avgTtft: 0.2743,
           avgE2el: 0.7291,
           visionTokens: 2439
+        }
+      }
+    },
+    {
+      videoSrc: "assets/videos/video_example2.mp4",
+      caption: "Input Video",
+      conversations: [
+        { key:"q1", label:"Question 1",
+          phone1:{ question:"What is the person preparing?", answer:"The person is preparing a sandwich." },
+          phone2:{ question:"What is the person preparing?", answer:"The person is preparing a sandwich." }
+        },
+        { key:"q2", label:"Question 2",
+          phone1:{ question:"What are the ingredients being used?", answer:"The ingredients being used are slices of bread, butter, ham, and tomato." },
+          phone2:{ question:"What are the ingredients being used?", answer:"The ingredients are slices of white bread, butter, tomato,and slices of ham." }
+        },
+        { key:"q3", label:"Question 3",
+          phone1:{ question:"What is inside the cup?", answer:"The cup contains a tea bag." },
+          phone2:{ question:"What is inside the cup?", answer:"The cup contains a tea bag with dried herbs." }
+        }
+      ],
+      metrics: {
+        phone1: { /* LLaVA-Video-7B */
+          questions: [
+            { ttft: 1.8208, e2el: 2.0349 },
+            { ttft: 0.0003, e2el: 0.4103 },
+            { ttft: 0.0004, e2el: 0.1912 }
+          ],
+          avgTtft: 0.6072,
+          avgE2el: 0.8788,
+          visionTokens: 7350
+        },
+        phone2: { /* CoPE-VideoLM-7B */
+          questions: [
+            { ttft: 0.7478, e2el: 0.9511 },
+            { ttft: 0.0004, e2el: 0.4021 },
+            { ttft: 0.0004, e2el: 0.2682 }
+          ],
+          avgTtft: 0.2495,
+          avgE2el: 0.5404,
+          visionTokens: 1320
         }
       }
     },
