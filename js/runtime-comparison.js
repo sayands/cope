@@ -57,7 +57,7 @@
         },
         { key:"q3", label:"Question 3",
           phone1:{ question:"Who attends to the injured Toronto player, number 52?", answer:"A medical staff member in a blue uniform attends to the injured player." },
-          phone2:{ question:"Who attends to the injured Toronto player, number 52?", answer:"A medical staff member in a blue jacket attends to the injured player." }
+          phone2:{ question:"Who attends to the injured Toronto player, number 52?", answer:"A medical staff member in a blue jacket with 'MAPLE LEAFS HOCKEY' written on the back attends to the injured player." }
         },
         { key:"q4", label:"Question 4",
           phone1:{ question:"Which player pushed player number 52?", answer:"Player number 46 from the Boston team pushed player number 52." },
@@ -75,28 +75,28 @@
       metrics: {
         phone1: { /* LLaVA-Video-7B */
           questions: [
-            { ttft: 2.7863, e2el: 11.2522 },
-            { ttft: 0.0004, e2el: 0.7350 },
-            { ttft: 0.0004, e2el: 0.4326 },
-            { ttft: 0.0003, e2el: 0.4737 },
-            { ttft: 0.0003, e2el: 0.6329 },
-            { ttft: 0.0004, e2el: 0.2776 }
+            { ttft: 6.4764, e2el: 7.0624 },
+            { ttft: 0.0004, e2el: 0.6873 },
+            { ttft: 0.0004, e2el: 0.4361 },
+            { ttft: 0.0003, e2el: 0.4729 },
+            { ttft: 0.0004, e2el: 0.6686 },
+            { ttft: 0.0006, e2el: 0.2555 }
           ],
-          avgTtft: 0.4647,
-          avgE2el: 2.3006,
+          avgTtft: 1.0797,
+          avgE2el: 1.5971,
           visionTokens: 13440
         },
         phone2: { /* CoPE-VideoLM-7B */
           questions: [
-            { ttft: 1.0465, e2el: 2.0410 },
-            { ttft: 0.0004, e2el: 0.5563 },
-            { ttft: 0.0004, e2el: 0.7387 },
-            { ttft: 0.0003, e2el: 0.3981 },
-            { ttft: 0.0004, e2el: 0.4457 },
-            { ttft: 0.0004, e2el: 0.2128 }
+            { ttft: 1.6442, e2el: 2.1876 },
+            { ttft: 0.0004, e2el: 0.5026 },
+            { ttft: 0.0004, e2el: 0.6944 },
+            { ttft: 0.0003, e2el: 0.3855 },
+            { ttft: 0.0003, e2el: 0.4181 },
+            { ttft: 0.0004, e2el: 0.1865 }
           ],
-          avgTtft: 0.1747,
-          avgE2el: 0.7321,
+          avgTtft: 0.2743,
+          avgE2el: 0.7291,
           visionTokens: 2439
         }
       }
