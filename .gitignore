@@ -3,6 +3,16 @@
 .AppleDouble
 .LSOverride
 
+# PDF images
+pdf/
+
+*-lock.json
+package.json
+comparison-example*.html
+demo.html
+
+
+
 # Thumbnails
 ._*
 

@@ -110,33 +110,33 @@
           phone2:{ question:"How many people are wearing ties in the video?", answer:"Two people are wearing ties in the video." }
         },
         { key:"q2", label:"Question 2",
-          phone1:{ question:"According to the video, who becomes the best man?", answer:"The person in the green t-shirt becomes the best man." },
-          phone2:{ question:"According to the video, who becomes the best man?", answer:"Joey becomes the best man." }
+          phone1:{ question:"According to the video, who is about to get married?", answer:"The person in the green t-shirt is about to get married." },
+          phone2:{ question:"According to the video, who is about to get married?", answer:"Joey Tribbiani is about to get married." }
         },
         { key:"q3", label:"Question 3",
-          phone1:{ question:"What are the people in the video arguing about?", answer:"The people in the video are arguing about who will be the best man." },
-          phone2:{ question:"What are the people in the video arguing about?", answer:"They are arguing about who will be the best man at their wedding." }
+          phone1:{ question:"What are the people in the video arguing about?", answer:"The people in the video are arguing about the person in the green t-shirt getting married." },
+          phone2:{ question:"What are the people in the video arguing about?", answer:"They are arguing about who is going to be the best man." }
         }
       ],
       metrics: {
         phone1: { /* LLaVA-Video-7B */
           questions: [
-            { ttft: 1.0052, e2el: 8.9993 },
-            { ttft: 0.0005, e2el: 0.3766 },
-            { ttft: 0.0004, e2el: 0.4571 }
+            { ttft: 6.8981, e2el: 7.1743 },
+            { ttft: 0.0005, e2el: 0.4253 },
+            { ttft: 0.0005, e2el: 0.5176 }
           ],
-          avgTtft: 0.3354,
-          avgE2el: 3.2777,
+          avgTtft: 2.2997,
+          avgE2el: 2.7057,
           visionTokens: 13440
         },
         phone2: { /* CoPE-VideoLM-7B */
           questions: [
-            { ttft: 0.4357, e2el: 1.0813 },
-            { ttft: 0.0004, e2el: 0.2237 },
-            { ttft: 0.0006, e2el: 0.4016 }
+            { ttft: 0.8411, e2el: 1.0780 },
+            { ttft: 0.0005, e2el: 0.2905 },
+            { ttft: 0.0003, e2el: 0.3213 }
           ],
-          avgTtft: 0.1456,
-          avgE2el: 0.5689,
+          avgTtft: 0.2806,
+          avgE2el: 0.5633,
           visionTokens: 3213
         }
       }
@@ -146,37 +146,37 @@
       caption: "Input Video",
       conversations: [
         { key:"q1", label:"Question 1",
-          phone1:{ question:"What is the person in blue clothes doing?", answer:"The person in blue clothes is chopping wood with an axe." },
+          phone1:{ question:"What is the person in blue clothes doing?", answer:"The person in blue clothes is riding a BMX bike on the track." },
           phone2:{ question:"What is the person in blue clothes doing?", answer:"The person in blue clothes is chopping wood." }
         },
         { key:"q2", label:"Question 2",
-          phone1:{ question:"Where is the person in blue chopping wood?", answer:"The person in blue is chopping wood in a backyard setting." },
+          phone1:{ question:"Where is the person in blue chopping wood?", answer:"The person in blue is chopping wood in a wooded area." },
           phone2:{ question:"Where is the person in blue chopping wood?", answer:"In a backyard setting." }
         },
         { key:"q3", label:"Question 3",
-          phone1:{ question:"Is the person the cufflinks on his left wrist?", answer:"Yes." },
-          phone2:{ question:"Is the person the cufflinks on his left wrist?", answer:"Yes." }
+          phone1:{ question:"Is the left wrist worn by a person in blue?", answer:"Yes, the person in blue has a left wrist." },
+          phone2:{ question:"Is the left wrist worn by a person in blue?", answer:"Yes." }
         }
       ],
       metrics: {
         phone1: { /* LLaVA-Video-7B */
           questions: [
-            { ttft: 0.9255, e2el: 2.1919 },
-            { ttft: 0.0005, e2el: 0.4177 },
-            { ttft: 0.0004, e2el: 0.0833 }
+            { ttft: 2.1683, e2el: 2.5550 },
+            { ttft: 0.0005, e2el: 0.3196 },
+            { ttft: 0.0004, e2el: 0.2920 }
           ],
-          avgTtft: 0.3088,
-          avgE2el: 0.8976,
-          visionTokens: 7350
+          avgTtft: 0.7230,
+          avgE2el: 1.0555,
+          visionTokens: 9450
         },
         phone2: { /* CoPE-VideoLM-7B */
           questions: [
-            { ttft: 0.3379, e2el: 0.7848 },
-            { ttft: 0.0005, e2el: 0.1656 },
-            { ttft: 0.0004, e2el: 0.0753 }
+            { ttft: 0.5183, e2el: 0.7438 },
+            { ttft: 0.0003, e2el: 0.1491 },
+            { ttft: 0.0004, e2el: 0.0712 }
           ],
-          avgTtft: 0.1129,
-          avgE2el: 0.3419,
+          avgTtft: 0.1730,
+          avgE2el: 0.3214,
           visionTokens: 1320
         }
       }
@@ -201,22 +201,22 @@
       metrics: {
         phone1: { /* LLaVA-Video-7B */
           questions: [
-            { ttft: 1.2972, e2el: 6.5145 },
-            { ttft: 0.0004, e2el: 0.4334 },
-            { ttft: 0.0004, e2el: 0.2989 }
+            { ttft: 3.3425, e2el: 3.9393 },
+            { ttft: 0.0004, e2el: 0.3884 },
+            { ttft: 0.0003, e2el: 0.2663 }
           ],
-          avgTtft: 0.4327,
-          avgE2el: 2.4156,
+          avgTtft: 1.1144,
+          avgE2el: 1.5313,
           visionTokens: 9870
         },
         phone2: { /* CoPE-VideoLM-7B */
           questions: [
-            { ttft: 0.7096, e2el: 1.7034 },
-            { ttft: 0.0004, e2el: 0.3955 },
-            { ttft: 0.0004, e2el: 0.2033 }
+            { ttft: 0.5355, e2el: 1.2064 },
+            { ttft: 0.0004, e2el: 0.3508 },
+            { ttft: 0.0004, e2el: 0.1833 }
           ],
-          avgTtft: 0.2368,
-          avgE2el: 0.7674,
+          avgTtft: 0.1788,
+          avgE2el: 0.5802,
           visionTokens: 1629
         }
       }
