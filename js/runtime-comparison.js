@@ -48,16 +48,16 @@
         },
         phone2: { /* CoPE-VideoLM-7B */
           questions: [
-            { ttft: 1.6442, e2el: 2.1876 },
-            { ttft: 0.0004, e2el: 0.5026 },
-            { ttft: 0.0004, e2el: 0.6944 },
-            { ttft: 0.0003, e2el: 0.3855 },
-            { ttft: 0.0003, e2el: 0.4181 },
-            { ttft: 0.0004, e2el: 0.1865 }
+            { ttft: 1.0044, e2el: 1.6113 },
+            { ttft: 0.0004, e2el: 0.6354 },
+            { ttft: 0.0004, e2el: 0.8617 },
+            { ttft: 0.0004, e2el: 0.4350 },
+            { ttft: 0.0003, e2el: 0.5708 },
+            { ttft: 0.0004, e2el: 0.2099 }
           ],
-          avgTtft: 0.2743,
-          avgE2el: 0.7291,
-          visionTokens: 2439
+          avgTtft: 0.1677,
+          avgE2el: 0.7207,
+          visionTokens: 2500
         }
       }
     },
@@ -71,7 +71,7 @@
         },
         { key:"q2", label:"Question 2",
           phone1:{ question:"What are the ingredients being used?", answer:"The ingredients being used are slices of bread, butter, ham, and tomato." },
-          phone2:{ question:"What are the ingredients being used?", answer:"The ingredients are slices of white bread, butter, tomato,and slices of ham." }
+          phone2:{ question:"What are the ingredients being used?", answer:"The ingredients are slices of white bread, butter, tomato, and slices of ham." }
         },
         { key:"q3", label:"Question 3",
           phone1:{ question:"What is inside the cup?", answer:"The cup contains a tea bag." },
@@ -91,13 +91,13 @@
         },
         phone2: { /* CoPE-VideoLM-7B */
           questions: [
-            { ttft: 0.7478, e2el: 0.9511 },
-            { ttft: 0.0004, e2el: 0.4021 },
-            { ttft: 0.0004, e2el: 0.2682 }
+            { ttft: 0.6088, e2el: 0.8432 },
+            { ttft: 0.0005, e2el: 0.5756 },
+            { ttft: 0.0004, e2el: 0.2172 }
           ],
-          avgTtft: 0.2495,
-          avgE2el: 0.5404,
-          visionTokens: 1320
+          avgTtft: 0.2032,
+          avgE2el: 0.5453,
+          visionTokens: 1350
         }
       }
     },
@@ -111,7 +111,7 @@
         },
         { key:"q2", label:"Question 2",
           phone1:{ question:"According to the video, who is about to get married?", answer:"The person in the green t-shirt is about to get married." },
-          phone2:{ question:"According to the video, who is about to get married?", answer:"Joey Tribbiani is about to get married." }
+          phone2:{ question:"According to the video, who is about to get married?", answer:"The man in the suit is about to get married." }
         },
         { key:"q3", label:"Question 3",
           phone1:{ question:"What are the people in the video arguing about?", answer:"The people in the video are arguing about the person in the green t-shirt getting married." },
@@ -131,13 +131,13 @@
         },
         phone2: { /* CoPE-VideoLM-7B */
           questions: [
-            { ttft: 0.8411, e2el: 1.0780 },
-            { ttft: 0.0005, e2el: 0.2905 },
-            { ttft: 0.0003, e2el: 0.3213 }
+            { ttft: 0.8696, e2el: 1.1147 },
+            { ttft: 0.0004, e2el: 0.3550 },
+            { ttft: 0.0004, e2el: 0.4027 }
           ],
-          avgTtft: 0.2806,
-          avgE2el: 0.5633,
-          visionTokens: 3213
+          avgTtft: 0.2901,
+          avgE2el: 0.6241,
+          visionTokens: 3290
         }
       }
     },
@@ -171,13 +171,13 @@
         },
         phone2: { /* CoPE-VideoLM-7B */
           questions: [
-            { ttft: 0.5183, e2el: 0.7438 },
-            { ttft: 0.0003, e2el: 0.1491 },
-            { ttft: 0.0004, e2el: 0.0712 }
+            { ttft: 0.4614, e2el: 0.6944 },
+            { ttft: 0.0004, e2el: 0.3236 },
+            { ttft: 0.0004, e2el: 0.0814 }
           ],
-          avgTtft: 0.1730,
-          avgE2el: 0.3214,
-          visionTokens: 1320
+          avgTtft: 0.1541,
+          avgE2el: 0.3665,
+          visionTokens: 1350
         }
       }
     },
@@ -211,13 +211,13 @@
         },
         phone2: { /* CoPE-VideoLM-7B */
           questions: [
-            { ttft: 0.5355, e2el: 1.2064 },
-            { ttft: 0.0004, e2el: 0.3508 },
-            { ttft: 0.0004, e2el: 0.1833 }
+            { ttft: 0.5354, e2el: 1.3432 },
+            { ttft: 0.0007, e2el: 0.2670 },
+            { ttft: 0.0004, e2el: 0.2194 }
           ],
           avgTtft: 0.1788,
-          avgE2el: 0.5802,
-          visionTokens: 1629
+          avgE2el: 0.6099,
+          visionTokens: 1670
         }
       }
     }
@@ -463,6 +463,7 @@
     var fill2 = document.getElementById('rcProgressFill2');
     var check1 = document.getElementById('rcProgressCheck1');
     var check2 = document.getElementById('rcProgressCheck2');
+    if (!container || !fill1 || !fill2) return;
 
     fill1.style.transition = 'none';
     fill2.style.transition = 'none';
@@ -484,14 +485,17 @@
       });
     });
 
-    rcTrackedTimeout(function() {
-      check2.textContent = '\u2714';
-      check2.classList.add('done');
-    }, phone2Duration);
+    if (check2) {
+      rcTrackedTimeout(function() {
+        check2.textContent = '\u2714';
+        check2.classList.add('done');
+      }, phone2Duration);
+    }
   }
 
   function rcHideChatProgress() {
     var container = document.getElementById('rcChatProgress');
+    if (!container) return;
     container.classList.add('fade-out');
     rcTrackedTimeout(function() {
       container.classList.remove('visible', 'fade-out');
@@ -500,13 +504,29 @@
 
   function rcResetChatProgress() {
     var container = document.getElementById('rcChatProgress');
+    if (!container) return;
     container.classList.remove('visible', 'fade-out');
     var fill1 = document.getElementById('rcProgressFill1');
     var fill2 = document.getElementById('rcProgressFill2');
-    fill1.style.width = '0%';
-    fill2.style.width = '0%';
-    document.getElementById('rcProgressCheck1').classList.remove('done');
-    document.getElementById('rcProgressCheck2').classList.remove('done');
+    var check1 = document.getElementById('rcProgressCheck1');
+    var check2 = document.getElementById('rcProgressCheck2');
+    if (fill1) fill1.style.width = '0%';
+    if (fill2) fill2.style.width = '0%';
+    if (check1) check1.classList.remove('done');
+    if (check2) check2.classList.remove('done');
+  }
+
+  function rcUpdateControlButtons() {
+    var startBtn = document.getElementById('rcStartBtn');
+    var pauseBtn = document.getElementById('rcPauseBtn');
+    if (!startBtn || !pauseBtn) return;
+    if (rcState.isPlaying) {
+      startBtn.disabled = true;
+      pauseBtn.disabled = false;
+    } else {
+      startBtn.disabled = false;
+      pauseBtn.disabled = true;
+    }
   }
 
   /* ──── Animation ──── */
@@ -590,10 +610,13 @@
     rcResetResultsPanel();
     rcResetChatProgress();
     rcState.isPlaying = true;
+    rcUpdateControlButtons();
 
     var vid = document.getElementById('rcHeroVideo');
-    vid.currentTime = 0;
-    vid.play();
+    if (vid) {
+      vid.currentTime = 0;
+      vid.play().catch(function() {});
+    }
 
     var p1Delay = 0;
     var p2Delay = 0;
@@ -629,11 +652,19 @@
       rcShowResultsSummary();
     }, totalDuration + 700);
 
-    /* Loop: after showing results, wait 20s then restart */
-    rcTrackedTimeout(function() {
-      rcState.isPlaying = false;
-      rcStartAnimation();
-    }, totalDuration + 20700);
+    var isDemoMode = !!document.getElementById('rcStartBtn');
+    if (isDemoMode) {
+      rcTrackedTimeout(function() {
+        rcState.isPlaying = false;
+        rcUpdateControlButtons();
+      }, totalDuration + 700);
+    } else {
+      /* Loop: after showing results, wait 20s then restart */
+      rcTrackedTimeout(function() {
+        rcState.isPlaying = false;
+        rcStartAnimation();
+      }, totalDuration + 20700);
+    }
   }
 
   /* ──── Carousel ──── */
@@ -692,8 +723,43 @@
     document.getElementById('rcPrevBtn').addEventListener('click', function() { rcNavigateCarousel(-1); });
     document.getElementById('rcNextBtn').addEventListener('click', function() { rcNavigateCarousel(1); });
 
-    /* Autoplay on load */
-    rcStartAnimation();
+    var startBtn = document.getElementById('rcStartBtn');
+    var pauseBtn = document.getElementById('rcPauseBtn');
+    var resetBtn = document.getElementById('rcResetBtn');
+
+    if (startBtn) {
+      startBtn.addEventListener('click', function() {
+        rcStartAnimation();
+      });
+    }
+    if (pauseBtn) {
+      pauseBtn.addEventListener('click', function() {
+        rcClearAllTimers();
+        rcState.isPlaying = false;
+        var vid = document.getElementById('rcHeroVideo');
+        if (vid) vid.pause();
+        rcUpdateControlButtons();
+      });
+    }
+    if (resetBtn) {
+      resetBtn.addEventListener('click', function() {
+        rcClearAllTimers();
+        rcState.isPlaying = false;
+        var vid = document.getElementById('rcHeroVideo');
+        if (vid) vid.pause();
+        rcResetChatWindows();
+        rcResetResultsPanel();
+        rcResetChatProgress();
+        rcUpdateControlButtons();
+      });
+    }
+
+    rcUpdateControlButtons();
+
+    /* Autoplay on load only when no Start button (index page) */
+    if (!startBtn) {
+      rcStartAnimation();
+    }
   }
 
   if (document.readyState === 'loading') {
