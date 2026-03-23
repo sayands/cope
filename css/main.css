@@ -1134,3 +1134,13 @@ video {
         margin: 0 8px;
     }
 }
+
+/* Codec terminology — motion vectors vs residuals (used in body copy) */
+.term-motion-vector {
+    color: #4EA72E;
+    font-weight: inherit;
+}
+.term-residual {
+    color: #A02B93;
+    font-weight: inherit;
+}

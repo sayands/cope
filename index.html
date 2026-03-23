@@ -77,8 +77,7 @@
                 Video Language Models (VideoLMs) empower AI systems to understand temporal dynamics in videos. To fit to the maximum context 
                 window constraint, current methods use keyframe sampling which can miss both macro-level events and micro-level details due to 
                 the sparse temporal coverage. Furthermore, processing full images and their tokens for each frame incurs substantial 
-                computational overhead. To address these limitations, we propose to leverage video codec primitives (specifically motion 
-                vectors and residuals) which natively encode video redundancy and sparsity without requiring expensive full-image encoding for 
+                computational overhead. To address these limitations, we propose to leverage video codec primitives (specifically <span class="term-motion-vector">motion vectors</span> and <span class="term-residual">residuals</span>) which natively encode video redundancy and sparsity without requiring expensive full-image encoding for 
                 most frames. To this end, we introduce lightweight transformer-based encoders that aggregate codec primitives and align their 
                 representations with image encoder embeddings through a pre-training strategy  that accelerates convergence during end-to-end 
                 fine-tuning. Our approach reduces the time-to-first-token by up to 86% and token usage by up to 93% compared to standard 
@@ -288,7 +287,7 @@
             <p>
                 Given a video in its raw codec representation, our framework leverages the GOP structure for efficient, codec-aware tokenization.
                 <i>I-frames</i> are processed by a standard frozen vision encoder (&phi;<sub>RGB</sub>) to produce dense RGB tokens.
-                <i>P-frames</i>, however, bypass full RGB decoding. Their raw components, motion vectors and residuals, are instead fed into our
+                <i>P-frames</i>, however, bypass full RGB decoding. Their raw components, <span class="term-motion-vector">motion vectors</span> and <span class="term-residual">residuals</span>, are instead fed into our
                 lightweight &Delta;-Encoder (&phi;<sub>&Delta;</sub>) to generate a small set of highly compact &Delta;-tokens. The final token stream,
                 an interleaved sequence of I-frame tokens and &Delta;-tokens, is consumed by the LLM, enabling dense temporal coverage at a fraction
                 of the standard token count and runtime.
@@ -300,7 +299,7 @@
                 </div>
                 <div class="delta-encoder-text">
                     <p>
-                        <b>&Delta;-Encoder</b> processes motion vectors and residuals through two lightweight branches designed to extract and compress codec-domain information. The resulting motion and residual tokens are concatenated to form the &Delta;-tokens used for P-frames, providing an efficient representation that is projected to the RGB token space during pre-training.
+                        <b>&Delta;-Encoder</b> processes <span class="term-motion-vector">motion vectors</span> and <span class="term-residual">residuals</span> through two lightweight branches designed to extract and compress codec-domain information. The resulting <span class="term-motion-vector">motion</span> and <span class="term-residual">residual</span> tokens are concatenated to form the &Delta;-tokens used for P-frames, providing an efficient representation that is projected to the RGB token space during pre-training.
                     </p>
                     <p style="margin-top: 10px;">
                         <b>Training Paradigm.</b> First, the &Delta;-Encoder is <i>pre-trained</i> to align its output with the frozen vision encoder. The resulting features are aligned with ground-truth image tokens via a patch-wise MSE loss, enforcing spatially consistent alignment across patches. After pre-training, the &Delta;-Encoder is integrated into the VideoLM for end-to-end fine-tuning &mdash; the reference-conditioned branches from pre-training are dropped, so no RGB reference frames are processed for P-frames. This yields a substantial compute and memory reduction while keeping the standard instruction tuning objective unchanged.
