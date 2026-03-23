@@ -111,7 +111,7 @@
         },
         { key:"q2", label:"Question 2",
           phone1:{ question:"According to the video, who is about to get married?", answer:"The person in the green t-shirt is about to get married." },
-          phone2:{ question:"According to the video, who is about to get married?", answer:"The man in the suit is about to get married." }
+          phone2:{ question:"According to the video, who is about to get married?", answer:"The man in the dark suit is about to get married." }
         },
         { key:"q3", label:"Question 3",
           phone1:{ question:"What are the people in the video arguing about?", answer:"The people in the video are arguing about the person in the green t-shirt getting married." },

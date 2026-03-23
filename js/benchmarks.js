@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'Apollo-7B': 57.3,
         'Oryx-7B': 68.6,
         'LLaVA-Video-7B': 67.9,
-        'CoPE-VideoLM-7B (Ours)': 70.5
+        'CoPE-VideoLM-7B (Ours)': 70.3
       }
     },
     nextqa: {
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'LLaVA-OV-7B': 79.4,
         'Oryx-7B': 81.9,
         'LLaVA-Video-7B': 83.2,
-        'CoPE-VideoLM-7B (Ours)': 81.8
+        'CoPE-VideoLM-7B (Ours)': 82.1
       }
     },
     actnetqa: {
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'LLaVA-OV-7B': 56.6,
         'LLaVA-Video-7B': 56.5,
         'VILA-40B': 58.0,
-        'CoPE-VideoLM-7B (Ours)': 58.8
+        'CoPE-VideoLM-7B (Ours)': 60.3
       }
     },
     videomme: {
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'Oryx-7B': { wo: 58.3, w: 62.6 },
         'VILA-40B': { wo: 60.1, w: 61.1 },
         'Apollo-7B': { wo: 61.3, w: 63.3 },
-        'CoPE-VideoLM-7B (Ours)': { wo: 61.7, w: 67.8 },
+        'CoPE-VideoLM-7B (Ours)': { wo: 61.9, w: 69.4 },
         'LLaVA-Video-7B': { wo: 63.3, w: 69.7 }
       }
     },
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'InternVL2-8B': 65.3,
         'LLaVA-Video-7B': 66.6,
         'IXC-2.5-7B': 67.1,
-        'CoPE-VideoLM-7B (Ours)': 68.4
+        'CoPE-VideoLM-7B (Ours)': 68.9
       }
     },
     tomato: {
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'TimeChat': 35.9,
         'LLaVA-OV-7B': 42.6,
         'LLaVA-Video-7B': 43.6,
-        'CoPE-VideoLM-7B (Ours)': 49.1
+        'CoPE-VideoLM-7B (Ours)': 49.4
       }
     },
     mvbench: {
@@ -99,10 +99,25 @@ document.addEventListener('DOMContentLoaded', function() {
         'VideoLLaMA2-7B': 54.6,
         'LLaVA-OV-7B': 56.7,
         'LLaVA-Video-7B': 58.6,
-        'CoPE-VideoLM-7B (Ours)': 61.6,
+        'CoPE-VideoLM-7B (Ours)': 61.9,
         'VideoCCAM-9B': 64.6,
         'InternVL2-8B': 65.8,
         'IXC-2.5-7B': 69.1
+      }
+    },
+    motionbenchdev: {
+      label: 'MotionBench-Dev',
+      minX: 25,
+      models: {
+        'CogVLM2-Video': 41.0,
+        'Qwen2VL-2B': 48.0,
+        'LLaVA-NeXT': 48.0,
+        'Oryx-34B': 49.0,
+        'Qwen2VL-7B': 52.0,
+        'PLLaVA-34B': 52.0,
+        'MiniCPM-V2.6': 52.0,
+        'GLM-4V-plus': 54.0,
+        'CoPE-VideoLM-7B (Ours)': 54.5
       }
     },
     videott: {
@@ -111,10 +126,10 @@ document.addEventListener('DOMContentLoaded', function() {
         'Qwen2.5-VL-7B': 39.9,
         'LLaVA-Video-7B': 41.8,
         'LLaVA-OV-7B': 44.0,
-        'CoPE-VideoLM-7B (Ours)': 44.3,
-        'Ola-7B': 45.5,
         'InternVL-2.5-8B': 44.7,
-        'Oryx-1.5-7B': 44.8
+        'Oryx-1.5-7B': 44.8,
+        'Ola-7B': 45.5,
+        'CoPE-VideoLM-7B (Ours)': 45.5
       }
     },
     videommmu: {
@@ -126,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'VILA1.5-40B': 34.0,
         'LLaVA-Video-7B': 36.1,
         'InternVL2-8B': 37.4,
-        'CoPE-VideoLM-7B (Ours)': 37.9
+        'CoPE-VideoLM-7B (Ours)': 38.2
       }
     },
     lvbench: {
@@ -157,13 +172,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   };
 
+  /* CoPE brand blue — aligned with runtime / efficiency charts */
+  var copeBlue = '#4E95D9';
+  var copeBlueLight = 'rgba(78, 149, 217, 0.42)';
+
   function getBarColor(modelName) {
-    if (modelName.includes('(Ours)')) return '#6567C9';
+    if (modelName.includes('(Ours)')) return copeBlue;
     return '#E5E7EB';
   }
 
   function getBorderColor(modelName) {
-    if (modelName.includes('(Ours)')) return '#6567C9';
+    if (modelName.includes('(Ours)')) return copeBlue;
     return '#E5E7EB';
   }
 
@@ -189,7 +208,7 @@ document.addEventListener('DOMContentLoaded', function() {
         c.textBaseline = 'middle';
         if (label.indexOf('(Ours)') !== -1) {
           c.font = 'italic 600 ' + fontSize + ' "Avenir", "Avenir Next Cyr", "Avenir", "Avenir Next Cyr", "Inter", sans-serif';
-          c.fillStyle = '#6567C9';
+          c.fillStyle = copeBlue;
           c.fillText(label, x, y);
         } else {
           c.font = fontSize + ' "Avenir", "Avenir Next Cyr", "Avenir", "Avenir Next Cyr", "Inter", sans-serif';
@@ -222,7 +241,7 @@ document.addEventListener('DOMContentLoaded', function() {
             c.fillStyle = '#3A7BC8';
             c.font = groupedFontSize + ' "Avenir", "Avenir Next Cyr", "Avenir", "Avenir Next Cyr", "Inter", sans-serif';
           } else {
-            c.fillStyle = isOurs ? '#6567C9' : '#3A7BC8';
+            c.fillStyle = isOurs ? copeBlue : '#3A7BC8';
             c.font = (isOurs ? '600 ' : '') + fontSize + ' "Avenir", "Avenir Next Cyr", "Avenir", "Avenir Next Cyr", "Inter", sans-serif';
           }
           c.textAlign = 'left';
@@ -238,7 +257,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var data = benchmarkData[benchmarkKey];
     var chartContainer = ctx.parentElement;
     var greenBenchmarks = ['perceptiontest', 'nextqa', 'actnetqa', 'videomme'];
-    var orangeBenchmarks = ['tempcompass', 'tomato', 'cvrres', 'mvbench'];
+    var orangeBenchmarks = ['tempcompass', 'tomato', 'cvrres', 'mvbench', 'motionbenchdev'];
     var purpleBenchmarks = ['videott', 'videommmu', 'lvbench', 'longvideobench'];
     if (greenBenchmarks.indexOf(benchmarkKey) !== -1) {
       chartContainer.style.backgroundColor = 'transparent';
@@ -267,10 +286,10 @@ document.addEventListener('DOMContentLoaded', function() {
       var labels = entries.map(function(e) { return e[0]; });
       var woValues = entries.map(function(e) { return e[1].wo; });
       var wValues  = entries.map(function(e) { return e[1].w; });
-      var woColors = entries.map(function(e) { return e[0].indexOf('(Ours)') !== -1 ? '#b8b9e8' : '#E5E7EB'; });
-      var wColors  = entries.map(function(e) { return e[0].indexOf('(Ours)') !== -1 ? '#6567C9' : '#D1D5DB'; });
-      var woBorders = entries.map(function(e) { return e[0].indexOf('(Ours)') !== -1 ? '#b8b9e8' : '#E5E7EB'; });
-      var wBorders  = entries.map(function(e) { return e[0].indexOf('(Ours)') !== -1 ? '#6567C9' : '#D1D5DB'; });
+      var woColors = entries.map(function(e) { return e[0].indexOf('(Ours)') !== -1 ? copeBlueLight : '#E5E7EB'; });
+      var wColors  = entries.map(function(e) { return e[0].indexOf('(Ours)') !== -1 ? copeBlue : '#D1D5DB'; });
+      var woBorders = entries.map(function(e) { return e[0].indexOf('(Ours)') !== -1 ? copeBlueLight : '#E5E7EB'; });
+      var wBorders  = entries.map(function(e) { return e[0].indexOf('(Ours)') !== -1 ? copeBlue : '#D1D5DB'; });
       var allVals = woValues.concat(wValues).filter(function(v) { return v !== null; });
       var minVal = Math.floor(Math.min.apply(null, allVals) / 5) * 5;
       var maxVal = Math.ceil(Math.max.apply(null, allVals) / 5) * 5 + 5;

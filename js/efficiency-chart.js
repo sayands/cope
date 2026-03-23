@@ -1,6 +1,6 @@
 (function() {
-  var oursColor = '#6567C9';
-  var baseColor = '#5B93D4';
+  var oursColor = '#4E95D9';
+  var baseColor = '#C00000';
   var labelColor = '#3A7BC8';
 
   /* Data from the table: { tokens%, accuracy } */
@@ -14,9 +14,9 @@
         { x: 100,  y: 67.9, tip: '64 KF (default)' }
       ],
       ours: [
-        { x: 6.8,  y: 64.7, tip: '1 KF + 7 P/GOP', delta: '+4.3' },
-        { x: 11.0, y: 67.8, tip: '2 KF + 6 P/GOP', delta: '+5.7' },
-        { x: 19.5, y: 70.5, tip: '4 KF + 4 P/GOP', delta: '+6.9' }
+        { x: 6.9,  y: 65.5, tip: '1 KF + 7 P/GOP', delta: '+5.1' },
+        { x: 11.3, y: 68.7, tip: '2 KF + 6 P/GOP', delta: '+6.6' },
+        { x: 20.1, y: 70.3, tip: '4 KF + 4 P/GOP', delta: '+6.7' }
       ]
     },
     nextqa: {
@@ -28,9 +28,9 @@
         { x: 100,  y: 83.2, tip: '64 KF (default)' }
       ],
       ours: [
-        { x: 10.8, y: 78.3, tip: '1 KF + 7 P/GOP', delta: '+0.4' },
-        { x: 18.1, y: 80.3, tip: '2 KF + 6 P/GOP', delta: '+1.1' },
-        { x: 32.6, y: 81.8, tip: '4 KF + 4 P/GOP', delta: '+1.3' }
+        { x: 11.2, y: 78.3, tip: '1 KF + 7 P/GOP', delta: '+0.4' },
+        { x: 18.6, y: 80.4, tip: '2 KF + 6 P/GOP', delta: '+1.2' },
+        { x: 33.5, y: 82.1, tip: '4 KF + 4 P/GOP', delta: '+1.6' }
       ]
     },
     actnetqa: {
@@ -39,12 +39,12 @@
         { x: 21.6, y: 61.7, tip: '1 KF/GOP' },
         { x: 42.5, y: 62.9, tip: '2 KF/GOP' },
         { x: 84.3, y: 63.6, tip: '4 KF/GOP' },
-        { x: 100,  y: 63.6, tip: '64 KF (default)' }
+        { x: 100,  y: 64.1, tip: '64 KF (default)' }
       ],
       ours: [
-        { x: 28.8, y: 62.3, tip: '1 KF + 7 P/GOP', delta: '+0.6' },
-        { x: 48.8, y: 63.3, tip: '2 KF + 6 P/GOP', delta: '+0.4' },
-        { x: 88.7, y: 64.1, tip: '4 KF + 4 P/GOP', delta: '+0.5' }
+        { x: 29.7, y: 62.3, tip: '1 KF + 7 P/GOP', delta: '+0.6' },
+        { x: 50.4, y: 63.6, tip: '2 KF + 6 P/GOP', delta: '+0.7' },
+        { x: 91.7, y: 64.8, tip: '4 KF + 4 P/GOP', delta: '+1.2' }
       ]
     }
   };
@@ -126,9 +126,9 @@
 
   /* Single benchmark color schemes */
   var benchmarkColors = {
-    perceptiontest: { base: '#5B93D4', ours: '#6567C9' },
-    nextqa:         { base: '#7BAADE', ours: '#8486d9' },
-    actnetqa:       { base: '#9BC2E8', ours: '#a5a6e3' }
+    perceptiontest: { base: '#C00000', ours: '#4E95D9' },
+    nextqa:         { base: '#C00000', ours: '#4E95D9' },
+    actnetqa:       { base: '#C00000', ours: '#4E95D9' }
   };
 
   function buildDatasets(mode) {

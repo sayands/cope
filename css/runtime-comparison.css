@@ -158,7 +158,7 @@
   border-bottom-left-radius: 4px; border: 1px solid rgba(56,56,60,0.9);
 }
 #rc-phone-1 .rc-bubble.rc-answer { background: #C00000; border: 1px solid #A00000; color: #fff; }
-#rc-phone-2 .rc-bubble.rc-answer { background: #6567C9; border: 1px solid #5254B3; color: #fff; }
+#rc-phone-2 .rc-bubble.rc-answer { background: #4E95D9; border: 1px solid #3a7bc8; color: #fff; }
 #runtime-comparison .rc-bubble.rc-meta {
   background: #1c1c1e; color: #8e8e93;
   border-bottom-left-radius: 4px; border: 1px solid rgba(56,56,60,0.9);
@@ -264,7 +264,7 @@
   letter-spacing: 0.01em;
 }
 .rc-chat-progress-label.rc-llava { color: #dc2626; }
-.rc-chat-progress-label.rc-cope { color: #6567C9; }
+.rc-chat-progress-label.rc-cope { color: #4E95D9; }
 .rc-chat-progress-track {
   flex: 1; height: 10px; background: rgba(209,213,219,0.18); border-radius: 5px; overflow: hidden;
 }
@@ -273,7 +273,7 @@
   transition: width linear;
 }
 .rc-chat-progress-fill.rc-llava { background: linear-gradient(90deg, #dc2626, #ef4444); }
-.rc-chat-progress-fill.rc-cope { background: linear-gradient(90deg, #6567C9, #8183db); }
+.rc-chat-progress-fill.rc-cope { background: linear-gradient(90deg, #4E95D9, #7bb3e8); }
 .rc-chat-progress-check {
   font-size: 0.72rem; width: 18px; text-align: center; opacity: 0;
   transition: opacity 0.3s ease;
@@ -311,11 +311,11 @@
 }
 .rc-summary-header { font-weight: 700; text-align: center; font-size: 0.62rem; letter-spacing: 0.02em; }
 .rc-summary-header.rc-llava { color: #dc2626; }
-.rc-summary-header.rc-cope { color: #6567C9; }
+.rc-summary-header.rc-cope { color: #4E95D9; }
 .rc-summary-label { font-weight: 600; color: var(--rc-muted); font-size: 0.66rem; text-align: center; }
 .rc-summary-value { text-align: center; font-weight: 600; font-variant-numeric: tabular-nums; padding: 2px 0; }
 .rc-summary-value.rc-llava { color: #dc2626; }
-.rc-summary-value.rc-cope { color: #6567C9; }
+.rc-summary-value.rc-cope { color: #4E95D9; }
 .rc-token-section {
   grid-column: 1 / -1; margin-top: 6px; padding-top: 6px;
   border-top: 1px dashed rgba(209,213,219,0.4);
@@ -328,7 +328,7 @@
   display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px;
 }
 .rc-token-ratio {
-  font-size: 0.66rem; color: #6567C9; font-weight: 700;
+  font-size: 0.66rem; color: #4E95D9; font-weight: 700;
 }
 .rc-token-bar-row {
   display: flex; align-items: center; gap: 6px; margin-bottom: 3px;
@@ -337,7 +337,7 @@
   font-size: 0.54rem; font-weight: 600; width: 48px; text-align: right; flex-shrink: 0;
 }
 .rc-token-bar-label.rc-llava { color: #dc2626; }
-.rc-token-bar-label.rc-cope { color: #6567C9; }
+.rc-token-bar-label.rc-cope { color: #4E95D9; }
 .rc-token-bar-track {
   flex: 1; height: 12px; background: rgba(209,213,219,0.12); border-radius: 6px; overflow: hidden;
 }
@@ -346,7 +346,7 @@
   transition: width 0.8s cubic-bezier(0.22,1,0.36,1);
 }
 .rc-token-bar-fill.rc-llava { background: linear-gradient(90deg, #dc2626, #ef4444); }
-.rc-token-bar-fill.rc-cope { background: linear-gradient(90deg, #6567C9, #8183db); }
+.rc-token-bar-fill.rc-cope { background: linear-gradient(90deg, #4E95D9, #7bb3e8); }
 
 @media (max-width: 600px) {
   .rc-progress-panel { padding: 8px 8px 6px; border-radius: 8px; }

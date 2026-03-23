@@ -601,10 +601,12 @@ video {
 .benchmark-selector {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     gap: 12px;
     margin: 16px auto;
-    max-width: 800px;
+    max-width: min(1120px, 100%);
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .benchmark-row {
@@ -623,9 +625,23 @@ video {
 
 .benchmark-btn-group {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 6px;
-    align-items: center;
+    /* 13 benchmarks: 5 + 5 + 3; last row centered in columns 2–4 */
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 8px 6px;
+    align-items: stretch;
+    justify-items: stretch;
+    width: 100%;
+}
+
+/* Center the final three tabs (Video-MMMU, LVBench, LongVideoBench) */
+.benchmark-btn-group .benchmark-btn:nth-child(11) {
+    grid-column: 2;
+}
+.benchmark-btn-group .benchmark-btn:nth-child(12) {
+    grid-column: 3;
+}
+.benchmark-btn-group .benchmark-btn:nth-child(13) {
+    grid-column: 4;
 }
 
 @media screen and (max-width: 600px) {
@@ -641,8 +657,9 @@ video {
     }
 
     .benchmark-btn-group {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 4px;
+        /* 13 tabs: 5 + 5 + 3 */
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 6px 4px;
     }
 
     .benchmark-category-label {
@@ -844,7 +861,8 @@ video {
     }
 
     .benchmark-btn-group {
-        grid-template-columns: repeat(4, 1fr);
+        /* 13 tabs: 5 + 5 + 3 */
+        grid-template-columns: repeat(5, minmax(0, 1fr));
     }
 
     /* Logo scaling */
@@ -935,16 +953,22 @@ video {
         padding: 6px 12px;
     }
 
-    /* Benchmark buttons: 3 per row */
+    /* Benchmark buttons: 5 cols → 5 + 5 + 3 rows */
     .benchmark-btn {
-        padding: 5px 6px;
-        font-size: 11px;
-        white-space: nowrap;
+        padding: 5px 4px;
+        font-size: 10px;
+        white-space: normal;
+        line-height: 1.25;
+        min-height: 2.5em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
     }
 
     .benchmark-btn-group {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 4px;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 5px 3px;
     }
 
     #logos img {
@@ -1034,15 +1058,22 @@ video {
         padding: 5px 10px;
     }
 
-    /* Benchmark buttons: 2 per row on very small screens */
+    /* Benchmark buttons: 5 cols (same 5+5+3 pattern), compact */
     .benchmark-btn {
-        padding: 5px 4px;
-        font-size: 10px;
+        padding: 5px 2px;
+        font-size: 9px;
+        white-space: normal;
+        line-height: 1.2;
+        min-height: 2.4em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
     }
 
     .benchmark-btn-group {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 3px;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 4px 2px;
     }
 
     .benchmark-selector {

@@ -3,7 +3,7 @@
   if (!ctx) return;
 
   var labelColor = '#3A7BC8';
-  var oursColor = '#6567C9';
+  var oursColor = '#4E95D9';
   var baselineColor = '#C00000';
 
   /*

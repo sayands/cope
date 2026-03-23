@@ -10,10 +10,10 @@
     e2el: [3.78, 2.28, 1.71, 1.66]
   };
 
-  var oursColor = '#6567C9';
-  var oursColorLight = '#b8b9e8';
-  var baseColor = '#E5E7EB';
-  var baseColorDark = '#D1D5DB';
+  var oursColor = '#4E95D9';
+  var oursColorLight = 'rgba(78,149,217,0.45)';
+  var baseColor = '#dc2626';      /* LLaVA: individual + E2EL in Both (standard red) */
+  var baseColorLight = '#fca5a5'; /* LLaVA: TTFT bar in Both (lighter red) */
   var labelColor = '#3A7BC8';
 
   var ctx = document.getElementById('runtimeChart');
@@ -43,16 +43,16 @@
           lines.forEach(function(line, li) {
             if (li === 0) {
               c.font = (isOurs ? '600 ' : '') + '13px "Avenir", "Avenir Next Cyr", "Avenir", "Avenir Next Cyr", "Inter", sans-serif';
-              c.fillStyle = isOurs ? oursColor : labelColor;
+              c.fillStyle = isOurs ? oursColor : baseColor;
             } else {
               c.font = '11px "Avenir", "Avenir Next Cyr", "Avenir", "Avenir Next Cyr", "Inter", sans-serif';
-              c.fillStyle = '#9CA3AF';
+              c.fillStyle = isOurs ? '#9CA3AF' : baseColor;
             }
             c.fillText(line, x, startY + li * lineHeight);
           });
         } else {
           c.font = (isOurs ? '600 ' : '') + '13px "Avenir", "Avenir Next Cyr", "Avenir", "Avenir Next Cyr", "Inter", sans-serif';
-          c.fillStyle = isOurs ? oursColor : labelColor;
+          c.fillStyle = isOurs ? oursColor : baseColor;
           c.fillText(lines[0], x, y);
         }
         c.restore();
@@ -73,7 +73,7 @@
           var label = chartInst.data.labels[index];
           var isOurs = typeof label === 'string' && label.indexOf('Ours') !== -1;
           c.save();
-          c.fillStyle = isOurs ? oursColor : labelColor;
+          c.fillStyle = isOurs ? oursColor : baseColor;
           c.font = (isOurs ? '600 ' : '') + '13px "Avenir", "Avenir Next Cyr", "Avenir", "Avenir Next Cyr", "Inter", sans-serif';
           c.textAlign = 'left';
           c.textBaseline = 'middle';
@@ -119,8 +119,8 @@
       datasets.push({
         label: 'TTFT',
         data: runtimeData.ttft,
-        backgroundColor: runtimeData.labels.map(function(l) { return l.indexOf('Ours') !== -1 ? oursColorLight : baseColor; }),
-        borderColor: runtimeData.labels.map(function(l) { return l.indexOf('Ours') !== -1 ? oursColorLight : baseColor; }),
+        backgroundColor: runtimeData.labels.map(function(l) { return l.indexOf('Ours') !== -1 ? oursColorLight : baseColorLight; }),
+        borderColor: runtimeData.labels.map(function(l) { return l.indexOf('Ours') !== -1 ? oursColorLight : baseColorLight; }),
         borderWidth: 0,
         borderRadius: 20,
         barPercentage: 0.75,
@@ -129,8 +129,8 @@
       datasets.push({
         label: 'E2EL',
         data: runtimeData.e2el,
-        backgroundColor: runtimeData.labels.map(function(l) { return l.indexOf('Ours') !== -1 ? oursColor : baseColorDark; }),
-        borderColor: runtimeData.labels.map(function(l) { return l.indexOf('Ours') !== -1 ? oursColor : baseColorDark; }),
+        backgroundColor: runtimeData.labels.map(function(l) { return l.indexOf('Ours') !== -1 ? oursColor : baseColor; }),
+        borderColor: runtimeData.labels.map(function(l) { return l.indexOf('Ours') !== -1 ? oursColor : baseColor; }),
         borderWidth: 0,
         borderRadius: 20,
         barPercentage: 0.75,
@@ -160,7 +160,7 @@
         layout: { padding: { left: 10, right: 60 } },
         plugins: {
           legend: {
-            display: mode === 'both',
+            display: false,
             position: 'top',
             labels: {
               font: { size: 13, family: '"Avenir", "Avenir Next Cyr", "Avenir", "Avenir Next Cyr", "Inter", sans-serif', weight: '500' },
