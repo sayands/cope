@@ -5,31 +5,49 @@
   var labelColor = '#3A7BC8';
   var oursColor = '#4E95D9';
   var baselineColor = '#C00000';
+  var FONT = '"Avenir Next", "Avenir Next Cyr", "Avenir", "Inter", sans-serif';
 
   /*
    * Data computed from paper formulas:
    * VLM: token_budget // 210 // 60  (minutes)
-   * Ours (4I+4P): 8*tb // (210*4 + 9*4) // 60
-   * Ours (2I+6P): 8*tb // (210*2 + 9*6) // 60
-   * Ours (1I+7P): 8*tb // (210 + 9*7) // 60
+   * Ours (4I+4P): 8*tb // (210*4 + 10*4) // 60
+   * Ours (2I+6P): 8*tb // (210*2 + 10*6) // 60
+   * Ours (1I+7P): 8*tb // (210 + 10*7) // 60
    */
   var tokenBudgets = [32768, 65536, 131072, 262144, 524288, 1048576];
   var tokenLabels = ['32K', '64K', '128K', '256K', '512K', '1M'];
 
-  var vlmMinutes     = [2, 5, 10, 20, 41, 83];
-  var ours4I4P       = [4, 9, 19, 39, 79, 159];
-  var ours2I6P       = [9, 18, 36, 73, 147, 294];
-  var ours1I7P       = [16, 32, 64, 128, 256, 512];
+  function floorDiv(a, b) { return Math.floor(a / b); }
 
-  /* Convert to {x, y} points for scatter chart */
+  function computeVlmMinutes(tb) {
+    var val = floorDiv(tb, 210);
+    return floorDiv(val, 60);
+  }
+
+  function computeOursMinutes(tb, iCount, pCount) {
+    var denom = 210 * iCount + 10 * pCount;
+    var val = floorDiv(8 * tb, denom);
+    return floorDiv(val, 60);
+  }
+
+  var vlmMinutes = tokenBudgets.map(computeVlmMinutes);
+  var ours4I4P   = tokenBudgets.map(function(tb) { return computeOursMinutes(tb, 4, 4); });
+  var ours2I6P   = tokenBudgets.map(function(tb) { return computeOursMinutes(tb, 2, 6); });
+  var ours1I7P   = tokenBudgets.map(function(tb) { return computeOursMinutes(tb, 1, 7); });
+
+  function sqrt(n) { return Math.sqrt(Math.max(0, n)); }
+
+  /* Convert to {x, y} points; y uses sqrt(minutes) to match reference */
   function toPoints(budgets, minutes) {
     return budgets.map(function(b, i) {
-      return { x: b, y: minutes[i] };
+      return { x: b, y: sqrt(minutes[i]) };
     });
   }
 
-  /* Format minutes to readable string */
-  function formatMinutes(m) {
+  /* Format sqrt(minutes) back to readable minutes/hours */
+  function formatFromSqrtMinutes(y) {
+    var m = Math.round(y * y);
+    if (m <= 0) return '0';
     if (m < 60) return m + 'min';
     var h = m / 60;
     if (h === Math.floor(h)) return Math.floor(h) + 'h';
@@ -54,14 +72,14 @@
           pointRadius: 6,
           pointHoverRadius: 8,
           pointStyle: 'circle',
-          borderWidth: 2,
-          borderDash: [6, 4],
+          borderWidth: 1,
+          borderDash: [2, 3],
           showLine: true,
           tension: 0.3,
           fill: false
         },
         {
-          label: 'Ours (4 KF per GOP)',
+          label: 'Ours (4I+4P)',
           data: toPoints(tokenBudgets, ours4I4P),
           borderColor: oursColor,
           backgroundColor: oursColor,
@@ -71,15 +89,15 @@
           pointRadius: 6,
           pointHoverRadius: 8,
           pointStyle: 'rect',
-          borderWidth: 1.5,
-          borderDash: [6, 4],
+          borderWidth: 1,
+          borderDash: [2, 3],
           showLine: true,
           tension: 0.3,
           fill: false,
           opacity: 0.9
         },
         {
-          label: 'Ours (2 KF per GOP)',
+          label: 'Ours (2I+6P)',
           data: toPoints(tokenBudgets, ours2I6P),
           borderColor: oursColor,
           backgroundColor: oursColor,
@@ -89,14 +107,14 @@
           pointRadius: 7,
           pointHoverRadius: 9,
           pointStyle: 'triangle',
-          borderWidth: 2,
+          borderWidth: 1.5,
           borderDash: [8, 4],
           showLine: true,
           tension: 0.3,
           fill: false
         },
         {
-          label: 'Ours (1 KF per GOP)',
+          label: 'Ours (1I+7P)',
           data: toPoints(tokenBudgets, ours1I7P),
           borderColor: oursColor,
           backgroundColor: oursColor,
@@ -123,7 +141,7 @@
           display: true,
           position: 'top',
           labels: {
-            font: { size: 13, family: '"Avenir", "Avenir Next Cyr", "Avenir", "Avenir Next Cyr", "Inter", sans-serif', weight: '500' },
+            font: { size: 13, family: FONT, weight: '500' },
             color: labelColor,
             usePointStyle: true,
             padding: 16
@@ -134,8 +152,8 @@
         },
         tooltip: {
           backgroundColor: 'rgba(0,0,0,0.8)',
-          titleFont: { size: 13, family: '"Avenir", "Avenir Next Cyr", "Inter", sans-serif' },
-          bodyFont: { size: 13, family: '"Avenir", "Avenir Next Cyr", "Inter", sans-serif' },
+          titleFont: { size: 13, family: FONT },
+          bodyFont: { size: 13, family: FONT },
           padding: 12,
           cornerRadius: 8,
           callbacks: {
@@ -148,7 +166,7 @@
               var budgetStr = budgetIdx !== -1 ? tokenLabels[budgetIdx] : pt.x;
               return [
                 'Token Budget: ' + budgetStr,
-                'Video Length: ' + formatMinutes(pt.y)
+                'Video Length: ' + formatFromSqrtMinutes(pt.y)
               ];
             }
           }
@@ -158,14 +176,17 @@
       scales: {
         x: {
           type: 'logarithmic',
-          min: 24000,
-          max: 1400000,
+          base: 2,
+          min: Math.pow(2, 14.4),
+          max: Math.pow(2, 20.6),
           grid: {
-            color: 'rgba(154, 140, 126, 0.12)',
+            color: 'rgba(189, 195, 199, 0.40)',
+            borderDash: [4, 4],
+            lineWidth: 0.8,
             drawBorder: false
           },
           ticks: {
-            font: { size: 12, weight: '600', family: '"Avenir", "Avenir Next Cyr", "Inter", sans-serif' },
+            font: { size: 12, weight: '600', family: FONT },
             color: '#3A7BC8',
             callback: function(value) {
               var idx = tokenBudgets.indexOf(value);
@@ -181,7 +202,7 @@
           title: {
             display: true,
             text: 'Token Budget',
-            font: { size: 14, weight: '600', family: '"Avenir", "Avenir Next Cyr", "Avenir", "Avenir Next Cyr", "Inter", sans-serif' },
+            font: { size: 14, weight: '600', family: FONT },
             color: labelColor,
             padding: { top: 8 }
           }
@@ -189,27 +210,26 @@
         y: {
           type: 'linear',
           min: 0,
-          max: 560,
+          max: sqrt(600),
           grid: {
-            color: 'rgba(154, 140, 126, 0.12)',
+            color: 'rgba(189, 195, 199, 0.40)',
+            borderDash: [4, 4],
+            lineWidth: 0.8,
             drawBorder: false
           },
           ticks: {
-            font: { size: 12, weight: '600', family: '"Avenir", "Avenir Next Cyr", "Inter", sans-serif' },
+            font: { size: 12, weight: '600', family: FONT },
             color: '#3A7BC8',
-            stepSize: 60,
-            callback: function(value) {
-              if (value === 0) return '0';
-              if (value < 60) return value + 'min';
-              var h = value / 60;
-              if (h === Math.floor(h)) return Math.floor(h) + 'h';
-              return h.toFixed(1) + 'h';
-            }
+            callback: function(value) { return formatFromSqrtMinutes(value); }
+          },
+          afterBuildTicks: function(axis) {
+            var vidLensMin = [2, 10, 30, 60, 120, 300, 480, 600];
+            axis.ticks = [{ value: 0 }].concat(vidLensMin.map(function(m) { return { value: sqrt(m) }; }));
           },
           title: {
             display: true,
             text: 'Video Length',
-            font: { size: 14, weight: '600', family: '"Avenir", "Avenir Next Cyr", "Avenir", "Avenir Next Cyr", "Inter", sans-serif' },
+            font: { size: 14, weight: '600', family: FONT },
             color: labelColor,
             padding: { bottom: 8 }
           }
@@ -231,10 +251,10 @@
 
         annotations.forEach(function(ann) {
           var px = xScale.getPixelForValue(ann.x);
-          var midY = (yScale.top + yScale.bottom) / 2;
+          var midY = yScale.getPixelForValue(sqrt(50));
 
           c.save();
-          c.font = '600 11px "Avenir", "Avenir Next Cyr", "Avenir", "Avenir Next Cyr", "Inter", sans-serif';
+          c.font = '600 11px ' + FONT;
           var textWidth = c.measureText(ann.label).width;
 
           /* Draw vertical dashed line */
